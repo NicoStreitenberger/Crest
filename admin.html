@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRN OS | Agency Command Center</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    
+    <!-- Login Overlay -->
+    <div id="login-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+        <div class="glass-card" style="width: 100%; max-width: 400px; padding: 3rem; text-align: center;">
+            <div class="logo" style="font-size: 2rem; margin-bottom: 2rem;">STRN<span>.</span>OS</div>
+            <form id="login-form" class="admin-form">
+                <div class="form-group" style="text-align: left;">
+                    <label>Username</label>
+                    <input type="text" id="login-user" placeholder="admin" required>
+                </div>
+                <div class="form-group" style="text-align: left;">
+                    <label>Password</label>
+                    <input type="password" id="login-pass" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full" style="margin-top: 1rem;">Secure Login <i class="ph ph-lock-key"></i></button>
+                <p id="login-error" style="color: var(--color-accent); margin-top: 1rem; display: none; font-size: 0.875rem;">Invalid credentials.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__brand">
+            <a href="index.html" class="logo">STRN<span>.</span>OS</a>
+            <button class="mobile-close" id="mobile-close"><i class="ph ph-x"></i></button>
+        </div>
+        
+        <nav class="sidebar__nav">
+            <span class="nav-label">Management</span>
+            <a href="#" class="nav-item active" data-target="dashboard">
+                <i class="ph ph-squares-four"></i> Overview
+            </a>
+            <a href="#" class="nav-item" data-target="portfolio">
+                <i class="ph ph-folder-star"></i> Portfolio
+            </a>
+            <a href="#" class="nav-item" data-target="services">
+                <i class="ph ph-bezier-curve"></i> Services
+            </a>
+            
+            <span class="nav-label">Content</span>
+            <a href="#" class="nav-item" data-target="blog">
+                <i class="ph ph-article"></i> Blog Engine
+            </a>
+            
+            <span class="nav-label">Clients</span>
+            <a href="#" class="nav-item" data-target="leads">
+                <i class="ph ph-users"></i> Leads
+            </a>
+            <a href="#" class="nav-item" data-target="calendar">
+                <i class="ph ph-calendar"></i> Calendar
+            </a>
+        </nav>
+        
+        <div class="sidebar__footer">
+            <div class="user-profile">
+                <div class="avatar">NS</div>
+                <div class="user-info">
+                    <span class="name">Nico Streitenberger</span>
+                    <span class="role">Admin</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Topbar -->
+        <header class="topbar">
+            <button class="menu-toggle" id="menu-toggle"><i class="ph ph-list"></i></button>
+            <div class="topbar__search">
+                <i class="ph ph-magnifying-glass"></i>
+                <input type="text" placeholder="Search projects, posts or clients...">
+            </div>
+            <div class="topbar__actions">
+                <button class="icon-btn"><i class="ph ph-bell"></i><span class="badge">3</span></button>
+                <a href="index.html" target="_blank" class="btn btn--outline btn--sm">View Site <i class="ph ph-arrow-up-right"></i></a>
+            </div>
+        </header>
+
+        <!-- Views Container -->
+        <div class="views-container">
+            
+            <!-- Dashboard View -->
+            <div class="view active" id="view-dashboard">
+                <div class="page-header">
+                    <h2>Command Center</h2>
+                    <p>Welcome back, Nico. Here's what's happening today.</p>
+                </div>
+                
+                <div class="stats-cards">
+                    <div class="stat-card glass-card">
+                        <div class="stat-icon"><i class="ph ph-envelope-open"></i></div>
+                        <div class="stat-details">
+                            <span class="stat-title">New Leads</span>
+                            <span class="stat-value">12</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-icon"><i class="ph ph-eye"></i></div>
+                        <div class="stat-details">
+                            <span class="stat-title">Site Views</span>
+                            <span class="stat-value">4.2k</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-icon"><i class="ph ph-book-open-text"></i></div>
+                        <div class="stat-details">
+                            <span class="stat-title">Blog Reads</span>
+                            <span class="stat-value">856</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="glass-card table-card">
+                        <h3>Recent Leads</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sarah Jenkins</td>
+                                    <td>sarah@techstartup.io</td>
+                                    <td><span class="status new">New</span></td>
+                                    <td>Today</td>
+                                </tr>
+                                <tr>
+                                    <td>Mark T.</td>
+                                    <td>mark@ecombrand.com</td>
+                                    <td><span class="status read">Read</span></td>
+                                    <td>Yesterday</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="glass-card">
+                        <h3>Quick Actions</h3>
+                        <div class="action-list">
+                            <button class="action-btn" onclick="document.querySelector('[data-target=blog]').click()"><i class="ph ph-pencil-simple"></i> Write Post</button>
+                            <button class="action-btn" onclick="document.querySelector('[data-target=portfolio]').click()"><i class="ph ph-plus-circle"></i> Add Project</button>
+                            <button class="action-btn"><i class="ph ph-calendar-plus"></i> View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio View -->
+            <div class="view" id="view-portfolio">
+                <div class="page-header flex-between">
+                    <div>
+                        <h2>Portfolio Manager</h2>
+                        <p>Manage your selected works and case studies.</p>
+                    </div>
+                    <button class="btn btn--primary">Add Project <i class="ph ph-plus"></i></button>
+                </div>
+                
+                <div class="editor-container glass-card">
+                    <h3>Create New Project</h3>
+                    <form class="admin-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Project Title</label>
+                                <input type="text" placeholder="e.g. LifeRun App">
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select>
+                                    <option>UX/UI Product Design</option>
+                                    <option>Strategic Branding</option>
+                                    <option>E-Commerce</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Tech Stack / Tags (Comma separated)</label>
+                            <input type="text" placeholder="Figma, React, Tailwind...">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Project Description</label>
+                            <textarea rows="4" placeholder="Brief case study..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Cover Image & Gallery</label>
+                            <div class="file-upload">
+                                <i class="ph ph-upload-simple"></i>
+                                <span>Drag & Drop images or click to browse</span>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn--primary">Publish Project</button>
+                            <button type="button" class="btn btn--outline">Save Draft</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Blog View -->
+            <div class="view" id="view-blog">
+                <div class="page-header flex-between">
+                    <div>
+                        <h2>Blog Engine</h2>
+                        <p>Write, format with Markdown, and optimize for SEO.</p>
+                    </div>
+                </div>
+
+                <div class="editor-container glass-card">
+                    <form class="admin-form">
+                        <div class="form-group">
+                            <label>Post Title</label>
+                            <input type="text" id="post-title" placeholder="The Future of Bento Grids in Web Design">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select>
+                                    <option>Design Trends</option>
+                                    <option>UX Research</option>
+                                    <option>Brand Strategy</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Est. Reading Time</label>
+                                <input type="text" id="reading-time" placeholder="Auto-calculated" disabled>
+                            </div>
+                        </div>
+
+                        <!-- Markdown Editor Toolbar -->
+                        <div class="markdown-editor">
+                            <div class="md-toolbar">
+                                <button type="button"><i class="ph ph-text-b"></i></button>
+                                <button type="button"><i class="ph ph-text-italic"></i></button>
+                                <button type="button"><i class="ph ph-link"></i></button>
+                                <button type="button"><i class="ph ph-quotes"></i></button>
+                                <button type="button"><i class="ph ph-code"></i></button>
+                                <button type="button"><i class="ph ph-image"></i></button>
+                            </div>
+                            <textarea rows="10" id="post-content" placeholder="Write your post here using Markdown..."></textarea>
+                        </div>
+
+                        <hr class="divider">
+                        <h3>SEO Optimization</h3>
+                        
+                        <div class="form-group">
+                            <label>Meta Title (Max 60 chars)</label>
+                            <input type="text" placeholder="SEO Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Meta Description (Max 160 chars)</label>
+                            <textarea rows="2" placeholder="Brief description for search engines..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn--primary">Publish Post</button>
+                            <button type="button" class="btn btn--outline">Preview</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Leads View -->
+            <div class="view" id="view-leads">
+                <div class="page-header">
+                    <h2>Client Leads</h2>
+                    <p>Manage inquiries from your portfolio's contact form.</p>
+                </div>
+
+                <div class="glass-card table-card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Client Name</th>
+                                <th>Email</th>
+                                <th>Message Snippet</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sarah Jenkins</td>
+                                <td>sarah@techstartup.io</td>
+                                <td>"We need a complete rebrand..."</td>
+                                <td><span class="status new">New</span></td>
+                                <td><button class="btn btn--outline btn--sm">Reply</button></td>
+                            </tr>
+                            <tr>
+                                <td>David M.</td>
+                                <td>davidm@crypto.com</td>
+                                <td>"Looking for UX/UI design for our app..."</td>
+                                <td><span class="status read">Contacted</span></td>
+                                <td><button class="btn btn--outline btn--sm">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Calendar View -->
+            <div class="view" id="view-calendar">
+                <div class="page-header">
+                    <h2>Discovery Calls</h2>
+                    <p>Your integrated Calendly schedule.</p>
+                </div>
+                
+                <div class="glass-card calendly-wrapper">
+                    <!-- Placeholder for Calendly Embed -->
+                    <div class="calendly-placeholder">
+                        <i class="ph ph-calendar-check"></i>
+                        <h3>Calendly Widget Active</h3>
+                        <p>In production, the Calendly iframe renders here.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services View -->
+            <div class="view" id="view-services">
+                <div class="page-header">
+                    <h2>Services Manager</h2>
+                    <p>Update your offerings, descriptions, and base pricing.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="glass-card service-edit-card">
+                        <div class="form-group">
+                            <label>Service Name</label>
+                            <input type="text" value="Strategic Branding">
+                        </div>
+                        <div class="form-group">
+                            <label>Base Price ($)</label>
+                            <input type="text" value="1,500">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea rows="3">Visual identity systems designed for the digital age.</textarea>
+                        </div>
+                        <button class="btn btn--outline btn--sm btn--full">Update Service</button>
+                    </div>
+
+                    <div class="glass-card service-edit-card">
+                        <div class="form-group">
+                            <label>Service Name</label>
+                            <input type="text" value="UX/UI Product Design">
+                        </div>
+                        <div class="form-group">
+                            <label>Base Price ($)</label>
+                            <input type="text" value="2,500">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea rows="3">Modern, user-centric interfaces. High-end user experiences.</textarea>
+                        </div>
+                        <button class="btn btn--outline btn--sm btn--full">Update Service</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

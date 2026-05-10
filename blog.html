@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The STRN Journal | Insights on Design & Branding</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header__inner">
+            <a href="index.html" class="logo">
+                STRN<span>.</span>STUDIO
+            </a>
+            <nav class="nav">
+                <a href="index.html#about" class="nav__link">ABOUT</a>
+                <a href="index.html#services" class="nav__link">SERVICES</a>
+                <a href="index.html#blueprint" class="nav__link">PROCESS</a>
+                <a href="portfolio.html" class="nav__link">PLAYGROUND</a>
+                <a href="blog.html" class="nav__link">BLOG</a>
+                <a href="index.html#audit" class="nav__btn">Get Free Brand Audit</a>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="main" id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <!-- Blog Hero -->
+            <section class="journal-hero container reveal">
+                <span class="section-subtitle">INSIGHTS & STRATEGY</span>
+                <h1 class="hero__title">THE STRN JOURNAL</h1>
+                <p class="hero__subtitle" style="margin: 0 auto;">Thoughts on high-performance design, brand architecture, and digital resilience.</p>
+            </section>
+
+            <!-- Filters -->
+            <div class="container reveal">
+                <div class="portfolio-filters">
+                    <button class="filter-btn active">All Topics</button>
+                    <button class="filter-btn">Branding</button>
+                    <button class="filter-btn">UX Research</button>
+                    <button class="filter-btn">Strategy</button>
+                    <button class="filter-btn">Workflow</button>
+                </div>
+            </div>
+
+            <!-- Featured Post -->
+            <section class="container reveal">
+                <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                    <h2 class="section-title" style="font-size: 2rem;">LATEST INSIGHT</h2>
+                </div>
+                
+                <a href="blog-post.html" class="featured-post glass-card" style="padding: 0; overflow: hidden; border-radius: 24px;">
+                    <div class="featured-post__image">
+                        <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&w=1200&q=80" alt="Bento Grid">
+                    </div>
+                    <div style="padding: 3rem 4rem 3rem 0;">
+                        <div class="post-meta">
+                            <span><i class="ph ph-folder"></i> Design Trends</span>
+                            <span><i class="ph ph-clock"></i> 4 Min Read</span>
+                        </div>
+                        <h2 class="featured-post__title">The Future of Bento Grids in Web Design</h2>
+                        <p class="featured-post__excerpt">Explore how Bento Grid layouts are reshaping UI/UX design in modern web applications. Learn why structured, negative space-driven interfaces are the future of high-performance digital products.</p>
+                        <span class="btn btn--outline btn--sm">Read Article <i class="ph ph-arrow-right"></i></span>
+                    </div>
+                </a>
+            </section>
+
+            <!-- Recent Posts Grid -->
+            <section class="container reveal" style="padding-bottom: 8rem;">
+                <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                    <h2 class="section-title" style="font-size: 2rem;">RECENT ARTICLES</h2>
+                </div>
+
+                <div class="recent-posts">
+                    <!-- Post 1 -->
+                    <a href="blog-post.html" class="post-card">
+                        <div class="post-card__image">
+                            <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=800&q=80" alt="Branding in 2026">
+                        </div>
+                        <div>
+                            <div class="post-meta" style="margin-bottom: 0.5rem;">
+                                <span><i class="ph ph-folder"></i> Branding</span>
+                                <span><i class="ph ph-clock"></i> 5 Min Read</span>
+                            </div>
+                            <h3>The Power of Branding in 2026</h3>
+                            <p>An deep dive into the evolution of digital identity and how emerging technologies are forcing brands to adapt faster than ever.</p>
+                        </div>
+                    </a>
+
+                    <!-- Post 2 -->
+                    <a href="blog-post.html" class="post-card">
+                        <div class="post-card__image">
+                            <img src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?auto=format&fit=crop&w=800&q=80" alt="Digital vs Visual">
+                        </div>
+                        <div>
+                            <div class="post-meta" style="margin-bottom: 0.5rem;">
+                                <span><i class="ph ph-folder"></i> Strategy</span>
+                                <span><i class="ph ph-clock"></i> 3 Min Read</span>
+                            </div>
+                            <h3>Digital Identity vs. Visual Identity</h3>
+                            <p>Why a beautiful logo is no longer enough. Unpacking the critical difference between how a brand looks and how a brand behaves online.</p>
+                        </div>
+                    </a>
+
+                    <!-- Post 3 -->
+                    <a href="blog-post.html" class="post-card">
+                        <div class="post-card__image">
+                            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80" alt="Dark Mode">
+                        </div>
+                        <div>
+                            <div class="post-meta" style="margin-bottom: 0.5rem;">
+                                <span><i class="ph ph-folder"></i> UX Research</span>
+                                <span><i class="ph ph-clock"></i> 6 Min Read</span>
+                            </div>
+                            <h3>The Psychology of Dark Mode in E-Commerce</h3>
+                            <p>Analyzing conversion rates and user fatigue. Does dark mode actually help high-end brands sell more luxury products?</p>
+                        </div>
+                    </a>
+
+                    <!-- Post 4 -->
+                    <a href="blog-post.html" class="post-card">
+                        <div class="post-card__image">
+                            <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=800&q=80" alt="Design Discipline">
+                        </div>
+                        <div>
+                            <div class="post-meta" style="margin-bottom: 0.5rem;">
+                                <span><i class="ph ph-folder"></i> Workflow</span>
+                                <span><i class="ph ph-clock"></i> 6 Min Read</span>
+                            </div>
+                            <h3>Design Discipline in the Creative Process</h3>
+                            <p>Lessons learned from extreme sports applied to UX. How physical resilience shapes digital perfection and project delivery.</p>
+                        </div>
+                    </a>
+
+                    <!-- Post 5 -->
+                    <a href="blog-post.html" class="post-card">
+                        <div class="post-card__image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Micro-interactions">
+                        </div>
+                        <div>
+                            <div class="post-meta" style="margin-bottom: 0.5rem;">
+                                <span><i class="ph ph-folder"></i> Design Trends</span>
+                                <span><i class="ph ph-clock"></i> 3 Min Read</span>
+                            </div>
+                            <h3>Why Micro-Interactions Increase Conversion by 14%</h3>
+                            <p>The subtle art of motion design in web development and why hover states and transitions are critical to user trust.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__newsletter glass-card reveal">
+                    <div class="newsletter__text">
+                        <h3>THE HIGH PERFORMANCE DESIGNER</h3>
+                        <p>Join our monthly newsletter on design trends, strategy, and digital resilience.</p>
+                    </div>
+                    <form class="newsletter__form">
+                        <input type="email" placeholder="Your Email Address" required>
+                        <button type="submit" class="btn btn--primary">Subscribe</button>
+                    </form>
+                </div>
+
+                <div class="footer__inner">
+                    <div class="footer__brand">
+                        <a href="index.html" class="logo">STRN<span>.</span>STUDIO</a>
+                        <p>High-End Digital Agency.<br>From Málaga to the world.</p>
+                    </div>
+                    <div class="footer__social">
+                        <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#"><i class="ph ph-behance-logo"></i></a>
+                        <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="#"><i class="ph ph-twitter-logo"></i></a>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p>&copy; 2026 STRN Studio. All rights reserved.</p>
+                    <a href="#" class="back-to-top">Back to top <i class="ph ph-arrow-up"></i></a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

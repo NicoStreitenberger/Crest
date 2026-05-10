@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="STRN Studio is a high-end digital agency specializing in Branding and UX/UI design. Led by Nico Streitenberger, we create impactful digital experiences and visual identities with a focus on performance and discipline.">
+    <meta name="keywords" content="UX/UI Design Agency Málaga, Premium Branding Studio, Web Development Spain, Streetwear Brand Design, Digital Product Designer">
+    <title>STRN Studio | High-Performance Branding & Digital Products</title>
+    
+    <!-- Security & Preload -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+    
+    <!-- JSON-LD Schema Markup (LocalBusiness / Agency) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "STRN Studio",
+      "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800",
+      "description": "High-End Digital Agency specializing in Brand Identity, UX/UI Design, and Web Development. From Málaga to the world.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Málaga",
+        "addressCountry": "ES"
+      },
+      "url": "https://strn.studio",
+      "priceRange": "$$$"
+    }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header__inner">
+            <a href="#" class="logo">
+                STRN<span>.</span>STUDIO
+            </a>
+            <nav class="nav">
+                <a href="#about" class="nav__link">SOBRE MÍ</a>
+                <a href="#services" class="nav__link">SERVICIOS</a>
+                <a href="#blueprint" class="nav__link">PROCESO</a>
+                <a href="#portfolio" class="nav__link">PORTAFOLIO</a>
+
+                <a href="blog.html" class="nav__link">BLOG</a>
+                
+                <div class="lang-switch" style="display: inline-flex; gap: 0.5rem; align-items: center; margin: 0 1rem; font-weight: 600; font-size: 0.875rem;">
+                    <a href="#" style="color: white; border-bottom: 2px solid var(--color-accent);">ES</a> 
+                    <span style="color: var(--color-glass-border);">|</span> 
+                    <a href="#" style="color: var(--color-text-muted); transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='var(--color-text-muted)'">EN</a>
+                </div>
+
+                <a href="#audit" class="nav__btn" aria-label="Book a free brand audit">Auditoría Gratuita</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="main-nav">
+                <i class="ph ph-list" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main" id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <!-- Hero Section -->
+            <section class="hero" id="home">
+                <div class="container">
+                    <div class="hero__content reveal">
+                        <div class="hero__badge">EXCELENCIA DIGITAL Y BRANDING ESTRATÉGICO</div>
+                        <h1 class="hero__title">STRN STUDIO:<br>BRANDING DE ALTO RENDIMIENTO<br><span class="text-stroke">Y PRODUCTOS</span><br>DIGITALES.</h1>
+                        <p class="hero__subtitle">Más de 8 años de oficio, fusionando estética premium con diseño UX/UI funcional. Desde Málaga para el mundo.</p>
+                        <div class="hero__actions">
+                            <a href="#portfolio" class="btn btn--primary">Ver Trabajos Destacados <i class="ph ph-arrow-right"></i></a>
+                            <a href="#audit" class="btn btn--outline">Auditoría Gratuita</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__bg-element"></div>
+            </section>
+
+            <!-- About Section (Narrative) -->
+            <section class="about section" id="about">
+                <div class="container">
+                    <div class="about__grid">
+                        <div class="about__text reveal">
+                            <h2 class="section-title">DEL OCÉANO A LA INTERFAZ:<br><span class="text-accent">DISCIPLINA Y RESILIENCIA.</span></h2>
+                            <p>Emigrar es como remar hacia una ola masiva: requiere coraje, cálculo y absoluta adaptabilidad. STRN Studio nació de este viaje—moviendo raíces hasta la costa de Málaga, aportando más de 8 años de maestría en diseño gráfico y una mentalidad forjada en el mar.</p>
+                            <p>Como bodyboarder, el éxito depende de leer el entorno y tomar decisiones en fracciones de segundo. Aplicamos esa misma precisión al diseño: Adaptabilidad para pivotar marcas, Resistencia para flujos de trabajo de alto rendimiento, y Visión para ver la estructura UX antes que la estética UI.</p>
+                            <p><strong>No solo diseñamos; construimos cimientos visuales para quienes no tienen miedo de cruzar fronteras.</strong></p>
+                        </div>
+                        <div class="about__visual reveal">
+                            <div class="glass-card about-card">
+                                <div class="about-card__content">
+                                    <i class="ph ph-waves"></i>
+                                    <h3>MENTALIDAD DE ALTO RENDIMIENTO</h3>
+                                    <p>Fusionando la disciplina de los deportes extremos con la perfección digital.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section (Bento Grid) -->
+            <section class="services section" id="services">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <span class="section-subtitle">SOLUCIONES DE DISEÑO</span>
+                        <h2 class="section-title">NUESTRO EXPERTISE</h2>
+                    </div>
+                    
+                    <div class="bento-grid">
+                        <div class="bento-item bento-item--large reveal">
+                            <div class="bento-item__img" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80');"></div>
+                            <div class="bento-item__bg"></div>
+                            <div class="bento-item__content">
+                                <div class="bento-icon"><i class="ph ph-bezier-curve"></i></div>
+                                <h3>Strategic Branding</h3>
+                                <p>Visual identity systems designed for the digital age. We build memorable brand architectures.</p>
+                            </div>
+                        </div>
+                        <div class="bento-item reveal">
+                            <div class="bento-item__img" style="background-image: url('https://images.unsplash.com/photo-1618761714954-0b8cd0026356?auto=format&fit=crop&w=800&q=80');"></div>
+                            <div class="bento-item__bg"></div>
+                            <div class="bento-item__content">
+                                <div class="bento-icon"><i class="ph ph-device-mobile"></i></div>
+                                <h3>UX/UI Product Design</h3>
+                                <p>Modern, user-centric interfaces. High-end user experiences.</p>
+                            </div>
+                        </div>
+                        <div class="bento-item reveal">
+                            <div class="bento-item__img" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80');"></div>
+                            <div class="bento-item__bg"></div>
+                            <div class="bento-item__content">
+                                <div class="bento-icon"><i class="ph ph-code"></i></div>
+                                <h3>Web Development</h3>
+                                <p>E-commerce solutions via WordPress & WooCommerce.</p>
+                            </div>
+                        </div>
+                        <div class="bento-item bento-item--wide reveal">
+                            <div class="bento-item__img" style="background-image: url('https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=800&q=80');"></div>
+                            <div class="bento-item__bg"></div>
+                            <div class="bento-item__content">
+                                <div class="bento-icon"><i class="ph ph-t-shirt"></i></div>
+                                <h3>Physical Branding</h3>
+                                <p>Expertise in technical printing, heat press, and vinyl installations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Blueprint (Process Section) -->
+            <section class="blueprint section" id="blueprint">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <span class="section-subtitle">THE BLUEPRINT</span>
+                        <h2 class="section-title">NUESTRO FLUJO DE TRABAJO</h2>
+                        <p class="section-desc">Una metodología probada para construir experiencias digitales de alta conversión.</p>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item reveal">
+                            <div class="timeline-icon"><i class="ph ph-magnifying-glass"></i></div>
+                            <div class="timeline-content glass-card">
+                                <h3>1. Descubrimiento</h3>
+                                <p>Profundizamos en los objetivos comerciales, la psicología de la audiencia y la investigación de mercado. Descubrimos el núcleo de tu marca.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item reveal">
+                            <div class="timeline-icon"><i class="ph ph-compass"></i></div>
+                            <div class="timeline-content glass-card">
+                                <h3>2. Estrategia</h3>
+                                <p>Construimos la hoja de ruta visual y funcional. Wireframing, mapeo del viaje del usuario y posicionamiento de la marca.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item reveal">
+                            <div class="timeline-icon"><i class="ph ph-pen-nib"></i></div>
+                            <div class="timeline-content glass-card">
+                                <h3>3. Ejecución</h3>
+                                <p>Sprints de diseño de alto rendimiento. Creamos la UI/UX y la identidad visual con precisión milimétrica.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item reveal">
+                            <div class="timeline-icon"><i class="ph ph-rocket-launch"></i></div>
+                            <div class="timeline-content glass-card">
+                                <h3>4. Entrega</h3>
+                                <p>Lanzamiento y soporte técnico. Tu proyecto entra en vivo, totalmente optimizado para velocidad, SEO y conversión.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Showcase -->
+            <section class="portfolio section" id="portfolio">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <span class="section-subtitle">THE PLAYGROUND</span>
+                        <h2 class="section-title">SELECTED WORKS</h2>
+                    </div>
+
+                    <!-- Dynamic Filters -->
+                    <div class="portfolio-filters reveal">
+                        <button class="filter-btn active" data-filter="all">All Works</button>
+                        <button class="filter-btn" data-filter="Brand Identity">Brand Identity</button>
+                        <button class="filter-btn" data-filter="Digital Design">Digital Design</button>
+                        <button class="filter-btn" data-filter="Physical Branding">Physical Branding</button>
+                    </div>
+
+                    <div class="portfolio-grid" id="dynamic-portfolio">
+                        <!-- Projects injected by app.js -->
+                    </div>
+                    
+                    <!-- View All Works Button -->
+                    <div style="text-align: center; margin-top: 4rem;">
+                        <a href="portfolio.html" class="btn btn--outline">Ver Todos Los Trabajos <i class="ph ph-arrow-right"></i></a>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- Brand Audit Module (Lead Magnet) -->
+            <section class="audit section" id="audit">
+                <div class="container">
+                    <div class="audit__wrapper glass-card reveal">
+                        <div class="audit__content">
+                            <span class="section-subtitle">CUPOS LIMITADOS DISPONIBLES</span>
+                            <h2 class="contact__title">AUDITORÍA ESTRATÉGICA GRATUITA.</h2>
+                            <p>Analizaremos tu UX/UI actual, posicionamiento de marca y flujo de conversión. Recibe una evaluación profesional directamente en tu bandeja de entrada.</p>
+                            <ul class="audit__list">
+                                <li><i class="ph ph-check-circle text-accent"></i> Revisión de Usabilidad UX/UI</li>
+                                <li><i class="ph ph-check-circle text-accent"></i> Análisis de Identidad Visual</li>
+                                <li><i class="ph ph-check-circle text-accent"></i> Auditoría de Rendimiento & SEO</li>
+                            </ul>
+                        </div>
+                        <div class="audit__form">
+                            <form class="contact-form">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Tu Nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="url" placeholder="URL de la Empresa (ej. https://tumarca.com)" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea placeholder="¿Cuál es tu desafío de diseño actual?" rows="3" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn--primary btn--full">Solicitar Auditoría <i class="ph ph-lightning"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+        
+        <!-- Footer with Newsletter -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__newsletter glass-card reveal">
+                    <div class="newsletter__text">
+                        <h3>EL DISEÑADOR DE ALTO RENDIMIENTO</h3>
+                        <p>Únete a nuestro boletín mensual sobre tendencias de diseño, estrategia y resiliencia digital.</p>
+                    </div>
+                    <form class="newsletter__form">
+                        <input type="email" placeholder="Tu Dirección de Correo" required>
+                        <button type="submit" class="btn btn--primary">Suscribirse</button>
+                    </form>
+                </div>
+
+                <div class="footer__inner">
+                    <div class="footer__brand">
+                        <a href="#" class="logo">STRN<span>.</span>STUDIO</a>
+                        <p>Agencia Digital High-End.<br>Desde Málaga para el mundo.</p>
+                    </div>
+                    <div class="footer__social">
+                        <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#"><i class="ph ph-behance-logo"></i></a>
+                        <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="#"><i class="ph ph-twitter-logo"></i></a>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p>&copy; 2026 STRN <a href="admin.html" style="color: inherit; text-decoration: none; cursor: default;">Studio</a>. Todos los derechos reservados.</p>
+                    <a href="#home" class="back-to-top">Volver arriba <i class="ph ph-arrow-up"></i></a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Custom Script -->
+    <script src="js/app.js"></script>
+</body>
+</html>

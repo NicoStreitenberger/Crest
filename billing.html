@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payments & Billing | STRN Studio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/billing.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header__inner">
+            <a href="index.html" class="logo">
+                STRN<span>.</span>STUDIO
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="nav__link">RETURN TO SITE</a>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="main" id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <!-- Billing Hero -->
+            <section class="billing-hero container reveal">
+                <div class="hero__badge"><i class="ph ph-lock-key"></i> 256-BIT SSL SECURED</div>
+                <h1 class="hero__title" style="font-size: clamp(2rem, 5vw, 4rem);">SECURE PAYMENTS &<br><span class="text-stroke">GLOBAL INVOICING</span></h1>
+                <p class="hero__subtitle">Seamless, secure, and transparent transactions for high-performance projects. We partner with Stripe to ensure enterprise-grade security.</p>
+            </section>
+
+            <!-- Main Billing Content Grid -->
+            <section class="billing-content container">
+                <div class="billing-grid">
+                    
+                    <!-- Left Column: Methods & Policies -->
+                    <div class="billing-info reveal">
+                        
+                        <!-- Payment Methods -->
+                        <div class="glass-card billing-card">
+                            <h3><i class="ph ph-credit-card"></i> Accepted Payment Methods</h3>
+                            <div class="payment-icons">
+                                <i class="ph ph-stripe-logo"></i>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay">
+                                <i class="ph ph-paypal-logo"></i>
+                            </div>
+                            <p class="currency-support"><strong>Supported Currencies:</strong> EUR (€), USD ($), and GBP (£) to facilitate frictionless international collaborations.</p>
+                        </div>
+
+                        <!-- Wire Transfer Details -->
+                        <div class="glass-card billing-card mt-2">
+                            <h3><i class="ph ph-bank"></i> International Wire Transfer</h3>
+                            <p>For B2B transactions avoiding card fees, we accept direct bank transfers.</p>
+                            <div class="bank-details">
+                                <div class="detail-row"><span>Bank Name:</span> <strong>BBVA (Málaga, Spain)</strong></div>
+                                <div class="detail-row"><span>Beneficiary:</span> <strong>STRN Studio S.L.</strong></div>
+                                <div class="detail-row"><span>IBAN:</span> <strong class="text-accent">ES91 0182 XXXX XXXX XXXX XXXX</strong></div>
+                                <div class="detail-row"><span>SWIFT / BIC:</span> <strong>BBVAESMMXXX</strong></div>
+                            </div>
+                        </div>
+
+                        <!-- Project Policies & Terms -->
+                        <div class="glass-card billing-card mt-2 policies-card">
+                            <h3><i class="ph ph-file-text"></i> Project Policies & Terms</h3>
+                            
+                            <div class="policy-item">
+                                <h4>1. Project Kickoff & Deposits</h4>
+                                <p>A strict <strong>50% upfront deposit</strong> is required to secure your spot in our design sprint calendar and commence the Discovery phase. The remaining 50% is due prior to final delivery.</p>
+                            </div>
+                            
+                            <div class="policy-item">
+                                <h4>2. Intellectual Property (IP)</h4>
+                                <p>Full Intellectual Property rights, source files (Figma, code repositories), and commercial usage licenses are transferred to the client <strong>only upon receipt of final payment</strong>.</p>
+                            </div>
+                            
+                            <div class="policy-item">
+                                <h4>3. Refund Policy</h4>
+                                <p>Due to the custom nature of strategic branding and UX/UI, deposits are non-refundable once the Strategy phase has commenced. Revisions are bound by the scope agreed in the master service agreement.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Checkout & Milestones -->
+                    <div class="billing-checkout reveal">
+                        
+                        <!-- Milestones -->
+                        <div class="glass-card billing-card checkout-wrapper">
+                            <h3><i class="ph ph-flag-checkered"></i> Standard Milestones</h3>
+                            <table class="milestone-table">
+                                <tr>
+                                    <td><strong>50%</strong></td>
+                                    <td>Deposit / Kickoff</td>
+                                    <td><span class="status pending">Required</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>25%</strong></td>
+                                    <td>Mid-Project Review</td>
+                                    <td><span class="status locked">Locked</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>25%</strong></td>
+                                    <td>Final Delivery & IP Handover</td>
+                                    <td><span class="status locked">Locked</span></td>
+                                </tr>
+                            </table>
+
+                            <hr class="divider">
+                            
+                            <!-- Checkout Form -->
+                            <h3><i class="ph ph-lock-key"></i> Secure Checkout / Deposit</h3>
+                            <form action="success.html" method="GET" class="checkout-form">
+                                <div class="form-group">
+                                    <label>Company / Legal Name</label>
+                                    <input type="text" placeholder="STRN Studio S.L." required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Billing Email (For Automated Invoicing)</label>
+                                    <input type="email" placeholder="billing@yourbrand.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tax ID / VAT Number (VIES Compliant)</label>
+                                    <input type="text" placeholder="e.g. ESB12345678" required>
+                                    <small class="tax-hint">Required for EU Reverse Charge mechanism.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label>Project Ref. / Invoice Number</label>
+                                    <input type="text" placeholder="INV-2026-042" required>
+                                </div>
+
+                                <button type="submit" class="btn btn--primary btn--full checkout-btn">
+                                    Pay Deposit via Stripe <i class="ph ph-arrow-right"></i>
+                                </button>
+                                
+                                <div class="trust-signals">
+                                    <span><i class="ph ph-shield-check"></i> SSL Encrypted Checkout</span>
+                                    <span><i class="ph ph-receipt"></i> Automated VAT Invoice via Holded</span>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__bottom">
+                    <p>&copy; 2026 STRN Studio. All rights reserved. Registered in Spain.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusion Bodyboard - Case Study | STRN Studio</title>
+    
+    <!-- JSON-LD Schema Markup (CreativeWork) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "PERCO Productos Brand Identity",
+      "description": "Comprehensive brand identity development for a company specializing in hardware distribution.",
+      "creator": {
+        "@type": "Organization",
+        "name": "STRN Studio"
+      },
+      "image": "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=80"
+    }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Case Study Specific Styles */
+        .cs-hero {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 4rem;
+            overflow: hidden;
+        }
+
+        .cs-hero__bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+
+        .cs-hero__overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+        }
+
+        .cs-hero__content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .cs-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .cs-category {
+            color: var(--color-accent);
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Brief Grid */
+        .cs-brief {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--color-glass-border);
+            margin-bottom: 6rem;
+        }
+
+        @media (max-width: 992px) {
+            .cs-brief {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .cs-brief__item h4 {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .cs-brief__item p {
+            font-size: 1.125rem;
+            color: white;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        /* Two Column Text */
+        .cs-text-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            margin-bottom: 8rem;
+        }
+
+        @media (max-width: 768px) {
+            .cs-text-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        .cs-text-block h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent);
+        }
+
+        .cs-text-block p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+
+        /* Masonry Image Gallery */
+        .cs-gallery {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            margin-bottom: 8rem;
+        }
+
+        .cs-img {
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cs-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cs-img--full { grid-column: span 12; aspect-ratio: 21/9; }
+        .cs-img--half-left { grid-column: span 7; aspect-ratio: 4/3; }
+        .cs-img--half-right { grid-column: span 5; aspect-ratio: 4/3; margin-top: 4rem; }
+        .cs-img--square { grid-column: span 6; aspect-ratio: 1/1; }
+
+        @media (max-width: 768px) {
+            .cs-img--half-left, .cs-img--half-right, .cs-img--square {
+                grid-column: span 12;
+                margin-top: 0;
+            }
+        }
+
+        /* Results Section */
+        .cs-results {
+            padding: 6rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--color-glass-border);
+            border-radius: 24px;
+            text-align: center;
+            margin-bottom: 8rem;
+        }
+
+        .cs-results__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .cs-results__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cs-stat h2 {
+            font-size: 4rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .cs-stat p {
+            font-size: 1.125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: white;
+        }
+
+        /* Next Project Navigation */
+        .cs-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 4rem;
+            border-top: 1px solid var(--color-glass-border);
+            margin-bottom: 8rem;
+        }
+
+        .cs-nav__link {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            transition: transform var(--transition-fast);
+        }
+
+        .cs-nav__link:hover {
+            transform: translateX(10px);
+        }
+        
+        .cs-nav__link--prev:hover {
+            transform: translateX(-10px);
+            text-align: right;
+        }
+
+        .cs-nav__label {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .cs-nav__title {
+            font-size: 2rem;
+            font-family: var(--font-heading);
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header__inner">
+            <a href="index.html" class="logo">
+                STRN<span>.</span>STUDIO
+            </a>
+            <nav class="nav">
+                <a href="index.html#about" class="nav__link">ABOUT</a>
+                <a href="index.html#services" class="nav__link">SERVICES</a>
+                <a href="index.html#blueprint" class="nav__link">PROCESS</a>
+                <a href="portfolio.html" class="nav__link">PLAYGROUND</a>
+                <a href="blog.html" class="nav__link">BLOG</a>
+                <a href="index.html#audit" class="nav__btn">Get Free Brand Audit</a>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="main" id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <!-- Cinematic Hero -->
+            <section class="cs-hero" style="height: 60vh; min-height: 400px;">
+                <div class="cs-hero__bg"></div>
+                <div class="cs-hero__overlay"></div>
+                <div class="container cs-hero__content reveal">
+                    <span class="cs-category">Brand Identity & UI/UX</span>
+                    <h1 class="cs-title">PERCO Productos</h1>
+                </div>
+            </section>
+
+            <!-- Split Layout (Behance Style) -->
+            <section class="cs-split-layout" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; padding: 6rem 5%; max-width: 1800px; margin: 0 auto; align-items: start;">
+                
+                <!-- Left: Text content (Sticky) -->
+                <div class="cs-split__text" style="position: sticky; top: 120px;">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" alt="Client Logo" style="width: 150px; margin-bottom: 2rem; border-radius: 12px;">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.1; color: white;">Identidad de marca</h2>
+                    <p style="font-size: 1.125rem; color: #e0e0e0; margin-bottom: 2rem; line-height: 1.8;">
+                        Desarrollo integral de identidad de marca para una empresa distribuidora de bulonería enfocada en ferreterías. El proyecto incluyó el diseño de su catálogo de más de 500 artículos, publicidad en revistas especializadas, banners verticales para eventos y toda su papelería profesional, incluyendo membretes, tarjetas y facturas.
+                    </p>
+                    <p style="font-size: 0.875rem; color: var(--color-text-muted); font-style: italic; line-height: 1.6;">
+                        Comprehensive brand identity development for a company specializing in hardware distribution for tool shops. The project included designing a catalog featuring over 500 products, advertising in specialized magazines, vertical banners for events, and sheets.
+                    </p>
+
+                    <!-- Details -->
+                    <div style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <h4 style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Role</h4>
+                            <p style="font-size: 1rem; color: white; font-weight: 500;">Branding, Print & UI</p>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Timeline</h4>
+                            <p style="font-size: 1rem; color: white; font-weight: 500;">8 Weeks</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Image Collage (Bento Grid) -->
+                <div class="cs-split__gallery" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; grid-auto-rows: minmax(150px, auto);">
+                    
+                    <!-- Top Large Image -->
+                    <div style="grid-column: span 12; border-radius: 16px; overflow: hidden; aspect-ratio: 16/9;">
+                        <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1200&q=80" alt="Brochure" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    
+                    <!-- Middle Row: Logo and Vertical Banner -->
+                    <div style="grid-column: span 7; display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="background: white; border-radius: 16px; padding: 3rem; display: flex; align-items: center; justify-content: center; height: 100%;">
+                            <h3 style="color: black; font-size: 2rem;">PERCO</h3>
+                        </div>
+                        <div style="border-radius: 16px; overflow: hidden; aspect-ratio: 4/3;">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Building Facade" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                    <div style="grid-column: span 5; border-radius: 16px; overflow: hidden; height: 100%;">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80" alt="Vertical Banner" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+
+                    <!-- Bottom Full Image -->
+                    <div style="grid-column: span 12; border-radius: 16px; overflow: hidden; aspect-ratio: 16/9; margin-top: 1.5rem;">
+                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1200&q=80" alt="Catalog" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Results & Nav -->
+            <div class="container">
+
+                <!-- Results -->
+                <div class="cs-results reveal">
+                    <span class="section-subtitle">THE IMPACT</span>
+                    <h2 class="section-title" style="font-size: 2.5rem; color: white;">Measurable Success</h2>
+                    <div class="cs-results__grid">
+                        <div class="cs-stat">
+                            <h2>+145%</h2>
+                            <p>Mobile Conversion</p>
+                        </div>
+                        <div class="cs-stat">
+                            <h2>2.4s</h2>
+                            <p>Avg. Load Time</p>
+                        </div>
+                        <div class="cs-stat">
+                            <h2>3x</h2>
+                            <p>User Retention</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Project Navigation -->
+                <div class="cs-nav reveal">
+                    <a href="#" class="cs-nav__link cs-nav__link--prev">
+                        <span class="cs-nav__label">Previous Project</span>
+                        <span class="cs-nav__title">Fusion Board</span>
+                    </a>
+                    <a href="#" class="cs-nav__link">
+                        <span class="cs-nav__label">Next Project</span>
+                        <span class="cs-nav__title">Aether Finance</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__inner">
+                    <div class="footer__brand">
+                        <a href="index.html" class="logo">STRN<span>.</span>STUDIO</a>
+                        <p>High-End Digital Agency.<br>From Málaga to the world.</p>
+                    </div>
+                    <div class="footer__social">
+                        <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#"><i class="ph ph-behance-logo"></i></a>
+                        <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="#"><i class="ph ph-twitter-logo"></i></a>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p>&copy; 2026 STRN Studio. All rights reserved.</p>
+                    <a href="#" class="back-to-top">Back to top <i class="ph ph-arrow-up"></i></a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Custom Script -->
+    <script src="js/app.js"></script>
+</body>
+</html>
