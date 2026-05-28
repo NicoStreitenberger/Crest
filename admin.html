@@ -214,10 +214,29 @@
                         </div>
 
                         <div class="form-actions">
-                            <button type="submit" class="btn btn--primary">Publish Project <i class="ph ph-rocket-launch"></i></button>
-                            <button type="button" class="btn btn--outline">Save Draft</button>
+                            <button type="submit" id="project-submit-btn" class="btn btn--primary">Publish Project <i class="ph ph-rocket-launch"></i></button>
+                            <button type="button" id="project-cancel-btn" class="btn btn--outline" style="display:none;">Cancel Edit</button>
                         </div>
                     </form>
+                </div>
+
+                <!-- Existing Projects Management -->
+                <div class="glass-card table-card" style="margin-top: 2rem;">
+                    <h3 style="margin-bottom:1rem;">Manage Projects</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Client</th>
+                                <th>Featured</th>
+                                <th style="text-align:right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projects-table-body">
+                            <tr><td colspan="5" style="color:var(--color-text-muted);text-align:center;">Loading projects...</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -269,18 +288,36 @@
                         
                         <div class="form-group">
                             <label>Meta Title (Max 60 chars)</label>
-                            <input type="text" placeholder="SEO Title">
+                            <input type="text" id="post-seo-title" placeholder="SEO Title">
                         </div>
                         <div class="form-group">
                             <label>Meta Description (Max 160 chars)</label>
-                            <textarea rows="2" placeholder="Brief description for search engines..."></textarea>
+                            <textarea id="post-seo-desc" rows="2" placeholder="Brief description for search engines..."></textarea>
                         </div>
 
                         <div class="form-actions">
-                            <button type="submit" class="btn btn--primary">Publish Post</button>
-                            <button type="button" class="btn btn--outline">Preview</button>
+                            <button type="submit" id="blog-submit-btn" class="btn btn--primary">Publish Post <i class="ph ph-rocket-launch"></i></button>
+                            <button type="button" id="blog-cancel-btn" class="btn btn--outline" style="display:none;">Cancel Edit</button>
                         </div>
                     </form>
+                </div>
+
+                <!-- Existing Blog Management -->
+                <div class="glass-card table-card" style="margin-top: 2rem;">
+                    <h3 style="margin-bottom:1rem;">Manage Blog Posts</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Status</th>
+                                <th>Published Date</th>
+                                <th style="text-align:right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="blog-table-body">
+                            <tr><td colspan="4" style="color:var(--color-text-muted);text-align:center;">Loading blog posts...</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
