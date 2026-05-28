@@ -1,19 +1,19 @@
-/* Admin Dashboard CSS - STRN OS */
+/* Admin Dashboard CSS - CREST OS */
 :root {
     --color-bg: #000000;
-    --color-surface: #0a0a0a;
+    --color-surface: #060606;
     --color-text: #FFFFFF;
     --color-text-muted: #888888;
-    --color-accent: #FF0000;
-    --color-accent-hover: #CC0000;
-    --color-glass: rgba(255, 255, 255, 0.03);
-    --color-glass-border: rgba(255, 255, 255, 0.08);
-    --color-border: #1a1a1a;
+    --color-accent: #FFFFFF;
+    --color-accent-hover: #E5E5E5;
+    --color-glass: rgba(255, 255, 255, 0.02);
+    --color-glass-border: rgba(255, 255, 255, 0.05);
+    --color-border: #1A1A1A;
     
-    --font-heading: 'Archivo Black', sans-serif;
+    --font-heading: 'Barlow Condensed', sans-serif;
     --font-body: 'Inter', sans-serif;
     
-    --transition-fast: 0.2s ease;
+    --transition-fast: 0.25s ease;
 }
 
 * {
@@ -117,8 +117,8 @@ a {
 }
 
 .nav-item.active {
-    border-left: 3px solid var(--color-accent);
-    background-color: rgba(255, 0, 0, 0.05);
+    border-left: 2px solid var(--color-accent);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .sidebar__footer {
@@ -344,8 +344,8 @@ a {
 .stat-icon {
     width: 48px;
     height: 48px;
-    background: rgba(255, 0, 0, 0.1);
-    color: var(--color-accent);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -405,13 +405,15 @@ a {
 }
 
 .status.new {
-    background: rgba(255, 0, 0, 0.1);
-    color: var(--color-accent);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .status.read {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
     color: var(--color-text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Action List */
@@ -596,84 +598,105 @@ a {
 }
 
 /* ================================================================== */
-/* PREMIUM STRN AESTHETIC ALIGNMENT (Landing Page Match) */
+/* PREMIUM CREST SWISS AESTHETIC ALIGNMENT (Landing Page Match) */
 /* ================================================================== */
 
-/* Glow backdrops */
-body::before {
-    content: '';
-    position: fixed;
-    top: -15%;
-    right: -15%;
-    width: 50vw;
-    height: 50vw;
-    background: radial-gradient(circle, rgba(255, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
-    filter: blur(80px);
-    z-index: -1;
-    pointer-events: none;
-}
-
-body::after {
-    content: '';
-    position: fixed;
-    bottom: -15%;
-    left: -15%;
-    width: 55vw;
-    height: 55vw;
-    background: radial-gradient(circle, rgba(255, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
-    filter: blur(80px);
-    z-index: -1;
-    pointer-events: none;
+/* Subtle modern structural shadows (no colorful glows) */
+body {
+    background-color: var(--color-bg);
 }
 
 /* Glassmorphism overlays & Login Screen */
 #login-overlay {
-    background: radial-gradient(circle at center, rgba(15, 0, 0, 0.98) 0%, #000000 100%) !important;
-    backdrop-filter: blur(20px);
+    background: #000000 !important;
 }
 
 #login-overlay .glass-card {
-    border: 1px solid rgba(255, 0, 0, 0.15);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 0, 0, 0.05);
-    background: rgba(10, 10, 10, 0.6);
-    backdrop-filter: blur(16px);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    background: #050505;
 }
 
-.logo span {
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+#login-overlay .logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
 }
 
-/* Form input glows */
+/* Form input glows (Clean white borders) */
 .admin-form input:focus,
 .admin-form select:focus,
 .admin-form textarea:focus {
-    border-color: var(--color-accent);
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.15);
-    background: rgba(255, 0, 0, 0.02);
+    border-color: #FFFFFF;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.01);
 }
 
 /* Tables and cards enhancements */
 .glass-card {
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 12px; /* Swiss style prefers tighter, clean corners */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
     transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .glass-card:hover {
-    border-color: rgba(255, 0, 0, 0.12);
-    box-shadow: 0 15px 35px rgba(255, 0, 0, 0.02);
+    border-color: var(--color-glass-border);
 }
 
-/* Sidebar premium alignment */
+/* Button style adjustments for Swiss high-end look */
+.btn {
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    border-radius: 4px; /* Less rounded for clean premium Swiss aesthetic */
+    transition: all var(--transition-fast);
+}
+
+.btn--primary {
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #FFFFFF;
+}
+
+.btn--primary:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+
+.btn--outline {
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    color: #FFFFFF;
+}
+
+.btn--outline:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+    border-color: #FFFFFF;
+}
+
+/* Sidebar active states */
 .sidebar {
-    background-color: #030303;
+    background-color: #000000;
+}
+
+.nav-item {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
 }
 
 .nav-item.active {
-    background: linear-gradient(90deg, rgba(255, 0, 0, 0.08) 0%, rgba(255, 0, 0, 0.01) 100%);
-    box-shadow: inset 2px 0 0 var(--color-accent);
-    border-left: none; /* Clean glow instead of solid bar */
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: none;
+    border-left: 2px solid #FFFFFF;
+    color: #FFFFFF !important;
 }
 
 /* Custom Scrollbar for modern feel */
@@ -682,13 +705,13 @@ body::after {
     height: 6px;
 }
 ::-webkit-scrollbar-track {
-    background: #030303;
+    background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: #2A2A2A;
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-accent);
+    background: #888888;
 }
 
