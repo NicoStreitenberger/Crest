@@ -594,3 +594,101 @@ a {
     .topbar__search { display: none; }
     .form-row { grid-template-columns: 1fr; }
 }
+
+/* ================================================================== */
+/* PREMIUM STRN AESTHETIC ALIGNMENT (Landing Page Match) */
+/* ================================================================== */
+
+/* Glow backdrops */
+body::before {
+    content: '';
+    position: fixed;
+    top: -15%;
+    right: -15%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+    filter: blur(80px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -15%;
+    left: -15%;
+    width: 55vw;
+    height: 55vw;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+    filter: blur(80px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Glassmorphism overlays & Login Screen */
+#login-overlay {
+    background: radial-gradient(circle at center, rgba(15, 0, 0, 0.98) 0%, #000000 100%) !important;
+    backdrop-filter: blur(20px);
+}
+
+#login-overlay .glass-card {
+    border: 1px solid rgba(255, 0, 0, 0.15);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 0, 0, 0.05);
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(16px);
+}
+
+.logo span {
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+/* Form input glows */
+.admin-form input:focus,
+.admin-form select:focus,
+.admin-form textarea:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.15);
+    background: rgba(255, 0, 0, 0.02);
+}
+
+/* Tables and cards enhancements */
+.glass-card {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 0, 0, 0.12);
+    box-shadow: 0 15px 35px rgba(255, 0, 0, 0.02);
+}
+
+/* Sidebar premium alignment */
+.sidebar {
+    background-color: #030303;
+}
+
+.nav-item.active {
+    background: linear-gradient(90deg, rgba(255, 0, 0, 0.08) 0%, rgba(255, 0, 0, 0.01) 100%);
+    box-shadow: inset 2px 0 0 var(--color-accent);
+    border-left: none; /* Clean glow instead of solid bar */
+}
+
+/* Custom Scrollbar for modern feel */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #030303;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+}
+
