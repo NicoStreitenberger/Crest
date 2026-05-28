@@ -28,6 +28,9 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
     
@@ -275,23 +278,35 @@
     <main class="main" id="smooth-wrapper">
         <div id="smooth-content">
             
-            <!-- Cinematic Hero -->
+            <!-- Cinematic Hero (dynamic) -->
             <section class="cs-hero" style="height: 60vh; min-height: 400px;">
-                <div class="cs-hero__bg"></div>
+                <div class="cs-hero__bg" id="cs-hero-bg"></div>
                 <div class="cs-hero__overlay"></div>
                 <div class="container cs-hero__content reveal">
-                    <span class="cs-category">Brand Identity & UI/UX</span>
-                    <h1 class="cs-title">PERCO Productos</h1>
+                    <span class="cs-category" id="cs-category">Loading...</span>
+                    <h1 class="cs-title" id="cs-title">Loading...</h1>
                 </div>
             </section>
 
-            <!-- Split Layout (Behance Style) -->
+            <!-- Split Layout -->
             <section class="cs-split-layout" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; padding: 6rem 5%; max-width: 1800px; margin: 0 auto; align-items: start;">
                 
                 <!-- Left: Text content (Sticky) -->
                 <div class="cs-split__text" style="position: sticky; top: 120px;">
-                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&q=80" alt="Client Logo" style="width: 150px; margin-bottom: 2rem; border-radius: 12px;">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.1; color: white;">Identidad de marca</h2>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.1; color: white;">Case Study</h2>
+                    <p id="cs-desc" style="font-size: 1.125rem; color: #e0e0e0; margin-bottom: 2rem; line-height: 1.8;">Loading description...</p>
+                    <div style="margin-top: 3rem;">
+                        <h4 style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Client</h4>
+                        <p id="cs-client" style="font-size: 1rem; color: white; font-weight: 500;">Loading...</p>
+                    </div>
+                </div>
+
+                <!-- Right: Dynamic Gallery -->
+                <div class="cs-gallery" id="cs-gallery"
+                     style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; grid-auto-rows: minmax(150px, auto);">
+                    <div class="skeleton" style="grid-column:span 12;aspect-ratio:16/9;border-radius:16px;"></div>
+                </div>
+            </section>
                     <p style="font-size: 1.125rem; color: #e0e0e0; margin-bottom: 2rem; line-height: 1.8;">
                         Desarrollo integral de identidad de marca para una empresa distribuidora de bulonería enfocada en ferreterías. El proyecto incluyó el diseño de su catálogo de más de 500 artículos, publicidad en revistas especializadas, banners verticales para eventos y toda su papelería profesional, incluyendo membretes, tarjetas y facturas.
                     </p>
@@ -402,7 +417,8 @@
         </footer>
     </main>
 
-    <!-- Custom Script -->
-    <script src="js/app.js"></script>
+    <!-- Supabase + Project Script -->
+    <script src="js/supabase.js"></script>
+    <script src="js/project.js"></script>
 </body>
 </html>

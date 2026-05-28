@@ -13,6 +13,9 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -100,67 +103,8 @@
         </footer>
     </main>
 
-    <!-- Script specifically for the full portfolio -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('full-portfolio');
-            const filterBtns = document.querySelectorAll('.filter-btn');
-
-            function renderAllProjects(filter = 'all') {
-                if (!container) return;
-                
-                let projects = JSON.parse(localStorage.getItem('strn_projects')) || [];
-                if (filter !== 'all') {
-                    projects = projects.filter(p => p.category === filter);
-                }
-
-                container.innerHTML = '';
-                
-                projects.forEach((project, index) => {
-                    // Mosaic Logic (4 columns)
-                    let colSpan = 'span 1';
-                    let rowSpan = 'span 1';
-                    
-                    if (index % 6 === 0) { colSpan = 'span 2'; rowSpan = 'span 2'; } // Large square
-                    else if (index % 6 === 3) { colSpan = 'span 2'; } // Wide
-                    
-                    const card = document.createElement('div');
-                    card.className = 'project-card reveal';
-                    
-                    card.style.position = 'relative';
-                    card.style.gridColumn = colSpan;
-                    card.style.gridRow = rowSpan;
-                    card.style.border = 'none'; // Remove borders
-                    card.style.borderRadius = '0'; // Remove radius
-
-                    card.innerHTML = `
-                        <div class="project-card__image parallax-container" style="border-radius:0; border:none; overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;">
-                            <img src="${project.image}" alt="${project.title}" style="width:100%;height:100%;object-fit:cover;">
-                            <div class="project-card__overlay">
-                                <a href="portfolio-post.html" class="view-project">View Case <i class="ph ph-arrow-up-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-card__info" style="position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(to top, rgba(0,0,0,0.9), transparent);border-radius:0;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;">
-                            <h3 style="margin:0;font-size:1.5rem;color:white;">${project.title}</h3>
-                            <span style="color:var(--color-accent);font-weight:600;font-size:0.875rem;">${project.category}</span>
-                        </div>
-                    `;
-                    container.appendChild(card);
-                });
-            }
-
-            if (container) {
-                renderAllProjects();
-                filterBtns.forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        filterBtns.forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        renderAllProjects(btn.getAttribute('data-filter'));
-                    });
-                });
-            }
-        });
-    </script>
-    <script src="js/app.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/portfolio.js"></script>
 </body>
 </html>
+

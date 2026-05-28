@@ -1,309 +1,401 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="STRN Studio is a high-end digital agency specializing in Branding and UX/UI design. Led by Nico Streitenberger, we create impactful digital experiences and visual identities with a focus on performance and discipline.">
-    <meta name="keywords" content="UX/UI Design Agency Málaga, Premium Branding Studio, Web Development Spain, Streetwear Brand Design, Digital Product Designer">
-    <title>STRN Studio | High-Performance Branding & Digital Products</title>
-    
-    <!-- Security & Preload -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
-    
-    <!-- JSON-LD Schema Markup (LocalBusiness / Agency) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "STRN Studio",
-      "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800",
-      "description": "High-End Digital Agency specializing in Brand Identity, UX/UI Design, and Web Development. From Málaga to the world.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Málaga",
-        "addressCountry": "ES"
-      },
-      "url": "https://strn.studio",
-      "priceRange": "$$$"
-    }
-    </script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>CREST Studio — High-Performance Branding</title>
+    <meta name="description" content="CREST Studio es un estudio de branding boutique especializado en identidad visual estratégica, diseño web de alto impacto y branding físico de precisión. Based in Málaga, Spain." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://creststudio.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://creststudio.com/" />
+    <meta property="og:title"       content="CREST Studio — High-Performance Branding" />
+    <meta property="og:description" content="Construimos la estructura visual que lleva a las marcas a su punto más alto de rendimiento." />
+    <meta property="og:image"       content="https://creststudio.com/assets/og-cover.jpg" />
+
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/crest.css" />
+
+    <!-- Favicon placeholder -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◼</text></svg>" />
 </head>
+
 <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
 
-    <!-- Header -->
-    <header class="header">
+    <!-- ═══════════════════════════════════════════
+         HEADER — Fixed navigation
+    ═══════════════════════════════════════════ -->
+    <header class="header" id="header" role="banner">
         <div class="header__inner">
-            <a href="#" class="logo">
-                STRN<span>.</span>STUDIO
+
+            <!-- Logo -->
+            <a href="/" class="header__logo" aria-label="CREST Studio — Ir al inicio">
+                <span class="logo__primary">CREST</span>
+                <span class="logo__secondary">Studio</span>
             </a>
-            <nav class="nav">
-                <a href="#about" class="nav__link">SOBRE MÍ</a>
-                <a href="#services" class="nav__link">SERVICIOS</a>
-                <a href="#blueprint" class="nav__link">PROCESO</a>
-                <a href="#portfolio" class="nav__link">PORTAFOLIO</a>
 
-                <a href="blog.html" class="nav__link">BLOG</a>
-                
-                <div class="lang-switch" style="display: inline-flex; gap: 0.5rem; align-items: center; margin: 0 1rem; font-weight: 600; font-size: 0.875rem;">
-                    <a href="#" style="color: white; border-bottom: 2px solid var(--color-accent);">ES</a> 
-                    <span style="color: var(--color-glass-border);">|</span> 
-                    <a href="#" style="color: var(--color-text-muted); transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='var(--color-text-muted)'">EN</a>
-                </div>
-
-                <a href="#audit" class="nav__btn" aria-label="Book a free brand audit">Auditoría Gratuita</a>
+            <!-- Desktop navigation -->
+            <nav class="header__nav" aria-label="Navegación principal">
+                <ul class="nav__list" role="list">
+                    <li class="nav__item">
+                        <a href="#services"  class="nav__link" id="nav-services">Services</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#portfolio" class="nav__link" id="nav-portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about"     class="nav__link" id="nav-about">About</a>
+                    </li>
+                </ul>
+                <a href="#contact" class="nav__cta" id="nav-contact">Contact</a>
             </nav>
-            <button class="mobile-menu-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="main-nav">
-                <i class="ph ph-list" aria-hidden="true"></i>
+
+            <!-- Mobile toggle -->
+            <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
+
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="main" id="smooth-wrapper">
-        <div id="smooth-content">
-            
-            <!-- Hero Section -->
-            <section class="hero" id="home">
-                <div class="container">
-                    <div class="hero__content reveal">
-                        <div class="hero__badge">EXCELENCIA DIGITAL Y BRANDING ESTRATÉGICO</div>
-                        <h1 class="hero__title">STRN STUDIO:<br>BRANDING DE ALTO RENDIMIENTO<br><span class="text-stroke">Y PRODUCTOS</span><br>DIGITALES.</h1>
-                        <p class="hero__subtitle">Más de 8 años de oficio, fusionando estética premium con diseño UX/UI funcional. Desde Málaga para el mundo.</p>
-                        <div class="hero__actions">
-                            <a href="#portfolio" class="btn btn--primary">Ver Trabajos Destacados <i class="ph ph-arrow-right"></i></a>
-                            <a href="#audit" class="btn btn--outline">Auditoría Gratuita</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero__bg-element"></div>
-            </section>
-
-            <!-- About Section (Narrative) -->
-            <section class="about section" id="about">
-                <div class="container">
-                    <div class="about__grid">
-                        <div class="about__text reveal">
-                            <h2 class="section-title">DEL OCÉANO A LA INTERFAZ:<br><span class="text-accent">DISCIPLINA Y RESILIENCIA.</span></h2>
-                            <p>Emigrar es como remar hacia una ola masiva: requiere coraje, cálculo y absoluta adaptabilidad. STRN Studio nació de este viaje—moviendo raíces hasta la costa de Málaga, aportando más de 8 años de maestría en diseño gráfico y una mentalidad forjada en el mar.</p>
-                            <p>Como bodyboarder, el éxito depende de leer el entorno y tomar decisiones en fracciones de segundo. Aplicamos esa misma precisión al diseño: Adaptabilidad para pivotar marcas, Resistencia para flujos de trabajo de alto rendimiento, y Visión para ver la estructura UX antes que la estética UI.</p>
-                            <p><strong>No solo diseñamos; construimos cimientos visuales para quienes no tienen miedo de cruzar fronteras.</strong></p>
-                        </div>
-                        <div class="about__visual reveal">
-                            <div class="glass-card about-card">
-                                <div class="about-card__content">
-                                    <i class="ph ph-waves"></i>
-                                    <h3>MENTALIDAD DE ALTO RENDIMIENTO</h3>
-                                    <p>Fusionando la disciplina de los deportes extremos con la perfección digital.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Services Section (Bento Grid) -->
-            <section class="services section" id="services">
-                <div class="container">
-                    <div class="section-header reveal">
-                        <span class="section-subtitle">SOLUCIONES DE DISEÑO</span>
-                        <h2 class="section-title">NUESTRO EXPERTISE</h2>
-                    </div>
-                    
-                    <div class="bento-grid">
-                        <div class="bento-item bento-item--large reveal">
-                            <div class="bento-item__img" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80');"></div>
-                            <div class="bento-item__bg"></div>
-                            <div class="bento-item__content">
-                                <div class="bento-icon"><i class="ph ph-bezier-curve"></i></div>
-                                <h3>Strategic Branding</h3>
-                                <p>Visual identity systems designed for the digital age. We build memorable brand architectures.</p>
-                            </div>
-                        </div>
-                        <div class="bento-item reveal">
-                            <div class="bento-item__img" style="background-image: url('https://images.unsplash.com/photo-1618761714954-0b8cd0026356?auto=format&fit=crop&w=800&q=80');"></div>
-                            <div class="bento-item__bg"></div>
-                            <div class="bento-item__content">
-                                <div class="bento-icon"><i class="ph ph-device-mobile"></i></div>
-                                <h3>UX/UI Product Design</h3>
-                                <p>Modern, user-centric interfaces. High-end user experiences.</p>
-                            </div>
-                        </div>
-                        <div class="bento-item reveal">
-                            <div class="bento-item__img" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80');"></div>
-                            <div class="bento-item__bg"></div>
-                            <div class="bento-item__content">
-                                <div class="bento-icon"><i class="ph ph-code"></i></div>
-                                <h3>Web Development</h3>
-                                <p>E-commerce solutions via WordPress & WooCommerce.</p>
-                            </div>
-                        </div>
-                        <div class="bento-item bento-item--wide reveal">
-                            <div class="bento-item__img" style="background-image: url('https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=800&q=80');"></div>
-                            <div class="bento-item__bg"></div>
-                            <div class="bento-item__content">
-                                <div class="bento-icon"><i class="ph ph-t-shirt"></i></div>
-                                <h3>Physical Branding</h3>
-                                <p>Expertise in technical printing, heat press, and vinyl installations.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- The Blueprint (Process Section) -->
-            <section class="blueprint section" id="blueprint">
-                <div class="container">
-                    <div class="section-header reveal">
-                        <span class="section-subtitle">THE BLUEPRINT</span>
-                        <h2 class="section-title">NUESTRO FLUJO DE TRABAJO</h2>
-                        <p class="section-desc">Una metodología probada para construir experiencias digitales de alta conversión.</p>
-                    </div>
-                    
-                    <div class="timeline">
-                        <div class="timeline-item reveal">
-                            <div class="timeline-icon"><i class="ph ph-magnifying-glass"></i></div>
-                            <div class="timeline-content glass-card">
-                                <h3>1. Descubrimiento</h3>
-                                <p>Profundizamos en los objetivos comerciales, la psicología de la audiencia y la investigación de mercado. Descubrimos el núcleo de tu marca.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item reveal">
-                            <div class="timeline-icon"><i class="ph ph-compass"></i></div>
-                            <div class="timeline-content glass-card">
-                                <h3>2. Estrategia</h3>
-                                <p>Construimos la hoja de ruta visual y funcional. Wireframing, mapeo del viaje del usuario y posicionamiento de la marca.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item reveal">
-                            <div class="timeline-icon"><i class="ph ph-pen-nib"></i></div>
-                            <div class="timeline-content glass-card">
-                                <h3>3. Ejecución</h3>
-                                <p>Sprints de diseño de alto rendimiento. Creamos la UI/UX y la identidad visual con precisión milimétrica.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item reveal">
-                            <div class="timeline-icon"><i class="ph ph-rocket-launch"></i></div>
-                            <div class="timeline-content glass-card">
-                                <h3>4. Entrega</h3>
-                                <p>Lanzamiento y soporte técnico. Tu proyecto entra en vivo, totalmente optimizado para velocidad, SEO y conversión.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Portfolio Showcase -->
-            <section class="portfolio section" id="portfolio">
-                <div class="container">
-                    <div class="section-header reveal">
-                        <span class="section-subtitle">THE PLAYGROUND</span>
-                        <h2 class="section-title">SELECTED WORKS</h2>
-                    </div>
-
-                    <!-- Dynamic Filters -->
-                    <div class="portfolio-filters reveal">
-                        <button class="filter-btn active" data-filter="all">All Works</button>
-                        <button class="filter-btn" data-filter="Brand Identity">Brand Identity</button>
-                        <button class="filter-btn" data-filter="Digital Design">Digital Design</button>
-                        <button class="filter-btn" data-filter="Physical Branding">Physical Branding</button>
-                    </div>
-
-                    <div class="portfolio-grid" id="dynamic-portfolio">
-                        <!-- Projects injected by app.js -->
-                    </div>
-                    
-                    <!-- View All Works Button -->
-                    <div style="text-align: center; margin-top: 4rem;">
-                        <a href="portfolio.html" class="btn btn--outline">Ver Todos Los Trabajos <i class="ph ph-arrow-right"></i></a>
-                    </div>
-                </div>
-            </section>
+    <!-- Mobile navigation overlay -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil" aria-hidden="true">
+        <a href="#services"  class="mobile-nav__link" id="mob-services">Services</a>
+        <a href="#portfolio" class="mobile-nav__link" id="mob-portfolio">Portfolio</a>
+        <a href="#about"     class="mobile-nav__link" id="mob-about">About</a>
+        <a href="#contact"   class="mobile-nav__link" id="mob-contact">Contact</a>
+    </nav>
 
 
+    <!-- ═══════════════════════════════════════════
+         MAIN CONTENT
+    ═══════════════════════════════════════════ -->
+    <main id="main-content">
 
-            <!-- Brand Audit Module (Lead Magnet) -->
-            <section class="audit section" id="audit">
-                <div class="container">
-                    <div class="audit__wrapper glass-card reveal">
-                        <div class="audit__content">
-                            <span class="section-subtitle">CUPOS LIMITADOS DISPONIBLES</span>
-                            <h2 class="contact__title">AUDITORÍA ESTRATÉGICA GRATUITA.</h2>
-                            <p>Analizaremos tu UX/UI actual, posicionamiento de marca y flujo de conversión. Recibe una evaluación profesional directamente en tu bandeja de entrada.</p>
-                            <ul class="audit__list">
-                                <li><i class="ph ph-check-circle text-accent"></i> Revisión de Usabilidad UX/UI</li>
-                                <li><i class="ph ph-check-circle text-accent"></i> Análisis de Identidad Visual</li>
-                                <li><i class="ph ph-check-circle text-accent"></i> Auditoría de Rendimiento & SEO</li>
-                            </ul>
-                        </div>
-                        <div class="audit__form">
-                            <form class="contact-form">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Tu Nombre" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="url" placeholder="URL de la Empresa (ej. https://tumarca.com)" required>
-                                </div>
-                                <div class="form-group">
-                                    <textarea placeholder="¿Cuál es tu desafío de diseño actual?" rows="3" required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn--primary btn--full">Solicitar Auditoría <i class="ph ph-lightning"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <!-- ─── HERO ─────────────────────────────── -->
+        <section class="hero" id="hero" aria-label="Introducción">
 
+            <!-- Main content area -->
+            <div class="hero__main">
 
-        </div>
-        
-        <!-- Footer with Newsletter -->
-        <footer class="footer">
-            <div class="container">
-                <div class="footer__newsletter glass-card reveal">
-                    <div class="newsletter__text">
-                        <h3>EL DISEÑADOR DE ALTO RENDIMIENTO</h3>
-                        <p>Únete a nuestro boletín mensual sobre tendencias de diseño, estrategia y resiliencia digital.</p>
-                    </div>
-                    <form class="newsletter__form">
-                        <input type="email" placeholder="Tu Dirección de Correo" required>
-                        <button type="submit" class="btn btn--primary">Suscribirse</button>
-                    </form>
+                <!-- H1 — Display headline -->
+                <h1 class="t-display hero__title reveal" id="hero-title">
+                    <em>High-</em>
+                    <em>Performance</em>
+                    <em>Branding.</em>
+                </h1>
+
+                <!-- Manifesto -->
+                <div class="hero__manifesto reveal reveal-delay-1" id="hero-manifesto">
+                    <p>
+                        Para domar el océano no se necesita suerte; se requiere cálculo, una disciplina
+                        implacable y la capacidad de tomar decisiones críticas bajo presión en fracciones
+                        de segundo. Nacimos de la resiliencia de emigrar, de remar contracorriente y de
+                        entender las corrientes del mercado.
+                    </p>
+                    <p>
+                        En CREST Studio no decoramos superficies: construimos la estructura visual que
+                        lleva a las marcas a su punto más alto de rendimiento. Diseñamos sistemas de
+                        identidad preparados para resistir cualquier flujo de trabajo.
+                    </p>
+                    <a href="#services" class="hero__cta" id="hero-cta" aria-label="Explorar servicios">
+                        <span>Explorar servicios</span>
+                        <span class="hero__cta-arrow" aria-hidden="true">→</span>
+                    </a>
                 </div>
 
-                <div class="footer__inner">
-                    <div class="footer__brand">
-                        <a href="#" class="logo">STRN<span>.</span>STUDIO</a>
-                        <p>Agencia Digital High-End.<br>Desde Málaga para el mundo.</p>
-                    </div>
-                    <div class="footer__social">
-                        <a href="#"><i class="ph ph-instagram-logo"></i></a>
-                        <a href="#"><i class="ph ph-behance-logo"></i></a>
-                        <a href="#"><i class="ph ph-linkedin-logo"></i></a>
-                        <a href="#"><i class="ph ph-twitter-logo"></i></a>
-                    </div>
+            </div>
+
+            <!-- Meta strip -->
+            <div class="hero__meta" aria-label="Métricas del estudio">
+                <div class="hero__meta-item reveal">
+                    <span class="t-label">Proyectos entregados</span>
+                    <span class="hero__meta-value">40+</span>
                 </div>
-                <div class="footer__bottom">
-                    <p>&copy; 2026 STRN <a href="admin.html" style="color: inherit; text-decoration: none; cursor: default;">Studio</a>. Todos los derechos reservados.</p>
-                    <a href="#home" class="back-to-top">Volver arriba <i class="ph ph-arrow-up"></i></a>
+                <div class="hero__meta-item reveal reveal-delay-1">
+                    <span class="t-label">Años de operación</span>
+                    <span class="hero__meta-value">03</span>
+                </div>
+                <div class="hero__meta-item reveal reveal-delay-2">
+                    <span class="t-label">Ubicación</span>
+                    <span class="hero__meta-value">MLG</span>
                 </div>
             </div>
-        </footer>
+
+        </section>
+
+
+        <!-- ─── SERVICES ─────────────────────────── -->
+        <section class="section" id="services" aria-labelledby="services-heading">
+
+            <div class="services__header">
+                <h2 class="t-display services__title reveal" id="services-heading">Core Expertise</h2>
+                <span class="t-label reveal reveal-delay-1">— What we build</span>
+            </div>
+
+            <div class="services__grid">
+
+                <!-- 01 -->
+                <article class="service-card reveal" id="service-branding" aria-labelledby="svc-branding-name">
+                    <div class="service-card__header">
+                        <span class="service-card__index t-index">01</span>
+                    </div>
+                    <h3 class="service-card__name" id="svc-branding-name">Strategic<br>Branding</h3>
+                    <p class="service-card__desc">
+                        Arquitectura de marca, sistemas de identidad visual y logotipos de alta gama
+                        pensados para la era digital. Construimos marcas que perduran.
+                    </p>
+                    <a href="#contact" class="service-card__link" id="svc-branding-cta">
+                        Iniciar proyecto <span aria-hidden="true">→</span>
+                    </a>
+                </article>
+
+                <!-- 02 -->
+                <article class="service-card reveal reveal-delay-1" id="service-web" aria-labelledby="svc-web-name">
+                    <div class="service-card__header">
+                        <span class="service-card__index t-index">02</span>
+                    </div>
+                    <h3 class="service-card__name" id="svc-web-name">Digital &amp;<br>Web Design</h3>
+                    <p class="service-card__desc">
+                        Estructuras web sólidas, interfaces intuitivas y plataformas limpias desarrolladas
+                        para una conversión de alto impacto. Sin ornamentos, solo rendimiento.
+                    </p>
+                    <a href="#contact" class="service-card__link" id="svc-web-cta">
+                        Iniciar proyecto <span aria-hidden="true">→</span>
+                    </a>
+                </article>
+
+                <!-- 03 -->
+                <article class="service-card reveal reveal-delay-2" id="service-physical" aria-labelledby="svc-physical-name">
+                    <div class="service-card__header">
+                        <span class="service-card__index t-index">03</span>
+                    </div>
+                    <h3 class="service-card__name" id="svc-physical-name">Physical<br>Branding</h3>
+                    <p class="service-card__desc">
+                        Aplicación de identidad en soportes físicos con precisión técnica — soportes
+                        comerciales, instalaciones textiles, vinilos y packaging de alto nivel.
+                    </p>
+                    <a href="#contact" class="service-card__link" id="svc-physical-cta">
+                        Iniciar proyecto <span aria-hidden="true">→</span>
+                    </a>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ─── PORTFOLIO ────────────────────────── -->
+        <section class="section" id="portfolio" aria-labelledby="portfolio-heading">
+
+            <div class="portfolio__header">
+                <h2 class="t-display portfolio__title reveal" id="portfolio-heading">Selected Work</h2>
+                <span class="t-label reveal reveal-delay-1">— 2023 – 2025</span>
+            </div>
+
+            <div class="portfolio__grid" id="portfolio-grid">
+
+                <!-- Project 1 -->
+                <a href="portfolio-post.html?slug=modo-patria"
+                   class="project-item reveal"
+                   id="project-modo-patria"
+                   aria-label="Ver proyecto: Modo Patria — Streetwear Identity">
+                    <div class="project-item__bg">
+                        <span class="project-item__placeholder" aria-hidden="true">MP</span>
+                    </div>
+                    <div class="project-item__overlay" aria-hidden="true"></div>
+                    <div class="project-item__info">
+                        <span class="project-item__client">Modo Patria</span>
+                        <span class="project-item__category">Streetwear Identity</span>
+                    </div>
+                </a>
+
+                <!-- Project 2 -->
+                <a href="portfolio-post.html?slug=project-02"
+                   class="project-item reveal reveal-delay-1"
+                   id="project-02"
+                   aria-label="Ver proyecto — Brand System">
+                    <div class="project-item__bg">
+                        <span class="project-item__placeholder" aria-hidden="true">02</span>
+                    </div>
+                    <div class="project-item__overlay" aria-hidden="true"></div>
+                    <div class="project-item__info">
+                        <span class="project-item__client">Client Name</span>
+                        <span class="project-item__category">Brand System</span>
+                    </div>
+                </a>
+
+                <!-- Project 3 -->
+                <a href="portfolio-post.html?slug=project-03"
+                   class="project-item reveal reveal-delay-2"
+                   id="project-03"
+                   aria-label="Ver proyecto — Web Design">
+                    <div class="project-item__bg">
+                        <span class="project-item__placeholder" aria-hidden="true">03</span>
+                    </div>
+                    <div class="project-item__overlay" aria-hidden="true"></div>
+                    <div class="project-item__info">
+                        <span class="project-item__client">Client Name</span>
+                        <span class="project-item__category">Web Design</span>
+                    </div>
+                </a>
+
+                <!-- Project 4 -->
+                <a href="portfolio-post.html?slug=project-04"
+                   class="project-item reveal reveal-delay-3"
+                   id="project-04"
+                   aria-label="Ver proyecto — Physical Branding">
+                    <div class="project-item__bg">
+                        <span class="project-item__placeholder" aria-hidden="true">04</span>
+                    </div>
+                    <div class="project-item__overlay" aria-hidden="true"></div>
+                    <div class="project-item__info">
+                        <span class="project-item__client">Client Name</span>
+                        <span class="project-item__category">Physical Branding</span>
+                    </div>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ─── ABOUT STRIP ──────────────────────── -->
+        <section class="about-strip" id="about" aria-labelledby="about-heading">
+
+            <div class="about-strip__label">
+                <span class="t-label reveal">— About CRST</span>
+            </div>
+
+            <div class="about-strip__content">
+                <h2 class="t-display about-strip__headline reveal" id="about-heading">
+                    Disciplina.<br>Cálculo.<br>Rendimiento.
+                </h2>
+                <p class="about-strip__text reveal reveal-delay-1">
+                    CREST Studio nació de la resiliencia de quienes entienden que el verdadero rendimiento
+                    no se improvisa. Somos un estudio boutique especializado en identidad visual estratégica
+                    para marcas que operan en entornos de alta competencia. Cada sistema que diseñamos está
+                    construido para escalar, resistir y destacar — independientemente del canal o soporte.
+                </p>
+                <a href="#contact" class="hero__cta reveal reveal-delay-2" id="about-cta" aria-label="Hablar con el equipo">
+                    <span>Hablar con el equipo</span>
+                    <span class="hero__cta-arrow" aria-hidden="true">→</span>
+                </a>
+            </div>
+
+        </section>
+
+
+        <!-- ─── CONTACT CTA ──────────────────────── -->
+        <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
+            <span class="t-label reveal">— Start a project</span>
+            <h2 class="t-display reveal reveal-delay-1" id="contact-heading">
+                ¿Listo para crecer?
+            </h2>
+            <a href="mailto:hello@creststudio.com"
+               class="hero__cta reveal reveal-delay-2"
+               id="contact-email-cta"
+               aria-label="Enviar email a CREST Studio">
+                <span>hello@creststudio.com</span>
+                <span class="hero__cta-arrow" aria-hidden="true">→</span>
+            </a>
+        </section>
+
     </main>
 
-    <!-- Custom Script -->
-    <script src="js/app.js"></script>
+
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════ -->
+    <footer class="footer" id="footer" role="contentinfo">
+
+        <div class="footer__top">
+
+            <!-- Col 1: Monogram -->
+            <div class="footer__col" id="footer-brand">
+                <div>
+                    <p class="footer__monogram">[ CRST ]</p>
+                    <p class="footer__tagline">High-Performance Branding Studio</p>
+                </div>
+                <div class="footer__socials" aria-label="Redes sociales">
+                    <!-- Añade tus redes aquí -->
+                </div>
+            </div>
+
+            <!-- Col 2: Location & Contact -->
+            <div class="footer__col" id="footer-contact">
+                <div>
+                    <p class="t-label" style="margin-bottom:1rem;">Contacto</p>
+                    <p class="footer__location">
+                        Based in Málaga, Spain<br>
+                        EST. 2023
+                    </p>
+                </div>
+                <a href="mailto:hello@creststudio.com" class="footer__email" id="footer-email">
+                    hello@creststudio.com
+                </a>
+            </div>
+
+            <!-- Col 3: Technical -->
+            <div class="footer__col" id="footer-tech">
+                <div>
+                    <p class="t-label" style="margin-bottom:1rem;">System Status</p>
+                    <p class="footer__perf">
+                        <span class="footer__perf-dot" aria-hidden="true"></span>All systems operational
+                    </p>
+                    <p class="footer__perf" style="margin-top:0.5rem;">
+                        Performance score — 98/100
+                    </p>
+                    <p class="footer__perf" style="margin-top:0.5rem;" id="footer-build-time">
+                        Build — <span id="build-date">2025</span>
+                    </p>
+                </div>
+                <nav aria-label="Footer navigation">
+                    <ul style="display:flex; flex-direction:column; gap:0.5rem;" role="list">
+                        <li><a href="#services"  class="footer__link" id="footer-nav-services">Services</a></li>
+                        <li><a href="#portfolio" class="footer__link" id="footer-nav-portfolio">Portfolio</a></li>
+                        <li><a href="#about"     class="footer__link" id="footer-nav-about">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+
+        <!-- Footer bottom bar -->
+        <div class="footer__bottom">
+            <p class="footer__copy" id="footer-copy">
+                &copy; <span id="footer-year">2025</span> CREST Studio. All rights reserved.
+            </p>
+            <nav class="footer__links" aria-label="Legal">
+                <a href="#" class="footer__link" id="footer-privacy">Privacy Policy</a>
+                <a href="#" class="footer__link" id="footer-terms">Terms of Service</a>
+            </nav>
+        </div>
+
+    </footer>
+
+
+    <!-- ═══════════════════════════════════════════
+         SCRIPTS
+    ═══════════════════════════════════════════ -->
+
+    <!-- Supabase CDN (keep for backend connectivity) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+
+    <!-- Main CREST JS -->
+    <script src="js/crest.js"></script>
+
 </body>
 </html>

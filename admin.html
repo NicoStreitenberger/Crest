@@ -13,6 +13,9 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <!-- CSS -->
     <link rel="stylesheet" href="css/admin.css">
 </head>
@@ -24,8 +27,8 @@
             <div class="logo" style="font-size: 2rem; margin-bottom: 2rem;">STRN<span>.</span>OS</div>
             <form id="login-form" class="admin-form">
                 <div class="form-group" style="text-align: left;">
-                    <label>Username</label>
-                    <input type="text" id="login-user" placeholder="admin" required>
+                    <label>Email</label>
+                    <input type="email" id="login-user" placeholder="admin@strn.studio" required>
                 </div>
                 <div class="form-group" style="text-align: left;">
                     <label>Password</label>
@@ -78,6 +81,7 @@
                     <span class="role">Admin</span>
                 </div>
             </div>
+            <button id="logout-btn" class="btn btn--outline btn--sm" style="margin-top:1rem;width:100%;">Logout <i class="ph ph-sign-out"></i></button>
         </div>
     </aside>
 
@@ -111,21 +115,21 @@
                         <div class="stat-icon"><i class="ph ph-envelope-open"></i></div>
                         <div class="stat-details">
                             <span class="stat-title">New Leads</span>
-                            <span class="stat-value">12</span>
+                            <span class="stat-value" id="stat-leads">...</span>
                         </div>
                     </div>
                     <div class="stat-card glass-card">
-                        <div class="stat-icon"><i class="ph ph-eye"></i></div>
+                        <div class="stat-icon"><i class="ph ph-folder-star"></i></div>
                         <div class="stat-details">
-                            <span class="stat-title">Site Views</span>
-                            <span class="stat-value">4.2k</span>
+                            <span class="stat-title">Projects</span>
+                            <span class="stat-value" id="stat-projects">...</span>
                         </div>
                     </div>
                     <div class="stat-card glass-card">
-                        <div class="stat-icon"><i class="ph ph-book-open-text"></i></div>
+                        <div class="stat-icon"><i class="ph ph-article"></i></div>
                         <div class="stat-details">
-                            <span class="stat-title">Blog Reads</span>
-                            <span class="stat-value">856</span>
+                            <span class="stat-title">Blog Posts</span>
+                            <span class="stat-value" id="stat-posts">...</span>
                         </div>
                     </div>
                 </div>
@@ -142,19 +146,8 @@
                                     <th>Date</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Sarah Jenkins</td>
-                                    <td>sarah@techstartup.io</td>
-                                    <td><span class="status new">New</span></td>
-                                    <td>Today</td>
-                                </tr>
-                                <tr>
-                                    <td>Mark T.</td>
-                                    <td>mark@ecombrand.com</td>
-                                    <td><span class="status read">Read</span></td>
-                                    <td>Yesterday</td>
-                                </tr>
+                            <tbody id="recent-leads-body">
+                                <tr><td colspan="4" style="color:var(--color-text-muted);">Loading...</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -179,45 +172,49 @@
                     </div>
                     <button class="btn btn--primary">Add Project <i class="ph ph-plus"></i></button>
                 </div>
-                
-                <div class="editor-container glass-card">
+                 <div class="editor-container glass-card">
                     <h3>Create New Project</h3>
-                    <form class="admin-form">
+                    <form class="admin-form" id="project-form">
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Project Title</label>
-                                <input type="text" placeholder="e.g. LifeRun App">
+                                <input type="text" id="project-title" placeholder="e.g. LifeRun App" required>
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
-                                <select>
-                                    <option>UX/UI Product Design</option>
-                                    <option>Strategic Branding</option>
-                                    <option>E-Commerce</option>
+                                <select id="project-category">
+                                    <option value="">Select category...</option>
                                 </select>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label>Tech Stack / Tags (Comma separated)</label>
-                            <input type="text" placeholder="Figma, React, Tailwind...">
+                            <label>Client Name</label>
+                            <input type="text" id="project-client" placeholder="e.g. Fusion Sports">
                         </div>
 
                         <div class="form-group">
                             <label>Project Description</label>
-                            <textarea rows="4" placeholder="Brief case study..."></textarea>
+                            <textarea id="project-description" rows="4" placeholder="Brief case study..."></textarea>
                         </div>
                         
                         <div class="form-group">
-                            <label>Cover Image & Gallery</label>
-                            <div class="file-upload">
+                            <label>Cover Image</label>
+                            <div class="file-upload" onclick="document.getElementById('project-image-upload').click()">
                                 <i class="ph ph-upload-simple"></i>
-                                <span>Drag & Drop images or click to browse</span>
+                                <span>Click to upload cover image (uploads to Supabase Storage)</span>
+                                <input type="file" id="project-image-upload" accept="image/*" style="display:none;">
                             </div>
+                            <div id="image-preview" style="margin-top:1rem;"></div>
+                        </div>
+
+                        <div class="form-group" style="display:flex;align-items:center;gap:0.75rem;">
+                            <input type="checkbox" id="project-featured" style="width:18px;height:18px;accent-color:var(--color-accent);">
+                            <label for="project-featured" style="margin:0;">Mark as Featured</label>
                         </div>
 
                         <div class="form-actions">
-                            <button type="submit" class="btn btn--primary">Publish Project</button>
+                            <button type="submit" class="btn btn--primary">Publish Project <i class="ph ph-rocket-launch"></i></button>
                             <button type="button" class="btn btn--outline">Save Draft</button>
                         </div>
                     </form>
@@ -234,19 +231,18 @@
                 </div>
 
                 <div class="editor-container glass-card">
-                    <form class="admin-form">
+                    <form class="admin-form" id="blog-form">
                         <div class="form-group">
                             <label>Post Title</label>
-                            <input type="text" id="post-title" placeholder="The Future of Bento Grids in Web Design">
+                            <input type="text" id="post-title" placeholder="The Future of Bento Grids in Web Design" required>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Category</label>
-                                <select>
-                                    <option>Design Trends</option>
-                                    <option>UX Research</option>
-                                    <option>Brand Strategy</option>
+                                <label>Status</label>
+                                <select id="post-status">
+                                    <option value="published">Published</option>
+                                    <option value="draft">Draft</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -306,21 +302,8 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Sarah Jenkins</td>
-                                <td>sarah@techstartup.io</td>
-                                <td>"We need a complete rebrand..."</td>
-                                <td><span class="status new">New</span></td>
-                                <td><button class="btn btn--outline btn--sm">Reply</button></td>
-                            </tr>
-                            <tr>
-                                <td>David M.</td>
-                                <td>davidm@crypto.com</td>
-                                <td>"Looking for UX/UI design for our app..."</td>
-                                <td><span class="status read">Contacted</span></td>
-                                <td><button class="btn btn--outline btn--sm">View</button></td>
-                            </tr>
+                        <tbody id="leads-table-body">
+                            <tr><td colspan="5" style="color:var(--color-text-muted);">Loading leads...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -388,6 +371,7 @@
         </div>
     </main>
 
+    <script src="js/supabase.js"></script>
     <script src="js/admin.js"></script>
 </body>
 </html>
