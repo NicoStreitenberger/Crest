@@ -140,8 +140,10 @@ button {
     left: 0;
     width: 100%;
     z-index: 100;
-    border-bottom: 1px solid var(--c-border);
-    background: var(--c-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.50);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     transition: border-color var(--t-fast);
 }
 
