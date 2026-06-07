@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study — CREST Studio</title>
+    <meta name="description" content="Explora nuestro archivo dinámico de marcas y plataformas de alta fidelidad optimizadas para el rendimiento real." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://creststudio.com/system-post.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://creststudio.com/system-post.html" />
+    <meta property="og:title"       content="Case Study — CREST Studio" />
+    <meta property="og:description" content="Explora nuestro archivo dinámico de marcas y plataformas de alta fidelidad optimizadas para el rendimiento real." />
+    <meta property="og:image"       content="https://creststudio.com/assets/og-cover.jpg" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/crest.css">
+    
+    <style>
+        /* Case Study Specific Styles */
+        .cs-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 4rem;
+            overflow: hidden;
+        }
+
+        .cs-hero__bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+            transition: background-image 0.5s var(--ease-out);
+        }
+
+        .cs-hero__overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+        }
+
+        .cs-hero__content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .cs-title {
+            font-family: var(--f-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .cs-category {
+            color: var(--color-accent);
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Results Section */
+        .cs-results {
+            padding: 6rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 24px;
+            text-align: center;
+            margin-bottom: 8rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .cs-results__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .cs-results__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cs-stat h2 {
+            font-family: var(--f-display);
+            font-size: 4rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .cs-stat p {
+            font-size: 1.125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--c-muted);
+        }
+
+        /* Next Project Navigation */
+        .cs-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 8rem;
+        }
+
+        .cs-nav__link {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            transition: transform var(--transition-fast);
+        }
+
+        .cs-nav__link:hover {
+            transform: translateX(10px);
+        }
+        
+        .cs-nav__link--prev:hover {
+            transform: translateX(-10px);
+        }
+
+        .cs-nav__label {
+            font-size: 0.875rem;
+            color: var(--c-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .cs-nav__title {
+            font-size: 2rem;
+            font-family: var(--f-display);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header" role="banner">
+        <div class="header__inner">
+            <a href="/" class="header__logo" aria-label="CREST Studio — Ir al inicio">
+                <span class="logo__primary">CREST</span>
+                <span class="logo__secondary">Studio</span>
+            </a>
+            <nav class="header__nav" aria-label="Navegación principal">
+                <ul class="nav__list" role="list">
+                    <li class="nav__item">
+                        <a href="/structure.html" class="nav__link" id="nav-services">STRUCTURE</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/systems.html" class="nav__link" id="nav-portfolio">SYSTEMS</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/currents.html" class="nav__link" id="nav-about">CURRENTS</a>
+                    </li>
+                </ul>
+                <a href="/enlist.html" class="nav__cta" id="nav-contact">ENLIST</a>
+            </nav>
+            <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile navigation overlay -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil" aria-hidden="true">
+        <a href="/structure.html" class="mobile-nav__link" id="mob-services">STRUCTURE</a>
+        <a href="/systems.html" class="mobile-nav__link" id="mob-portfolio">SYSTEMS</a>
+        <a href="/currents.html" class="mobile-nav__link" id="mob-about">CURRENTS</a>
+        <a href="/enlist.html" class="mobile-nav__link" id="mob-contact">ENLIST</a>
+    </nav>
+
+    <main class="main" id="smooth-wrapper" style="padding-top: 72px;">
+        <div id="smooth-content">
+            
+            <!-- Cinematic Hero (dynamic) -->
+            <section class="cs-hero">
+                <div class="cs-hero__bg" id="cs-hero-bg"></div>
+                <div class="cs-hero__overlay"></div>
+                <div class="container cs-hero__content reveal">
+                    <span class="cs-category" id="cs-category">Loading...</span>
+                    <h1 class="cs-title" id="cs-title">Loading...</h1>
+                </div>
+            </section>
+
+            <!-- Split Layout -->
+            <section class="cs-split-layout" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; padding: 6rem 5%; max-width: 1800px; margin: 0 auto; align-items: start;">
+                
+                <!-- Left: Text content (Sticky) -->
+                <div class="cs-split__text" style="position: sticky; top: 120px;">
+                    <h2 class="t-display" style="font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.1; color: white;">Case Study</h2>
+                    <p id="cs-desc" style="font-size: 1.125rem; color: #e0e0e0; margin-bottom: 2rem; line-height: 1.8;">Loading description...</p>
+                    
+                    <div style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <h4 style="font-size: 0.75rem; color: var(--c-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Client</h4>
+                            <p id="cs-client" style="font-size: 1rem; color: white; font-weight: 500;">Loading...</p>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 0.75rem; color: var(--c-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Role</h4>
+                            <p style="font-size: 1rem; color: white; font-weight: 500;">Branding, Web & UI</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Dynamic Gallery -->
+                <div class="cs-gallery" id="cs-gallery"
+                     style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; grid-auto-rows: minmax(150px, auto);">
+                    <div class="skeleton" style="grid-column:span 12;aspect-ratio:16/9;border-radius:16px;"></div>
+                </div>
+            </section>
+
+            <!-- Results & Nav -->
+            <div class="container">
+
+                <!-- Results -->
+                <div class="cs-results reveal">
+                    <span class="t-label" style="display:block; margin-bottom:1rem;">THE IMPACT</span>
+                    <h2 class="t-display" style="font-size: 2.5rem; color: white; margin-bottom: 2rem;">Measurable Success</h2>
+                    <div class="cs-results__grid">
+                        <div class="cs-stat">
+                            <h2>+145%</h2>
+                            <p>Mobile Conversion</p>
+                        </div>
+                        <div class="cs-stat">
+                            <h2>2.4s</h2>
+                            <p>Avg. Load Time</p>
+                        </div>
+                        <div class="cs-stat">
+                            <h2>3x</h2>
+                            <p>User Retention</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Project Navigation -->
+                <div class="cs-nav reveal" id="cs-nav">
+                    <a href="/systems.html" class="cs-nav__link cs-nav__link--prev">
+                        <span class="cs-nav__label">Back to Archive</span>
+                        <span class="cs-nav__title">All Systems</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- FOOTER -->
+        <footer class="footer" id="footer" role="contentinfo">
+            <div class="footer__top">
+                <div class="footer__col" id="footer-brand">
+                    <div>
+                        <p class="footer__monogram">[ CRST ]</p>
+                        <p class="footer__tagline">High-Performance Branding Studio</p>
+                    </div>
+                </div>
+                <div class="footer__col" id="footer-contact">
+                    <div>
+                        <p class="t-label" style="margin-bottom:1rem;">Contacto</p>
+                        <p class="footer__location">
+                            Based in Málaga, Spain<br>EST. 2023
+                        </p>
+                    </div>
+                    <a href="mailto:hello@creststudio.com" class="footer__email" id="footer-email">
+                        hello@creststudio.com
+                    </a>
+                </div>
+                <div class="footer__col" id="footer-tech">
+                    <div>
+                        <p class="t-label" style="margin-bottom:1rem;">System Status</p>
+                        <p class="footer__perf">
+                            <span class="footer__perf-dot" aria-hidden="true"></span>All systems operational
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copy" id="footer-copy">
+                    &copy; <span id="footer-year">2026</span> CREST Studio. All rights reserved.
+                </p>
+                <nav class="footer__links" aria-label="Legal">
+                    <a href="#" class="footer__link" id="footer-privacy">Privacy Policy</a>
+                    <a href="#" class="footer__link" id="footer-terms">Terms of Service</a>
+                </nav>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Supabase + Project Script -->
+    <script src="js/supabase.js"></script>
+    <script src="js/system-post.js"></script>
+    <script src="js/crest.js"></script>
+</body>
+</html>

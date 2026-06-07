@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Payments & Billing | STRN Studio</title>
+    <title>Secure Payments & Billing | CREST Studio</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -16,19 +16,19 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/billing.css">
+    <link rel="stylesheet" href="css/crest.css">
 </head>
 <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="header__inner">
-            <a href="index.html" class="logo">
-                STRN<span>.</span>STUDIO
+    <!-- HEADER -->
+    <header class="header" id="header" role="banner">
+        <div class="header__inner" style="max-width:1440px; margin:0 auto; padding:0 5%; width:100%;">
+            <a href="/" class="header__logo" aria-label="CREST Studio — Ir al inicio">
+                <span class="logo__primary">CREST</span>
+                <span class="logo__secondary">Studio</span>
             </a>
-            <nav class="nav">
-                <a href="index.html" class="nav__link">RETURN TO SITE</a>
+            <nav class="header__nav" aria-label="Navegación principal" style="display:flex; align-items:center;">
+                <a href="/" class="nav__link" style="color:var(--c-text); font-weight:600; font-size:0.875rem; letter-spacing:0.05em;">RETURN TO SITE</a>
             </nav>
             <button class="mobile-menu-btn">
                 <i class="ph ph-list"></i>
@@ -72,7 +72,7 @@
                             <p>For B2B transactions avoiding card fees, we accept direct bank transfers.</p>
                             <div class="bank-details">
                                 <div class="detail-row"><span>Bank Name:</span> <strong>BBVA (Málaga, Spain)</strong></div>
-                                <div class="detail-row"><span>Beneficiary:</span> <strong>STRN Studio S.L.</strong></div>
+                                <div class="detail-row"><span>Beneficiary:</span> <strong>CREST Studio S.L.</strong></div>
                                 <div class="detail-row"><span>IBAN:</span> <strong class="text-accent">ES91 0182 XXXX XXXX XXXX XXXX</strong></div>
                                 <div class="detail-row"><span>SWIFT / BIC:</span> <strong>BBVAESMMXXX</strong></div>
                             </div>
@@ -130,7 +130,7 @@
                             <form action="success.html" method="GET" class="checkout-form">
                                 <div class="form-group">
                                     <label>Company / Legal Name</label>
-                                    <input type="text" placeholder="STRN Studio S.L." required>
+                                    <input type="text" placeholder="CREST Studio S.L." required>
                                 </div>
                                 <div class="form-group">
                                     <label>Billing Email (For Automated Invoicing)</label>
@@ -165,7 +165,7 @@
         <footer class="footer">
             <div class="container">
                 <div class="footer__bottom">
-                    <p>&copy; 2026 STRN Studio. All rights reserved. Registered in Spain.</p>
+                    <p>&copy; 2026 CREST Studio. All rights reserved. Registered in Spain.</p>
                 </div>
             </div>
         </footer>

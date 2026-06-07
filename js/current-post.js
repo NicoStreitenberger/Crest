@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Update page title & OG
-    document.title = `${post.title} | STRN Studio Blog`;
+    document.title = `${post.title} | CREST Studio Currents`;
 
     if (titleEl)   titleEl.textContent = post.title.toUpperCase();
 

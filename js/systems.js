@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="project-card__image" style="border-radius:0;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;">
                     <img src="${imgSrc}" alt="${project.title}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
                     <div class="project-card__overlay">
-                        <a href="portfolio-post.html?slug=${project.slug}" class="view-project">View Case <i class="ph ph-arrow-up-right"></i></a>
+                        <a href="/system/${project.slug}" class="view-project">View Case <i class="ph ph-arrow-up-right"></i></a>
                     </div>
                 </div>
                 <div class="project-card__info" style="position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);border-radius:0;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;">

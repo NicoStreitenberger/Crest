@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="project-card__image parallax-container" style="border-radius:24px;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;">
                     <img src="${imgSrc}" alt="${project.title}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
                     <div class="project-card__overlay">
-                        <a href="portfolio-post.html?slug=${project.slug}" class="view-project">View Case <i class="ph ph-arrow-up-right"></i></a>
+                        <a href="/system/${project.slug}" class="view-project">View Case <i class="ph ph-arrow-up-right"></i></a>
                     </div>
                 </div>
                 <div class="project-card__info" style="position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);border-radius:0 0 24px 24px;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;">
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (posts && posts.length > 0) {
             posts.forEach(post => {
                 const el = document.createElement('a');
-                el.href = `blog-post.html?slug=${post.slug}`;
+                el.href = `/current/${post.slug}`;
                 el.className = 'post-card';
                 const imgSrc = post.featured_image || 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&q=80';
                 const date   = post.published_at ? new Date(post.published_at).toLocaleDateString('es-ES', { month: 'short', day: 'numeric', year: 'numeric' }) : '';

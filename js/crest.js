@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             projects.forEach((project, idx) => {
                 const item = document.createElement('a');
-                item.href      = `portfolio-post.html?slug=${project.slug}`;
+                item.href      = `/system/${project.slug}`;
                 item.className = `project-item reveal${idx > 0 ? ' reveal-delay-' + Math.min(idx, 3) : ''}`;
                 item.id        = `project-${project.slug}`;
                 item.setAttribute('aria-label', `Ver proyecto: ${project.client} — ${project.category}`);

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>Enlist — Apply for Studio Intervention</title>
+    <meta name="description" content="Formulario técnico de reclutamiento y briefing para marcas de alta competencia." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://creststudio.com/enlist.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://creststudio.com/enlist.html" />
+    <meta property="og:title"       content="Enlist — Apply for Studio Intervention" />
+    <meta property="og:description" content="Formulario técnico de reclutamiento y briefing para marcas de alta competencia." />
+    <meta property="og:image"       content="https://creststudio.com/assets/og-cover.jpg" />
+
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/crest.css" />
+
+    <!-- Favicon placeholder -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◼</text></svg>" />
+
+    <style>
+        .enlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: var(--sp-md) auto var(--sp-lg) auto;
+            background: rgba(10, 10, 10, 0.5);
+            padding: var(--sp-md);
+            border: 1px solid var(--c-border);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-family: var(--f-body);
+            font-size: 0.875rem;
+            color: var(--c-muted);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            background: #000;
+            border: 1px solid var(--c-border-md);
+            color: #fff;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: var(--f-body);
+            font-size: 1rem;
+            transition: border-color var(--t-fast);
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #fff;
+        }
+
+        .form-actions button {
+            background: #fff;
+            color: #000;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 1.25rem 2rem;
+            border-radius: 6px;
+            text-transform: uppercase;
+            width: 100%;
+            transition: background var(--t-fast), color var(--t-fast);
+        }
+
+        .form-actions button:hover {
+            background: var(--c-dim);
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header" role="banner">
+        <div class="header__inner">
+            <a href="/" class="header__logo" aria-label="CREST Studio — Ir al inicio">
+                <span class="logo__primary">CREST</span>
+                <span class="logo__secondary">Studio</span>
+            </a>
+            <nav class="header__nav" aria-label="Navegación principal">
+                <ul class="nav__list" role="list">
+                    <li class="nav__item">
+                        <a href="/structure.html" class="nav__link" id="nav-services">STRUCTURE</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/systems.html" class="nav__link" id="nav-portfolio">SYSTEMS</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/currents.html" class="nav__link" id="nav-about">CURRENTS</a>
+                    </li>
+                </ul>
+                <a href="/enlist.html" class="nav__cta nav__cta--active" id="nav-contact" style="background:#fff; color:#000;">ENLIST</a>
+            </nav>
+            <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile navigation overlay -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil" aria-hidden="true">
+        <a href="/structure.html" class="mobile-nav__link" id="mob-services">STRUCTURE</a>
+        <a href="/systems.html" class="mobile-nav__link" id="mob-portfolio">SYSTEMS</a>
+        <a href="/currents.html" class="mobile-nav__link" id="mob-about">CURRENTS</a>
+        <a href="/enlist.html" class="mobile-nav__link" id="mob-contact">ENLIST</a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" style="padding-top: 72px;">
+
+        <!-- HERO -->
+        <section class="hero" style="min-height: 40vh; display: flex; align-items: center; justify-content: center; padding: var(--sp-lg) 0;">
+            <div class="hero__main">
+                <h1 class="t-display hero__title reveal" id="hero-title" style="margin-bottom: var(--sp-md);">
+                    <em>Apply for</em>
+                    <em>Studio</em>
+                    <em>Intervention.</em>
+                </h1>
+                <div class="hero__manifesto reveal reveal-delay-1">
+                    <p>
+                        Completa el formulario de briefing técnico para iniciar el diagnóstico de tu proyecto. Evaluamos solicitudes según la complejidad y el alineamiento estratégico.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORM SECTION -->
+        <section class="container reveal">
+            <form class="enlist-form" id="enlist-brief-form">
+                <div class="form-group">
+                    <label for="brand-name">Nombre de la Marca / Empresa</label>
+                    <input type="text" id="brand-name" placeholder="e.g. Acme Corp" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-name">Persona de Contacto</label>
+                    <input type="text" id="contact-name" placeholder="e.g. Nicolas Streitenberger" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-email">Email Corporativo</label>
+                    <input type="email" id="contact-email" placeholder="e.g. nico@yourbrand.com" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="project-type">Tipo de Proyecto</label>
+                    <select id="project-type" required>
+                        <option value="">Selecciona una opción...</option>
+                        <option value="Branding">Strategic Branding</option>
+                        <option value="Web Design">Digital & Web Design</option>
+                        <option value="Physical Branding">Physical Branding</option>
+                        <option value="Full Intervention">Full Intervention (Branding + Web)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="project-budget">Presupuesto Estimado</label>
+                    <select id="project-budget" required>
+                        <option value="">Selecciona un rango...</option>
+                        <option value="< 5k">&lt; €5.000</option>
+                        <option value="5k - 15k">€5.000 – €15.000</option>
+                        <option value="15k - 30k">€15.000 – €30.000</option>
+                        <option value="30k+">€30.000+</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="project-message">Briefing del Proyecto / Mensaje</label>
+                    <textarea id="project-message" rows="6" placeholder="Describe los objetivos y requisitos clave del proyecto..." required></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="submit-brief-btn">Enviar Briefing <i class="ph ph-arrow-right"></i></button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer" role="contentinfo">
+        <div class="footer__top">
+            <div class="footer__col" id="footer-brand">
+                <div>
+                    <p class="footer__monogram">[ CRST ]</p>
+                    <p class="footer__tagline">High-Performance Branding Studio</p>
+                </div>
+            </div>
+            <div class="footer__col" id="footer-contact">
+                <div>
+                    <p class="t-label" style="margin-bottom:1rem;">Contacto</p>
+                    <p class="footer__location">
+                        Based in Málaga, Spain<br>EST. 2023
+                    </p>
+                </div>
+                <a href="mailto:hello@creststudio.com" class="footer__email" id="footer-email">
+                    hello@creststudio.com
+                </a>
+            </div>
+            <div class="footer__col" id="footer-tech">
+                <div>
+                    <p class="t-label" style="margin-bottom:1rem;">System Status</p>
+                    <p class="footer__perf">
+                        <span class="footer__perf-dot" aria-hidden="true"></span>All systems operational
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__copy" id="footer-copy">
+                &copy; <span id="footer-year">2026</span> CREST Studio. All rights reserved.
+            </p>
+            <nav class="footer__links" aria-label="Legal">
+                <a href="#" class="footer__link" id="footer-privacy">Privacy Policy</a>
+                <a href="#" class="footer__link" id="footer-terms">Terms of Service</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/crest.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('enlist-brief-form');
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const btn = document.getElementById('submit-brief-btn');
+                    const origText = btn.innerHTML;
+
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="ph ph-spinner" style="animation:spin 1s linear infinite"></i> Enviando...';
+
+                    const brandName = document.getElementById('brand-name').value.trim();
+                    const contactName = document.getElementById('contact-name').value.trim();
+                    const email = document.getElementById('contact-email').value.trim();
+                    const projectType = document.getElementById('project-type').value;
+                    const budget = document.getElementById('project-budget').value;
+                    const brief = document.getElementById('project-message').value.trim();
+
+                    // Format message body for admin view
+                    const messageBody = `EMPRESA: ${brandName}\nTIPO DE PROYECTO: ${projectType}\nPRESUPUESTO: ${budget}\nBRIEFING:\n${brief}`;
+
+                    if (typeof window.db === 'undefined') {
+                        btn.innerHTML = '⚠ Error: Database client missing';
+                        btn.style.background = '#e53e3e';
+                        setTimeout(() => { btn.innerHTML = origText; btn.style.background = ''; btn.disabled = false; }, 3000);
+                        return;
+                    }
+
+                    const { error } = await window.db.from('leads').insert([{ 
+                        name: contactName, 
+                        email: email, 
+                        message: messageBody 
+                    }]);
+
+                    if (error) {
+                        btn.innerHTML = '⚠ Error: ' + error.message;
+                        btn.style.background = '#e53e3e';
+                        setTimeout(() => { btn.innerHTML = origText; btn.style.background = ''; btn.disabled = false; }, 3000);
+                    } else {
+                        btn.innerHTML = '✓ Briefing Recibido <i class="ph ph-check-circle"></i>';
+                        btn.style.background = '#28a745';
+                        form.reset();
+                        setTimeout(() => { btn.innerHTML = origText; btn.style.background = ''; btn.disabled = false; }, 4000);
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

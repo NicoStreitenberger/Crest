@@ -1,0 +1,14 @@
+# ================================================================
+# CREST Studio — robots.txt
+# Controls indexation and specifies sitemap location
+# ================================================================
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /billing.html
+Disallow: /success.html
+
+# Sitemap Link
+Sitemap: https://creststudio.com/sitemap.xml

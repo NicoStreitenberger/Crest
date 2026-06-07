@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const imgSrc = featured.featured_image || 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=1200&q=80';
         const date   = featured.published_at ? new Date(featured.published_at).toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
         featuredContainer.innerHTML = `
-            <a href="blog-post.html?slug=${featured.slug}" class="featured-post glass-card" style="padding:0;overflow:hidden;border-radius:24px;">
+            <a href="/current/${featured.slug}" class="featured-post glass-card" style="padding:0;overflow:hidden;border-radius:24px;">
                 <div class="featured-post__image"><img src="${imgSrc}" alt="${featured.title}" loading="lazy"></div>
                 <div style="padding:3rem;">
                     <div class="post-meta"><span><i class="ph ph-calendar-blank"></i> ${date}</span></div>
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const imgSrc = post.featured_image || 'https://images.unsplash.com/photo-1542744094-3a31f272c490?w=800&q=80';
             const date   = post.published_at ? new Date(post.published_at).toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
             const el = document.createElement('a');
-            el.href = `blog-post.html?slug=${post.slug}`;
+            el.href = `/current/${post.slug}`;
             el.className = 'post-card';
             el.innerHTML = `
                 <div class="post-card__image"><img src="${imgSrc}" alt="${post.title}" loading="lazy"></div>

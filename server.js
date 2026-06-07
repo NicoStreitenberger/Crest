@@ -141,5 +141,5 @@ app.get('/api/posts', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`STRN Studio CMS running at http://localhost:${PORT}`);
+    console.log(`CREST Studio CMS running at http://localhost:${PORT}`);
 });

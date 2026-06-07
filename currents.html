@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO -->
+    <title>Currents & Editorial Insights — CREST Studio</title>
+    <meta name="description" content="Espacio de pensamiento crítico, análisis de mercado y la mística del diseño estratégico analizada desde la resiliencia." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://creststudio.com/currents.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://creststudio.com/currents.html" />
+    <meta property="og:title"       content="Currents & Editorial Insights — CREST Studio" />
+    <meta property="og:description" content="Espacio de pensamiento crítico, análisis de mercado y la mística del diseño estratégico analizada desde la resiliencia." />
+    <meta property="og:image"       content="https://creststudio.com/assets/og-cover.jpg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/crest.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header" role="banner">
+        <div class="header__inner">
+            <a href="/" class="header__logo" aria-label="CREST Studio — Ir al inicio">
+                <span class="logo__primary">CREST</span>
+                <span class="logo__secondary">Studio</span>
+            </a>
+            <nav class="header__nav" aria-label="Navegación principal">
+                <ul class="nav__list" role="list">
+                    <li class="nav__item">
+                        <a href="/structure.html" class="nav__link" id="nav-services">STRUCTURE</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/systems.html" class="nav__link" id="nav-portfolio">SYSTEMS</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/currents.html" class="nav__link nav__link--active" id="nav-about" style="color:var(--c-text); border-bottom:1px solid var(--c-text);">CURRENTS</a>
+                    </li>
+                </ul>
+                <a href="/enlist.html" class="nav__cta" id="nav-contact">ENLIST</a>
+            </nav>
+            <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile navigation overlay -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil" aria-hidden="true">
+        <a href="/structure.html" class="mobile-nav__link" id="mob-services">STRUCTURE</a>
+        <a href="/systems.html" class="mobile-nav__link" id="mob-portfolio">SYSTEMS</a>
+        <a href="/currents.html" class="mobile-nav__link" id="mob-about" style="color:var(--c-text);">CURRENTS</a>
+        <a href="/enlist.html" class="mobile-nav__link" id="mob-contact">ENLIST</a>
+    </nav>
+
+    <main class="main" id="smooth-wrapper" style="padding-top: 72px;">
+        <div id="smooth-content">
+            
+            <!-- Blog Hero -->
+            <section class="journal-hero container reveal" style="padding-top: 6rem;">
+                <span class="t-label" style="display:block; margin-bottom:1rem;">INSIGHTS & STRATEGY</span>
+                <h1 class="t-display" style="font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 1.5rem;">THE CREST JOURNAL</h1>
+                <p class="hero__subtitle" style="margin: 0 auto; color: var(--c-muted);">Thoughts on high-performance design, brand architecture, and digital resilience.</p>
+            </section>
+
+            <!-- Filters -->
+            <div class="container reveal">
+                <div class="portfolio-filters">
+                    <button class="filter-btn active">All Topics</button>
+                </div>
+            </div>
+
+            <!-- Featured Post (dynamic) -->
+            <section class="container reveal">
+                <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                    <h2 class="t-display" style="font-size: 2rem;">LATEST INSIGHT</h2>
+                </div>
+                <div id="featured-post"></div>
+            </section>
+
+            <!-- Recent Posts Grid (dynamic) -->
+            <section class="container reveal" style="padding-bottom: 8rem;">
+                <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                    <h2 class="t-display" style="font-size: 2rem;">RECENT ARTICLES</h2>
+                </div>
+                <div class="recent-posts" id="recent-posts"></div>
+            </section>
+
+        </div>
+        
+        <!-- FOOTER -->
+        <footer class="footer" id="footer" role="contentinfo">
+            <div class="footer__top">
+                <div class="footer__col" id="footer-brand">
+                    <div>
+                        <p class="footer__monogram">[ CRST ]</p>
+                        <p class="footer__tagline">High-Performance Branding Studio</p>
+                    </div>
+                </div>
+                <div class="footer__col" id="footer-contact">
+                    <div>
+                        <p class="t-label" style="margin-bottom:1rem;">Contacto</p>
+                        <p class="footer__location">
+                            Based in Málaga, Spain<br>EST. 2023
+                        </p>
+                    </div>
+                    <a href="mailto:hello@creststudio.com" class="footer__email" id="footer-email">
+                        hello@creststudio.com
+                    </a>
+                </div>
+                <div class="footer__col" id="footer-tech">
+                    <div>
+                        <p class="t-label" style="margin-bottom:1rem;">System Status</p>
+                        <p class="footer__perf">
+                            <span class="footer__perf-dot" aria-hidden="true"></span>All systems operational
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copy" id="footer-copy">
+                    &copy; <span id="footer-year">2026</span> CREST Studio. All rights reserved.
+                </p>
+                <nav class="footer__links" aria-label="Legal">
+                    <a href="#" class="footer__link" id="footer-privacy">Privacy Policy</a>
+                    <a href="#" class="footer__link" id="footer-terms">Terms of Service</a>
+                </nav>
+            </div>
+        </footer>
+    </main>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/currents.js"></script>
+    <script src="js/crest.js"></script>
+</body>
+</html>

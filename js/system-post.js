@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    document.title = `${project.title} — Case Study | STRN Studio`;
+    document.title = `${project.title} — Case Study | CREST Studio`;
 
     if (heroBg && project.main_image) {
         heroBg.style.backgroundImage = `url('${project.main_image}')`;

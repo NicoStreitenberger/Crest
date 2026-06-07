@@ -56,16 +56,36 @@
   to   = "/admin.html"
   status = 200
 
-# Work/portfolio dynamic routing
+# Edge Functions for dynamic SEO injection
+[[edge_functions]]
+  path = "/system/*"
+  function = "metadata"
+
+[[edge_functions]]
+  path = "/current/*"
+  function = "metadata"
+
+# Work/portfolio dynamic routing (clean url)
 [[redirects]]
-  from = "/work/:slug"
-  to   = "/portfolio-post.html?slug=:slug"
+  from = "/system/:slug"
+  to   = "/system-post.html?slug=:slug"
   status = 200
 
-# Blog dynamic routing
+# Blog dynamic routing (clean url)
+[[redirects]]
+  from = "/current/:slug"
+  to   = "/current-post.html?slug=:slug"
+  status = 200
+
+# Legacy redirects compatibility
+[[redirects]]
+  from = "/work/:slug"
+  to   = "/system-post.html?slug=:slug"
+  status = 200
+
 [[redirects]]
   from = "/blog/:slug"
-  to   = "/blog-post.html?slug=:slug"
+  to   = "/current-post.html?slug=:slug"
   status = 200
 
 # SPA fallback — catch unknown routes gracefully
