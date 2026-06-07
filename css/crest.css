@@ -267,6 +267,7 @@ button {
     grid-template-rows: 1fr auto;
     padding-top: 72px; /* header height */
     border-bottom: 1px solid var(--c-border);
+    position: relative;
 }
 
 .hero__main {
@@ -276,6 +277,8 @@ button {
     padding: var(--sp-xl) 5% var(--sp-lg);
     gap: var(--sp-lg);
     border-bottom: 1px solid var(--c-border);
+    position: relative;
+    z-index: 2;
 }
 
 .hero__title {
@@ -335,6 +338,35 @@ button {
 .hero__meta {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    position: relative;
+    z-index: 2;
+}
+
+/* Background video container */
+.hero__media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero__media::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.72);
+    z-index: 2;
+}
+
+.hero__media video {
+    position: relative;
+    z-index: 1;
 }
 
 .hero__meta-item {
