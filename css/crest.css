@@ -409,19 +409,36 @@ button {
 
 .service-card {
     padding: var(--sp-lg) 5%;
-    border-right: 1px solid var(--c-border);
     display: flex;
     flex-direction: column;
     gap: var(--sp-md);
-    transition: background var(--t-fast);
+    position: relative;
+    transition: all 0.4s ease-out;
 }
 
-.service-card:last-child {
-    border-right: none;
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background-color: var(--c-border);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card:last-child::after {
+    display: none;
+}
+
+.service-card.is-visible::after {
+    transform: scaleY(1);
 }
 
 .service-card:hover {
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .service-card__header {
@@ -435,6 +452,12 @@ button {
     font-weight: 300;
     letter-spacing: 0.2em;
     color: var(--c-dim);
+    opacity: 0.4;
+    transition: opacity var(--t-fast);
+}
+
+.service-card:hover .service-card__index {
+    opacity: 1;
 }
 
 .service-card__name {
@@ -469,8 +492,17 @@ button {
     transition: color var(--t-fast);
 }
 
-.service-card__link:hover {
+.service-card__link span {
+    display: inline-block;
+    transition: transform var(--t-fast);
+}
+
+.service-card:hover .service-card__link {
     color: var(--c-text);
+}
+
+.service-card:hover .service-card__link span {
+    transform: translateX(6px);
 }
 
 /* --- 8. PORTFOLIO SECTION ------------------------------------ */
@@ -855,6 +887,10 @@ button {
     .service-card {
         border-right: none;
         border-bottom: 1px solid var(--c-border);
+    }
+
+    .service-card::after {
+        display: none;
     }
 
     .service-card:last-child {
