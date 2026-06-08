@@ -296,6 +296,16 @@ button {
     color: #000000 !important;
 }
 
+.nav__cta-arrow {
+    display: inline-block;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    margin-left: 0.4rem;
+}
+
+.btn-enlist:hover .nav__cta-arrow {
+    transform: translateX(6px);
+}
+
 /* Mobile menu button */
 .nav__toggle {
     display: none;
@@ -542,22 +552,22 @@ button {
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--c-dim);
+    color: var(--c-dim) !important;
     border-top: 1px solid var(--c-border);
     padding-top: var(--sp-sm);
     transition: color var(--t-fast);
 }
 
-.service-card__link span {
+.service-card__link .service-card__arrow {
     display: inline-block;
-    transition: transform var(--t-fast);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .service-card:hover .service-card__link {
-    color: var(--c-text);
+    color: var(--c-text) !important;
 }
 
-.service-card:hover .service-card__link span {
+.service-card:hover .service-card__link .service-card__arrow {
     transform: translateX(6px);
 }
 
