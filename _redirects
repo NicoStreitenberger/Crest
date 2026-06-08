@@ -1,0 +1,19 @@
+# ================================================================
+# STRN / CREST Studio — Netlify Redirects Configuration
+# ================================================================
+
+# Dynamic work/projects routing (Clean URLs)
+/system/:slug    /system-post.html?slug=:slug    200
+
+# Dynamic blog/articles routing (Clean URLs)
+/current/:slug   /current-post.html?slug=:slug   200
+
+# Admin route clean URL
+/admin           /admin.html                     200
+
+# Legacy compatibility redirects
+/work/:slug      /system-post.html?slug=:slug    200
+/blog/:slug      /current-post.html?slug=:slug   200
+
+# Catch-all: Fallback unrecognized routes cleanly to custom 404 error page
+/*               /404.html                       404

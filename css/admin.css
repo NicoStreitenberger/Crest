@@ -103,7 +103,7 @@ a {
     border-radius: 8px;
     color: var(--color-text-muted);
     font-size: 0.9rem;
-    transition: all var(--transition-fast);
+    transition: background-color 0.15s ease-out, opacity 0.15s ease-out, color 0.15s ease-out;
     margin-bottom: 0.25rem;
 }
 
@@ -253,7 +253,7 @@ a {
     font-family: var(--font-body);
     font-weight: 600;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: background-color 0.15s ease-out, opacity 0.15s ease-out, border-color 0.15s ease-out, color 0.15s ease-out;
     border: none;
 }
 
@@ -398,22 +398,91 @@ a {
 }
 
 .status {
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 600;
+    display: inline-block;
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    white-space: nowrap;
 }
 
+/* PENDING_REVIEW — default white */
+.status.PENDING_REVIEW,
 .status.new {
     background: rgba(255, 255, 255, 0.1);
-    color: var(--color-text);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* IN_CONVERSATION — amber */
+.status.IN_CONVERSATION {
+    background: rgba(251, 191, 36, 0.12);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+/* ACCEPTED — green */
+.status.ACCEPTED {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+/* REJECTED — red */
+.status.REJECTED {
+    background: rgba(248, 113, 113, 0.1);
+    color: #f87171;
+    border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+/* Legacy compat */
 .status.read {
     background: rgba(255, 255, 255, 0.03);
     color: var(--color-text-muted);
     border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Drawer status selector buttons */
+.enlist-status-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.4);
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.65rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s ease-out;
+}
+
+.enlist-status-btn:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+.enlist-status-btn.active[data-status="PENDING_REVIEW"] {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+.enlist-status-btn.active[data-status="IN_CONVERSATION"] {
+    background: rgba(251, 191, 36, 0.12);
+    border-color: rgba(251, 191, 36, 0.4);
+    color: #fbbf24;
+}
+.enlist-status-btn.active[data-status="ACCEPTED"] {
+    background: rgba(74, 222, 128, 0.1);
+    border-color: rgba(74, 222, 128, 0.35);
+    color: #4ade80;
+}
+.enlist-status-btn.active[data-status="REJECTED"] {
+    background: rgba(248, 113, 113, 0.1);
+    border-color: rgba(248, 113, 113, 0.35);
+    color: #f87171;
 }
 
 /* Action List */
@@ -436,7 +505,7 @@ a {
     font-family: var(--font-body);
     font-size: 0.9rem;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: background-color 0.15s ease-out, opacity 0.15s ease-out, border-color 0.15s ease-out;
 }
 
 .action-btn:hover {
@@ -446,6 +515,15 @@ a {
 /* Forms & Editor */
 .editor-container {
     max-width: 900px;
+    display: none;
+    opacity: 0;
+    transform: scale(0.98);
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+.editor-container.open {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
 }
 
 .admin-form .form-group {
@@ -575,11 +653,130 @@ a {
     margin-bottom: 1rem;
 }
 
-/* Services */
-.services-grid {
+/* ── STRUCTURE & EXPERTISE MANAGER ────────────────────────────── */
+
+#expertise-pillars-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.expertise-pillar {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 3.5rem 1fr auto;
+    align-items: start;
+    gap: 0 2rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background 0.15s ease-out;
+}
+
+.expertise-pillar:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.expertise-pillar:hover {
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.expertise-pillar__num {
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.25);
+    padding-top: 0.35rem;
+    user-select: none;
+}
+
+.expertise-pillar__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.expertise-pillar__title {
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #ffffff;
+    margin: 0 0 0.25rem;
+    line-height: 1;
+}
+
+/* Invisible description textarea */
+.expertise-desc-ta {
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    width: 100%;
+    font-family: var(--font-primary, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    padding: 0.75rem 0;
+    resize: none;
+    outline: none;
+    transition: border-color 0.15s ease-out, color 0.15s ease-out;
+    min-height: 3.5rem;
+    overflow: hidden;
+}
+
+.expertise-desc-ta:focus {
+    border-bottom-color: #ffffff;
+    color: #ffffff;
+}
+
+/* [ UPDATE CORE EXPERTISE ] action button */
+.expertise-update-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    white-space: nowrap;
+    transition: color 0.15s ease-out;
+    align-self: center;
+}
+
+.expertise-update-btn:hover {
+    color: #ffffff;
+}
+
+.expertise-update-btn.saving {
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+}
+
+.expertise-update-btn.success {
+    color: #4ade80;
+}
+
+.expertise-update-btn.error {
+    color: #ff4444;
+}
+
+/* Skeleton placeholders */
+.expertise-skeleton {
+    height: 5.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(90deg,
+        rgba(255,255,255,0.03) 25%,
+        rgba(255,255,255,0.06) 50%,
+        rgba(255,255,255,0.03) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s infinite;
+}
+
+@keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 /* Responsive */
@@ -652,7 +849,7 @@ body {
     font-weight: 700;
     letter-spacing: 0.08em;
     border-radius: 4px; /* Less rounded for clean premium Swiss aesthetic */
-    transition: all var(--transition-fast);
+    transition: background-color 0.15s ease-out, opacity 0.15s ease-out, border-color 0.15s ease-out, color 0.15s ease-out !important;
 }
 
 .btn--primary {
@@ -699,6 +896,92 @@ body {
     color: #FFFFFF !important;
 }
 
+/* ── ANALYTICS DASHBOARD (Módulo 29) ──────────────────────── */
+
+.analytics-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.analytics-kpi-card {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.analytics-kpi-label {
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.analytics-kpi-value {
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    line-height: 1;
+}
+
+/* Funnel */
+.funnel-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 48px;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.funnel-row:last-child { border-bottom: none; }
+
+.funnel-label {
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.funnel-bar-wrap {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    height: 4px;
+    overflow: hidden;
+}
+
+.funnel-bar {
+    height: 100%;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: width 0.4s ease-out;
+    width: 0%;
+}
+
+.funnel-count {
+    font-family: var(--font-display, 'Barlow Condensed', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: right;
+}
+
+@media (max-width: 1200px) {
+    .analytics-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .analytics-kpi-grid { grid-template-columns: 1fr; }
+    #view-analytics .glass-card + div[style*="grid"] { grid-template-columns: 1fr; }
+}
+
 /* Custom Scrollbar for modern feel */
 ::-webkit-scrollbar {
     width: 6px;
@@ -713,5 +996,215 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #888888;
+}
+
+/* ================================================================== */
+/* SNAPPY UI & DRAWER ANIMATIONS (Módulo 22) */
+/* ================================================================== */
+
+/* Snappy Stat Cards Hover */
+.stat-card {
+    transition: background-color 0.15s ease-out, opacity 0.15s ease-out, border-color 0.15s ease-out;
+}
+
+/* Leads Drawer Layout & Animation */
+.drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 450px;
+    height: 100vh;
+    background: #060606;
+    border-left: 1px solid var(--color-border);
+    transform: translateX(100%);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer.open {
+    transform: translateX(0);
+}
+
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease-out;
+    z-index: 999;
+}
+
+.drawer-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.drawer__header {
+    padding: 2rem;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.drawer__header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.drawer__close {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.15s ease-out;
+}
+
+.drawer__close:hover {
+    color: white;
+}
+
+.drawer__content {
+    padding: 2rem;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.drawer-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.drawer-field label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+}
+
+.drawer-field .val {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.drawer-field .val--scenario {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--color-glass-border);
+    padding: 1rem;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+}
+
+.drawer__footer {
+    padding: 2rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: 1rem;
+}
+
+/* Clickable Table Rows with Snappy Transitions */
+.data-table tbody tr {
+    cursor: pointer;
+    transition: background-color 0.15s ease-out;
+}
+
+.data-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* ================================================================== */
+/* SYSTEMS MANAGER STYLING (Módulo 23) */
+/* ================================================================== */
+
+/* Gallery previews layout */
+#gallery-previews .gallery-preview-item {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-glass-border);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+#gallery-previews .gallery-preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#gallery-previews .gallery-preview-item .remove-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(229, 62, 62, 0.9);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.65rem;
+    transition: background 0.15s ease-out;
+}
+
+#gallery-previews .gallery-preview-item .remove-btn:hover {
+    background: rgb(229, 62, 62);
+}
+
+/* Skeleton thumbnail loading animation */
+.thumbnail-skeleton {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.02) 25%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.02) 75%);
+    background-size: 200% 100%;
+    animation: shimmer-anim 1.5s infinite;
+}
+
+@keyframes shimmer-anim {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Snappy row collapse animation on delete */
+.row-fade-out {
+    opacity: 0 !important;
+    transform: scaleY(0) !important;
+    height: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    transition: all 0.15s ease-out !important;
+}
+
+/* Micro Delete Confirmation Modal Overlay */
+#delete-confirm-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#delete-confirm-modal.open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
 }
 

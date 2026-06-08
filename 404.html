@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Ruta Perdida | CREST Studio</title>
+    <meta name="description" content="Página no localizada en la corriente. Recalcula tu trayectoria." />
+    <meta name="robots" content="noindex, follow" />
+    
+    <!-- Preload fonts -->
+    <link rel="preload" as="font" href="/assets/fonts/crest-font.woff2" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/crest.css" />
+
+    <!-- Favicon placeholder -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◼</text></svg>" />
+
+    <style>
+        body {
+            background-color: #000000;
+        }
+        .error-layout {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 8rem 2rem 6rem 2rem;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .error-tag {
+            font-family: var(--f-body);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--c-dim);
+            margin-bottom: 1.5rem;
+        }
+        .error-title {
+            font-family: var(--f-display);
+            font-weight: 800;
+            font-size: clamp(2rem, 6vw, 4rem);
+            text-transform: uppercase;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            max-width: 15ch;
+        }
+        .error-desc {
+            font-family: var(--f-body);
+            font-weight: 300;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 45ch;
+            margin-bottom: 3rem;
+        }
+        .error-btn {
+            background: #ffffff;
+            color: #000000;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            padding: 1.25rem 2.5rem;
+            text-transform: uppercase;
+            transition: background var(--t-fast), color var(--t-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            font-family: var(--f-body);
+        }
+        .error-btn:hover {
+            background: var(--c-muted);
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header" role="banner">
+        <div class="header__inner">
+            <a href="/" class="header__logo" aria-label="CREST Studio — Ir al inicio">
+                <span class="logo__primary">CREST</span>
+                <span class="logo__secondary">Studio</span>
+            </a>
+            <nav class="header__nav" aria-label="Navegación principal">
+                <ul class="nav__list nav-links" role="list">
+                    <li class="nav__item">
+                        <a href="/structure.html" class="nav__link" id="nav-services">STRUCTURE</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/systems.html" class="nav__link" id="nav-portfolio">SYSTEMS</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="/currents.html" class="nav__link" id="nav-about">CURRENTS</a>
+                    </li>
+                </ul>
+                <a href="/enlist.html" class="nav__cta btn-enlist" id="nav-contact">[ ENLIST ]</a>
+            </nav>
+            <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile navigation overlay -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Menú móvil" aria-hidden="true">
+        <a href="/structure.html" class="mobile-nav__link" id="mob-services">STRUCTURE</a>
+        <a href="/systems.html" class="mobile-nav__link" id="mob-portfolio">SYSTEMS</a>
+        <a href="/currents.html" class="mobile-nav__link" id="mob-about">CURRENTS</a>
+        <a href="/enlist.html" class="mobile-nav__link" id="mob-contact">ENLIST</a>
+    </nav>
+
+    <!-- MAIN ERROR VIEW -->
+    <main id="main-content">
+        <section class="error-layout">
+            <span class="error-tag">— 404 ESTADO DE ERROR</span>
+            <h1 class="error-title">Ruta perdida en la corriente.</h1>
+            <p class="error-desc">
+                La página que intentas acceder no existe, ha sido trasladada o se encuentra fuera de órbita. Regresa al origen para recalcular la trayectoria.
+            </p>
+            <a href="/" class="error-btn">
+                [ REGRESAR AL ORIGEN → ]
+            </a>
+        </section>
+    </main>
+
+    <!-- SCRIPTS -->
+    <script src="js/crest.js"></script>
+</body>
+</html>

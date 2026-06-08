@@ -102,15 +102,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const grid = document.getElementById('portfolio-grid');
         if (!grid) return;
 
+        function optimizeStorageUrl(url) {
+            if (!url) return '';
+            if (url.includes('vojwdyubksoozhyvnbfu.supabase.co/storage/v1/object/public/')) {
+                return url.replace('/storage/v1/object/public/', '/storage/v1/render/image/public/') + '?format=webp&quality=80';
+            }
+            return url;
+        }
+
         // Guard: Supabase client must be available (loaded via supabase.js)
         if (typeof window.db === 'undefined') return;
 
         try {
             const { data: projects, error } = await window.db
                 .from('projects')
-                .select('id, title, slug, category, cover_url, client')
-                .eq('published', true)
-                .order('display_order', { ascending: true })
+                .select('id, slug, client_name, main_image, category')
+                .eq('is_featured', true)
+                .order('created_at', { ascending: false })
                 .limit(4);
 
             if (error || !projects || projects.length === 0) return;
@@ -126,42 +134,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.href      = `/system/${project.slug}`;
                 item.className = `project-item reveal${idx > 0 ? ' reveal-delay-' + Math.min(idx, 3) : ''}`;
                 item.id        = `project-${project.slug}`;
-                item.setAttribute('aria-label', `Ver proyecto: ${project.client} — ${project.category}`);
+                
+                const client = project.client_name || '??';
+                const category = project.category || '';
+                
+                item.setAttribute('aria-label', `Ver proyecto: ${client} — ${category}`);
                 item.style.setProperty('--col-span', spans[idx] || 6);
 
-                if (project.cover_url) {
-                    item.innerHTML = `
+                const indexStr = String(idx + 1).padStart(2, '0');
+                let imageHtml = '';
+                if (project.main_image) {
+                    imageHtml = `
                         <img
-                            src="${project.cover_url}"
-                            alt="${project.client} — ${project.category}"
+                            src="${optimizeStorageUrl(project.main_image)}"
+                            alt="${client} — ${category}"
                             class="project-item__img"
                             loading="lazy"
                         />
-                        <div class="project-item__overlay" aria-hidden="true"></div>
-                        <div class="project-item__info">
-                            <span class="project-item__client">${project.client}</span>
-                            <span class="project-item__category">${project.category}</span>
-                        </div>
-                    `;
-                } else {
-                    const initials = (project.client || '??')
-                        .split(' ')
-                        .map(w => w[0])
-                        .join('')
-                        .toUpperCase()
-                        .slice(0, 2);
-
-                    item.innerHTML = `
-                        <div class="project-item__bg">
-                            <span class="project-item__placeholder" aria-hidden="true">${initials}</span>
-                        </div>
-                        <div class="project-item__overlay" aria-hidden="true"></div>
-                        <div class="project-item__info">
-                            <span class="project-item__client">${project.client}</span>
-                            <span class="project-item__category">${project.category}</span>
-                        </div>
                     `;
                 }
+
+                item.innerHTML = `
+                    <div class="project-item__bg">
+                        <span class="project-item__placeholder" aria-hidden="true">${indexStr}</span>
+                    </div>
+                    ${imageHtml}
+                    <div class="project-item__overlay" aria-hidden="true"></div>
+                    <div class="project-item__info">
+                        <span class="project-item__client">${client}</span>
+                        <span class="project-item__category">${category}</span>
+                    </div>
+                `;
 
                 grid.appendChild(item);
             });
@@ -200,5 +203,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (yearEl)  yearEl.textContent  = currentYear;
     if (buildEl) buildEl.textContent = currentYear;
+
+    /* ─── 5. ANALOG NOISE OVERLAY INJECTION ────────────────────── */
+    const noise = document.createElement('div');
+    noise.className = 'noise-overlay';
+    noise.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(noise);
+
+    /* ─── 6. DYNAMIC SYSTEM STATUS CHECK ───────────────────────── */
+    async function checkSystemStatus() {
+        const dot = document.querySelector('.footer__perf-dot');
+        if (!dot) return;
+        const perfText = dot.parentElement;
+
+        if (typeof window.db === 'undefined') {
+            dot.style.backgroundColor = '#e53e3e';
+            dot.style.boxShadow = 'none';
+            perfText.innerHTML = '<span class="footer__perf-dot" style="background-color:#e53e3e;box-shadow:none;" aria-hidden="true"></span>Systems Degraded';
+            return;
+        }
+
+        try {
+            const { error } = await window.db.from('projects').select('id', { count: 'exact', head: true });
+            if (error) throw error;
+        } catch (err) {
+            console.warn('[CREST] Database connection failed, degrading system status:', err.message);
+            dot.style.backgroundColor = '#e53e3e';
+            dot.style.boxShadow = 'none';
+            perfText.innerHTML = '<span class="footer__perf-dot" style="background-color:#e53e3e;box-shadow:none;" aria-hidden="true"></span>Systems Degraded';
+        }
+    }
+    checkSystemStatus();
+
+    /* ─── 7. DYNAMIC FOOTER SETTINGS LOADER ────────────────────── */
+    async function loadDynamicFooterSettings() {
+        if (typeof window.db === 'undefined') return;
+
+        try {
+            const { data: settings, error } = await window.db
+                .from('system_settings')
+                .select('behance_url, linkedin_url, contact_email')
+                .eq('id', '00000000-0000-0000-0000-000000000000')
+                .single();
+
+            if (error || !settings) return;
+
+            // Update email
+            const emailEl = document.getElementById('footer-email');
+            if (emailEl) {
+                emailEl.href = `mailto:${settings.contact_email}`;
+                emailEl.textContent = settings.contact_email;
+            }
+
+            // Update socials
+            const socialsEl = document.querySelector('.footer__socials');
+            if (socialsEl) {
+                socialsEl.innerHTML = '';
+                
+                const links = [];
+                if (settings.behance_url) {
+                    links.push(`<a href="${settings.behance_url}" target="_blank" rel="noopener" class="footer__social-link" id="footer-social-behance">Behance</a>`);
+                }
+                if (settings.linkedin_url) {
+                    links.push(`<a href="${settings.linkedin_url}" target="_blank" rel="noopener" class="footer__social-link" id="footer-social-linkedin">LinkedIn</a>`);
+                }
+
+                socialsEl.innerHTML = links.join('<span class="social-separator">/</span>');
+            }
+        } catch (err) {
+            console.warn('[CREST] Dynamic settings load skipped:', err.message);
+        }
+    }
+    loadDynamicFooterSettings();
 
 });

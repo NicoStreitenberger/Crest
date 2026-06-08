@@ -15,6 +15,8 @@
     <meta property="og:description" content="Espacio de pensamiento crítico, análisis de mercado y la mística del diseño estratégico analizada desde la resiliencia." />
     <meta property="og:image"       content="https://creststudio.com/assets/og-cover.jpg" />
 
+    <!-- Preload fonts -->
+    <link rel="preload" as="font" href="/assets/fonts/crest-font.woff2" type="font/woff2" crossorigin>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,6 +34,11 @@
 </head>
 <body>
 
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 2px; z-index: 999; background: transparent;">
+        <div id="scroll-progress-bar" style="width: 0%; height: 100%; background: #22c55e; transition: width 0.1s cubic-bezier(0.16, 1, 0.3, 1);"></div>
+    </div>
+
     <!-- HEADER -->
     <header class="header" id="header" role="banner">
         <div class="header__inner">
@@ -40,7 +47,7 @@
                 <span class="logo__secondary">Studio</span>
             </a>
             <nav class="header__nav" aria-label="Navegación principal">
-                <ul class="nav__list" role="list">
+                <ul class="nav__list nav-links" role="list">
                     <li class="nav__item">
                         <a href="/structure.html" class="nav__link" id="nav-services">STRUCTURE</a>
                     </li>
@@ -51,7 +58,7 @@
                         <a href="/currents.html" class="nav__link" id="nav-about">CURRENTS</a>
                     </li>
                 </ul>
-                <a href="/enlist.html" class="nav__cta" id="nav-contact">ENLIST</a>
+                <a href="/enlist.html" class="nav__cta btn-enlist" id="nav-contact">[ ENLIST ]</a>
             </nav>
             <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
                 <span></span>
@@ -72,23 +79,19 @@
     <main class="main" id="smooth-wrapper" style="padding-top: 72px;">
         <div id="smooth-content">
             
-            <article class="blog-container" style="padding-top: 6rem;">
+            <article class="blog-container" style="max-width: 60ch; margin: 0 auto; padding: 8rem 2rem; color: rgba(255,255,255,0.85); line-height: 1.65;">
                 <!-- Blog Header -->
-                <header class="blog-header container reveal">
-                    <div class="blog-meta" id="post-meta">
+                <header class="blog-header reveal" style="margin-bottom: 3rem;">
+                    <div class="blog-meta" id="post-meta" style="font-size: 0.75rem; color: var(--c-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">
                         <span class="t-label"><i class="ph ph-calendar-blank"></i> Loading...</span>
                     </div>
-                    <h1 class="t-display" id="post-title" style="font-size: clamp(2rem, 5vw, 4rem); text-transform: uppercase; margin-bottom: 2rem; color: #fff;">Loading...</h1>
+                    <h1 class="t-display" id="post-title" style="font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800; text-transform: uppercase; line-height: 1.1; margin-bottom: 2rem; color: #fff;">Loading...</h1>
                 </header>
 
-                <!-- Featured Image -->
-                <div class="container reveal" id="post-image"></div>
-
                 <!-- Blog Content -->
-                <div class="container">
-                    <div class="blog-content reveal" id="post-content" style="line-height: 1.8; font-size: 1.125rem;">
-                        <p style="color:var(--c-dim);">Loading content...</p>
-                    </div>
+                <div class="blog-content reveal" id="post-content" style="line-height: 1.65; font-size: 1.125rem;">
+                    <p style="color:var(--c-dim);">Loading content...</p>
+                </div>
 
                     <!-- Author Bio -->
                     <div class="blog-author reveal" style="border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; padding-top: 2rem;">
@@ -123,8 +126,11 @@
             <div class="footer__top">
                 <div class="footer__col" id="footer-brand">
                     <div>
-                        <p class="footer__monogram">[ CRST ]</p>
+                        <p class="footer__monogram">[ CREST STUDIO ]</p>
                         <p class="footer__tagline">High-Performance Branding Studio</p>
+                    </div>
+                    <div class="footer__socials" aria-label="Redes sociales">
+                        <!-- Añade tus redes aquí -->
                     </div>
                 </div>
                 <div class="footer__col" id="footer-contact">
@@ -152,8 +158,8 @@
                     &copy; <span id="footer-year">2026</span> CREST Studio. All rights reserved.
                 </p>
                 <nav class="footer__links" aria-label="Legal">
-                    <a href="#" class="footer__link" id="footer-privacy">Privacy Policy</a>
-                    <a href="#" class="footer__link" id="footer-terms">Terms of Service</a>
+                    <a href="/privacy.html" class="footer__link" id="footer-privacy">Privacy Policy</a>
+                    <a href="/terms.html" class="footer__link" id="footer-terms">Terms of Service</a>
                 </nav>
             </div>
         </footer>

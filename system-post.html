@@ -15,6 +15,8 @@
     <meta property="og:description" content="Explora nuestro archivo dinámico de marcas y plataformas de alta fidelidad optimizadas para el rendimiento real." />
     <meta property="og:image"       content="https://creststudio.com/assets/og-cover.jpg" />
     
+    <!-- Preload fonts -->
+    <link rel="preload" as="font" href="/assets/fonts/crest-font.woff2" type="font/woff2" crossorigin>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -157,6 +159,18 @@
             font-family: var(--f-display);
             color: #fff;
         }
+
+        @media (max-width: 992px) {
+            .cs-split-layout {
+                grid-template-columns: 1fr !important;
+                gap: 3rem !important;
+                padding-top: 4rem !important;
+            }
+            .cs-split__text {
+                position: relative !important;
+                top: 0 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -169,7 +183,7 @@
                 <span class="logo__secondary">Studio</span>
             </a>
             <nav class="header__nav" aria-label="Navegación principal">
-                <ul class="nav__list" role="list">
+                <ul class="nav__list nav-links" role="list">
                     <li class="nav__item">
                         <a href="/structure.html" class="nav__link" id="nav-services">STRUCTURE</a>
                     </li>
@@ -180,7 +194,7 @@
                         <a href="/currents.html" class="nav__link" id="nav-about">CURRENTS</a>
                     </li>
                 </ul>
-                <a href="/enlist.html" class="nav__cta" id="nav-contact">ENLIST</a>
+                <a href="/enlist.html" class="nav__cta btn-enlist" id="nav-contact">[ ENLIST ]</a>
             </nav>
             <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
                 <span></span>
@@ -215,26 +229,29 @@
             <section class="cs-split-layout" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; padding: 6rem 5%; max-width: 1800px; margin: 0 auto; align-items: start;">
                 
                 <!-- Left: Text content (Sticky) -->
-                <div class="cs-split__text" style="position: sticky; top: 120px;">
+                <div class="cs-split__text" style="position: sticky; top: 4rem;">
                     <h2 class="t-display" style="font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.1; color: white;">Case Study</h2>
                     <p id="cs-desc" style="font-size: 1.125rem; color: #e0e0e0; margin-bottom: 2rem; line-height: 1.8;">Loading description...</p>
                     
-                    <div style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; border-top: 1px solid var(--c-border); padding-top: 2.5rem;">
                         <div>
                             <h4 style="font-size: 0.75rem; color: var(--c-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Client</h4>
                             <p id="cs-client" style="font-size: 1rem; color: white; font-weight: 500;">Loading...</p>
                         </div>
                         <div>
-                            <h4 style="font-size: 0.75rem; color: var(--c-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Role</h4>
-                            <p style="font-size: 1rem; color: white; font-weight: 500;">Branding, Web & UI</p>
+                            <h4 style="font-size: 0.75rem; color: var(--c-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Year</h4>
+                            <p id="cs-year" style="font-size: 1rem; color: white; font-weight: 500;">Loading...</p>
+                        </div>
+                        <div style="grid-column: span 2;">
+                            <h4 style="font-size: 0.75rem; color: var(--c-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Discipline</h4>
+                            <p id="cs-discipline" style="font-size: 1rem; color: white; font-weight: 500;">Loading...</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right: Dynamic Gallery -->
-                <div class="cs-gallery" id="cs-gallery"
-                     style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; grid-auto-rows: minmax(150px, auto);">
-                    <div class="skeleton" style="grid-column:span 12;aspect-ratio:16/9;border-radius:16px;"></div>
+                <div class="cs-gallery" id="cs-gallery" style="display: flex; flex-direction: column; gap: 2.5rem; width: 100%;">
+                    <div class="skeleton" style="width: 100%; aspect-ratio: 16/9; border-radius: 16px;"></div>
                 </div>
             </section>
 
@@ -277,8 +294,11 @@
             <div class="footer__top">
                 <div class="footer__col" id="footer-brand">
                     <div>
-                        <p class="footer__monogram">[ CRST ]</p>
+                        <p class="footer__monogram">[ CREST STUDIO ]</p>
                         <p class="footer__tagline">High-Performance Branding Studio</p>
+                    </div>
+                    <div class="footer__socials" aria-label="Redes sociales">
+                        <!-- Añade tus redes aquí -->
                     </div>
                 </div>
                 <div class="footer__col" id="footer-contact">
@@ -306,8 +326,8 @@
                     &copy; <span id="footer-year">2026</span> CREST Studio. All rights reserved.
                 </p>
                 <nav class="footer__links" aria-label="Legal">
-                    <a href="#" class="footer__link" id="footer-privacy">Privacy Policy</a>
-                    <a href="#" class="footer__link" id="footer-terms">Terms of Service</a>
+                    <a href="/privacy.html" class="footer__link" id="footer-privacy">Privacy Policy</a>
+                    <a href="/terms.html" class="footer__link" id="footer-terms">Terms of Service</a>
                 </nav>
             </div>
         </footer>

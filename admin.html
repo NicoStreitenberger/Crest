@@ -48,28 +48,38 @@
         </div>
         
         <nav class="sidebar__nav">
+
+            <!-- ── MANAGEMENT ─────────────────────────────── -->
             <span class="nav-label">Management</span>
             <a href="#" class="nav-item active" data-target="dashboard">
-                <i class="ph ph-squares-four"></i> Overview
+                <i class="ph ph-squares-four"></i> OVERVIEW
             </a>
             <a href="#" class="nav-item" data-target="portfolio">
-                <i class="ph ph-folder-star"></i> Portfolio
+                <i class="ph ph-folder-star"></i> SYSTEMS
             </a>
             <a href="#" class="nav-item" data-target="services">
-                <i class="ph ph-bezier-curve"></i> Services
+                <i class="ph ph-graph"></i> STRUCTURE
             </a>
-            
+            <a href="#" class="nav-item" data-target="analytics">
+                <i class="ph ph-chart-line-up"></i> ANALYTICS
+            </a>
+
+            <!-- ── CONTENT ────────────────────────────────── -->
             <span class="nav-label">Content</span>
             <a href="#" class="nav-item" data-target="blog">
-                <i class="ph ph-article"></i> Blog Engine
+                <i class="ph ph-article"></i> CURRENTS ENGINE
             </a>
-            
+
+            <!-- ── CLIENTS ────────────────────────────────── -->
             <span class="nav-label">Clients</span>
             <a href="#" class="nav-item" data-target="leads">
-                <i class="ph ph-users"></i> Leads
+                <i class="ph ph-user-list"></i> ENLISTMENTS
             </a>
             <a href="#" class="nav-item" data-target="calendar">
-                <i class="ph ph-calendar"></i> Calendar
+                <i class="ph ph-calendar-check"></i> CALENDAR
+            </a>
+            <a href="#" class="nav-item" data-target="settings">
+                <i class="ph ph-gear"></i> SETTINGS
             </a>
         </nav>
         
@@ -92,11 +102,11 @@
             <button class="menu-toggle" id="menu-toggle"><i class="ph ph-list"></i></button>
             <div class="topbar__search">
                 <i class="ph ph-magnifying-glass"></i>
-                <input type="text" placeholder="Search projects, posts or clients...">
+                <input type="text" placeholder="Search systems, articles or enlistments...">
             </div>
             <div class="topbar__actions">
                 <button class="icon-btn"><i class="ph ph-bell"></i><span class="badge">3</span></button>
-                <a href="index.html" target="_blank" class="btn btn--outline btn--sm">View Site <i class="ph ph-arrow-up-right"></i></a>
+                <a href="https://crestt.netlify.app" target="_blank" class="btn btn--outline btn--sm">View Site <i class="ph ph-arrow-up-right"></i></a>
             </div>
         </header>
 
@@ -121,14 +131,14 @@
                     <div class="stat-card glass-card">
                         <div class="stat-icon"><i class="ph ph-folder-star"></i></div>
                         <div class="stat-details">
-                            <span class="stat-title">Projects</span>
+                            <span class="stat-title">Systems</span>
                             <span class="stat-value" id="stat-projects">...</span>
                         </div>
                     </div>
                     <div class="stat-card glass-card">
                         <div class="stat-icon"><i class="ph ph-article"></i></div>
                         <div class="stat-details">
-                            <span class="stat-title">Blog Posts</span>
+                            <span class="stat-title">Articles</span>
                             <span class="stat-value" id="stat-posts">...</span>
                         </div>
                     </div>
@@ -155,8 +165,8 @@
                     <div class="glass-card">
                         <h3>Quick Actions</h3>
                         <div class="action-list">
-                            <button class="action-btn" onclick="document.querySelector('[data-target=blog]').click()"><i class="ph ph-pencil-simple"></i> Write Post</button>
-                            <button class="action-btn" onclick="document.querySelector('[data-target=portfolio]').click()"><i class="ph ph-plus-circle"></i> Add Project</button>
+                            <button class="action-btn" onclick="document.querySelector('[data-target=blog]').click()"><i class="ph ph-pencil-simple"></i> [ WRITE ARTICLE ]</button>
+                            <button class="action-btn" onclick="document.querySelector('[data-target=portfolio]').click()"><i class="ph ph-plus-circle"></i> [ ADD NEW SYSTEM ]</button>
                             <button class="action-btn"><i class="ph ph-calendar-plus"></i> View Calendar</button>
                         </div>
                     </div>
@@ -167,50 +177,85 @@
             <div class="view" id="view-portfolio">
                 <div class="page-header flex-between">
                     <div>
-                        <h2>Portfolio Manager</h2>
+                        <h2>SYSTEMS MANAGER</h2>
                         <p>Manage your selected works and case studies.</p>
                     </div>
-                    <button class="btn btn--primary">Add Project <i class="ph ph-plus"></i></button>
+                    <button class="btn btn--primary" id="add-project-btn">Add Project <i class="ph ph-plus"></i></button>
                 </div>
                  <div class="editor-container glass-card">
                     <h3>Create New Project</h3>
                     <form class="admin-form" id="project-form">
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Project Title</label>
-                                <input type="text" id="project-title" placeholder="e.g. LifeRun App" required>
+                                <label>Client Name</label>
+                                <input type="text" id="project-client" placeholder="e.g. MODO" required>
                             </div>
                             <div class="form-group">
+                                <label>Project Title</label>
+                                <input type="text" id="project-title" placeholder="e.g. PATRIA" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
                                 <label>Category</label>
-                                <select id="project-category">
+                                <select id="project-category" required>
                                     <option value="">Select category...</option>
+                                    <option value="VISUAL INFRASTRUCTURE">VISUAL INFRASTRUCTURE</option>
+                                    <option value="DIGITAL SYSTEMS">DIGITAL SYSTEMS</option>
+                                    <option value="TANGIBLE MATTER">TANGIBLE MATTER</option>
+                                    <option value="CREATIVE DIRECTION">CREATIVE DIRECTION</option>
+                                    <option value="SPECIAL OPERATIONS">SPECIAL OPERATIONS</option>
                                 </select>
                             </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Client Name</label>
-                            <input type="text" id="project-client" placeholder="e.g. Fusion Sports">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Project Description</label>
-                            <textarea id="project-description" rows="4" placeholder="Brief case study..."></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Cover Image</label>
-                            <div class="file-upload" onclick="document.getElementById('project-image-upload').click()">
-                                <i class="ph ph-upload-simple"></i>
-                                <span>Click to upload cover image (uploads to Supabase Storage)</span>
-                                <input type="file" id="project-image-upload" accept="image/*" style="display:none;">
+                            <div class="form-group">
+                                <label>Slug (Auto-generated)</label>
+                                <input type="text" id="project-slug" placeholder="auto-generated-slug" readonly style="background: rgba(255,255,255,0.02); color: var(--color-text-muted);">
                             </div>
-                            <div id="image-preview" style="margin-top:1rem;"></div>
+                        </div>
+                        
+                        <div class="form-row" style="grid-template-columns: 2fr 1fr; gap: 1.5rem; align-items: start;">
+                            <div class="form-group">
+                                <label>Strategy Description</label>
+                                <textarea id="project-description" name="strategy_description" placeholder="Describe la narrativa visual, el enfoque de marca y el desarrollo estratégico del sistema..."></textarea>></textarea>
+                            </div>
+                            <div style="display:flex; flex-direction:column; gap:1rem;">
+                                <div class="form-group">
+                                    <label>Year</label>
+                                    <input type="number" id="project-year" placeholder="e.g. 2026" required min="2000" max="2100">
+                                </div>
+                                <div class="form-group" style="padding-top:0.5rem;">
+                                    <div style="display:flex;align-items:center;gap:0.75rem;">
+                                        <input type="checkbox" id="project-featured" style="width:18px;height:18px;accent-color:var(--color-accent);">
+                                        <label for="project-featured" style="margin:0; cursor:pointer;">Mark as Featured</label>
+                                    </div>
+                                    <p id="featured-limit-warning" style="display:none;margin:0.5rem 0 0;font-size:0.72rem;letter-spacing:0.08em;color:#ff4444;font-weight:700;">
+                                        LÍMITE DE DESTACADOS ALCANZADO (MÁX. 4). DESMARCA UNO ANTERIOR.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group" style="display:flex;align-items:center;gap:0.75rem;">
-                            <input type="checkbox" id="project-featured" style="width:18px;height:18px;accent-color:var(--color-accent);">
-                            <label for="project-featured" style="margin:0;">Mark as Featured</label>
+                        <div class="form-row" style="grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+                            <div class="form-group">
+                                <label>Cover Image (Main Mockup)</label>
+                                <div class="file-upload" id="cover-upload-zone" onclick="document.getElementById('project-image-upload').click()">
+                                    <i class="ph ph-image-square"></i>
+                                    <span>Click or drag cover image (Single File)</span>
+                                    <input type="file" id="project-image-upload" accept="image/*" style="display:none;">
+                                </div>
+                                <div id="image-preview" style="margin-top:1rem;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label>Gallery Images (Multiple Mockups)</label>
+                                <div class="file-upload" id="gallery-upload-zone" onclick="document.getElementById('project-gallery-upload').click()">
+                                    <i class="ph ph-images"></i>
+                                    <span>Click or drag multiple mockups (Multiple Files)</span>
+                                    <input type="file" id="project-gallery-upload" accept="image/*" multiple style="display:none;">
+					<div id="gallery-previews" class="gallery-previews-container" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;"></div>
+                                </div>
+                                <div id="gallery-previews" style="margin-top:1rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 0.75rem;"></div>
+                            </div>
                         </div>
 
                         <div class="form-actions">
@@ -226,9 +271,9 @@
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Title</th>
+                                <th>Client Name</th>
                                 <th>Category</th>
-                                <th>Client</th>
+                                <th>Year</th>
                                 <th>Featured</th>
                                 <th style="text-align:right;">Actions</th>
                             </tr>
@@ -240,37 +285,43 @@
                 </div>
             </div>
 
-            <!-- Blog View -->
+            <!-- Currents Engine View -->
             <div class="view" id="view-blog">
                 <div class="page-header flex-between">
                     <div>
-                        <h2>Blog Engine</h2>
-                        <p>Write, format with Markdown, and optimize for SEO.</p>
+                        <h2>Currents Engine</h2>
+                        <p>Redacta, formatea con HTML y optimiza el SEO de cada artículo editorial.</p>
                     </div>
+                    <button class="btn btn--primary" id="add-post-btn">Write Article <i class="ph ph-plus"></i></button>
                 </div>
-
                 <div class="editor-container glass-card">
                     <form class="admin-form" id="blog-form">
+
+                        <!-- Title + Slug -->
                         <div class="form-group">
-                            <label>Post Title</label>
-                            <input type="text" id="post-title" placeholder="The Future of Bento Grids in Web Design" required>
+                            <label>Article Title</label>
+                            <input type="text" id="post-title" placeholder="e.g. DISCIPLINA EN ENTORNOS DE ALTA COMPETENCIA" required>
+                        </div>
+                        <div class="form-group" style="margin-top:-0.75rem;">
+                            <label style="font-size:0.7rem;letter-spacing:0.1em;color:var(--color-text-muted);">Slug (Auto-generated)</label>
+                            <input type="text" id="post-slug" placeholder="auto-generated-slug" readonly
+                                style="background:rgba(255,255,255,0.02);color:var(--color-text-muted);font-size:0.8rem;">
                         </div>
 
+                        <!-- Reading Time + Published Date -->
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Status</label>
-                                <select id="post-status">
-                                    <option value="published">Published</option>
-                                    <option value="draft">Draft</option>
-                                </select>
+                                <label>Est. Reading Time <span style="color:var(--color-text-muted);font-weight:400;">(auto-calculated)</span></label>
+                                <input type="text" id="reading-time" placeholder="AUTO — write content below" readonly
+                                    style="background:rgba(255,255,255,0.02);color:var(--color-text-muted);">
                             </div>
                             <div class="form-group">
-                                <label>Est. Reading Time</label>
-                                <input type="text" id="reading-time" placeholder="Auto-calculated" disabled>
+                                <label>Published Date <span style="color:var(--color-text-muted);font-weight:400;">(auto if empty)</span></label>
+                                <input type="text" id="post-published-date" placeholder="e.g. MAY 2026">
                             </div>
                         </div>
 
-                        <!-- Markdown Editor Toolbar -->
+                        <!-- Markdown/HTML Editor -->
                         <div class="markdown-editor">
                             <div class="md-toolbar">
                                 <button type="button"><i class="ph ph-text-b"></i></button>
@@ -280,73 +331,173 @@
                                 <button type="button"><i class="ph ph-code"></i></button>
                                 <button type="button"><i class="ph ph-image"></i></button>
                             </div>
-                            <textarea rows="10" id="post-content" placeholder="Write your post here using Markdown..."></textarea>
+                            <textarea rows="10" id="post-content" placeholder="Redacta el cuerpo del artículo en HTML o Markdown..." required></textarea>
                         </div>
 
-                        <hr class="divider">
-                        <h3>SEO Optimization</h3>
-                        
-                        <div class="form-group">
-                            <label>Meta Title (Max 60 chars)</label>
-                            <input type="text" id="post-seo-title" placeholder="SEO Title">
-                        </div>
-                        <div class="form-group">
-                            <label>Meta Description (Max 160 chars)</label>
-                            <textarea id="post-seo-desc" rows="2" placeholder="Brief description for search engines..."></textarea>
+                        <!-- SEO Block -->
+                        <div class="glass-card" style="margin-top:1.5rem;padding:1.5rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);">
+                            <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:rgba(255,255,255,0.3);margin:0 0 1.25rem;">
+                                SEO OPTIMIZATION <span style="font-weight:400;color:rgba(255,255,255,0.18);">— opcional. Si se deja vacío, hereda los metadatos dinámicos del sistema.</span>
+                            </p>
+                            <div class="form-group">
+                                <label>Meta Title</label>
+                                <input type="text" id="post-meta-title" placeholder="Título SEO personalizado (max 60 caracteres)" maxlength="60">
+                            </div>
+                            <div class="form-group" style="margin-top:1rem;">
+                                <label>Meta Description</label>
+                                <textarea id="post-meta-description" rows="2"
+                                    placeholder="Descripción SEO (max 160 caracteres)" maxlength="160"
+                                    style="resize:vertical;"></textarea>
+                            </div>
                         </div>
 
-                        <div class="form-actions">
-                            <button type="submit" id="blog-submit-btn" class="btn btn--primary">Publish Post <i class="ph ph-rocket-launch"></i></button>
+                        <div class="form-actions" style="margin-top:1.5rem;">
+                            <button type="submit" id="blog-submit-btn" class="btn btn--primary">[ PUBLISH ARTICLE ]</button>
                             <button type="button" id="blog-cancel-btn" class="btn btn--outline" style="display:none;">Cancel Edit</button>
                         </div>
                     </form>
                 </div>
 
-                <!-- Existing Blog Management -->
-                <div class="glass-card table-card" style="margin-top: 2rem;">
-                    <h3 style="margin-bottom:1rem;">Manage Blog Posts</h3>
+                <!-- Articles Management Table -->
+                <div class="glass-card table-card" style="margin-top:2rem;">
+                    <h3 style="margin-bottom:1rem;">MANAGE ARTICLES</h3>
                     <table class="data-table">
                         <thead>
                             <tr>
                                 <th>Title</th>
-                                <th>Status</th>
+                                <th>Read Time</th>
                                 <th>Published Date</th>
                                 <th style="text-align:right;">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="blog-table-body">
-                            <tr><td colspan="4" style="color:var(--color-text-muted);text-align:center;">Loading blog posts...</td></tr>
+                            <tr><td colspan="4" style="color:var(--color-text-muted);text-align:center;">Loading articles...</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Leads View -->
+            <!-- Article Delete Micro-Modal -->
+            <div id="article-delete-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);align-items:center;justify-content:center;">
+                <div style="background:#111;border:1px solid rgba(255,255,255,0.1);padding:2.5rem;max-width:420px;width:90%;text-align:center;">
+                    <p style="font-family:var(--font-display,'Barlow Condensed',sans-serif);font-size:1rem;font-weight:700;letter-spacing:0.12em;margin:0 0 0.5rem;">¿RETIRAR ARTÍCULO DE CURRENTS?</p>
+                    <p style="font-size:0.8rem;color:rgba(255,255,255,0.45);margin:0 0 2rem;">Esta acción eliminará el artículo permanentemente de la base de datos.</p>
+                    <div style="display:flex;gap:1rem;justify-content:center;">
+                        <button id="article-delete-confirm" class="btn btn--primary" style="background:#e53e3e;border-color:#e53e3e;min-width:140px;">[ RETIRAR ]</button>
+                        <button id="article-delete-cancel" class="btn btn--outline" style="min-width:140px;">[ CANCELAR ]</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enlistment Applications View -->
             <div class="view" id="view-leads">
                 <div class="page-header">
-                    <h2>Client Leads</h2>
-                    <p>Manage inquiries from your portfolio's contact form.</p>
+                    <h2>Enlistment Applications</h2>
+                    <p>Audit and process high-end brand applications injected from /enlist.html.</p>
                 </div>
 
                 <div class="glass-card table-card">
-                    <table class="data-table">
+                    <table class="data-table" id="enlist-table">
                         <thead>
                             <tr>
-                                <th>Client Name</th>
-                                <th>Email</th>
-                                <th>Message Snippet</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>BRAND NAME</th>
+                                <th>EMAIL</th>
+                                <th>CORE DISCIPLINE</th>
+                                <th>INVESTMENT RANGE</th>
+                                <th>STATUS</th>
+                                <th>DATE</th>
                             </tr>
                         </thead>
                         <tbody id="leads-table-body">
-                            <tr><td colspan="5" style="color:var(--color-text-muted);">Loading leads...</td></tr>
+                            <tr><td colspan="6" style="color:var(--color-text-muted);text-align:center;">Loading applications...</td></tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <!-- Analytics View (Módulo 29) -->
+            <div class="view" id="view-analytics">
+                <div class="page-header">
+                    <h2>Analytics</h2>
+                    <p>Private first-party metrics — no cookies, no third-party scripts. Data from <code style="font-family:monospace;font-size:0.8em;background:rgba(255,255,255,0.06);padding:0.1em 0.4em;border-radius:3px;">analytics_events</code>.</p>
+                </div>
+
+                <!-- KPI Cards -->
+                <div class="analytics-kpi-grid">
+                    <div class="glass-card analytics-kpi-card">
+                        <p class="analytics-kpi-label">PAGE VIEWS <span style="color:rgba(255,255,255,0.2);">/ 30d</span></p>
+                        <div class="analytics-kpi-value" id="kpi-pageviews">—</div>
+                    </div>
+                    <div class="glass-card analytics-kpi-card">
+                        <p class="analytics-kpi-label">UNIQUE SESSIONS</p>
+                        <div class="analytics-kpi-value" id="kpi-sessions">—</div>
+                    </div>
+                    <div class="glass-card analytics-kpi-card">
+                        <p class="analytics-kpi-label">ENLIST CTR</p>
+                        <div class="analytics-kpi-value" id="kpi-ctr">—</div>
+                    </div>
+                    <div class="glass-card analytics-kpi-card">
+                        <p class="analytics-kpi-label">AVG. SCROLL DEPTH</p>
+                        <div class="analytics-kpi-value" id="kpi-scroll">—</div>
+                    </div>
+                </div>
+
+                <!-- Traffic Trend Chart -->
+                <div class="glass-card" style="margin-top:1.5rem;padding:1.75rem;">
+                    <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:rgba(255,255,255,0.3);margin:0 0 1.5rem;">TRAFFIC TREND — DAILY EVENTS (30 DAYS)</p>
+                    <canvas id="analytics-trend-chart" height="80"></canvas>
+                </div>
+
+                <!-- Conversion Funnel + Top Pages -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;">
+
+                    <!-- Funnel -->
+                    <div class="glass-card" style="padding:1.75rem;">
+                        <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:rgba(255,255,255,0.3);margin:0 0 1.5rem;">CONVERSION FUNNEL</p>
+                        <div id="analytics-funnel">
+                            <div class="funnel-row" data-event="page_view">
+                                <span class="funnel-label">PAGE VIEW</span>
+                                <div class="funnel-bar-wrap"><div class="funnel-bar" id="funnel-bar-page_view"></div></div>
+                                <span class="funnel-count" id="funnel-count-page_view">—</span>
+                            </div>
+                            <div class="funnel-row" data-event="section_view">
+                                <span class="funnel-label">SECTION VIEW</span>
+                                <div class="funnel-bar-wrap"><div class="funnel-bar" id="funnel-bar-section_view"></div></div>
+                                <span class="funnel-count" id="funnel-count-section_view">—</span>
+                            </div>
+                            <div class="funnel-row" data-event="enlist_click">
+                                <span class="funnel-label">ENLIST CLICK</span>
+                                <div class="funnel-bar-wrap"><div class="funnel-bar" id="funnel-bar-enlist_click"></div></div>
+                                <span class="funnel-count" id="funnel-count-enlist_click">—</span>
+                            </div>
+                            <div class="funnel-row" data-event="enlist_submit">
+                                <span class="funnel-label">ENLIST SUBMIT</span>
+                                <div class="funnel-bar-wrap"><div class="funnel-bar" id="funnel-bar-enlist_submit"></div></div>
+                                <span class="funnel-count" id="funnel-count-enlist_submit">—</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Pages -->
+                    <div class="glass-card" style="padding:1.75rem;">
+                        <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.15em;color:rgba(255,255,255,0.3);margin:0 0 1.5rem;">TOP PAGES BY EVENTS</p>
+                        <table class="data-table" style="font-size:0.82rem;">
+                            <thead>
+                                <tr>
+                                    <th>PAGE</th>
+                                    <th style="text-align:right;">EVENTS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="analytics-top-pages">
+                                <tr><td colspan="2" style="color:var(--color-text-muted);text-align:center;">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
             <!-- Calendar View -->
+
             <div class="view" id="view-calendar">
                 <div class="page-header">
                     <h2>Discovery Calls</h2>
@@ -362,53 +513,164 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Services View -->
+            <!-- Structure & Expertise View -->
             <div class="view" id="view-services">
                 <div class="page-header">
-                    <h2>Services Manager</h2>
-                    <p>Update your offerings, descriptions, and base pricing.</p>
+                    <h2>Structure &amp; Expertise Manager</h2>
+                    <p>Edita las descripciones de los 5 pilares oficiales del estudio. Los cambios se reflejan en tiempo real en la Home y en /structure.html.</p>
                 </div>
-                
-                <div class="services-grid">
-                    <div class="glass-card service-edit-card">
-                        <div class="form-group">
-                            <label>Service Name</label>
-                            <input type="text" value="Strategic Branding">
-                        </div>
-                        <div class="form-group">
-                            <label>Base Price ($)</label>
-                            <input type="text" value="1,500">
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea rows="3">Visual identity systems designed for the digital age.</textarea>
-                        </div>
-                        <button class="btn btn--outline btn--sm btn--full">Update Service</button>
-                    </div>
 
-                    <div class="glass-card service-edit-card">
-                        <div class="form-group">
-                            <label>Service Name</label>
-                            <input type="text" value="UX/UI Product Design">
-                        </div>
-                        <div class="form-group">
-                            <label>Base Price ($)</label>
-                            <input type="text" value="2,500">
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea rows="3">Modern, user-centric interfaces. High-end user experiences.</textarea>
-                        </div>
-                        <button class="btn btn--outline btn--sm btn--full">Update Service</button>
-                    </div>
+                <div id="expertise-pillars-list">
+                    <!-- Populated dynamically by admin.js -->
+                    <div class="expertise-skeleton"></div>
+                    <div class="expertise-skeleton"></div>
+                    <div class="expertise-skeleton"></div>
+                    <div class="expertise-skeleton"></div>
+                    <div class="expertise-skeleton"></div>
                 </div>
             </div>
 
-        </div>
+            <!-- Settings View (Módulo 30) -->
+            <div class="view" id="view-settings">
+                <div class="page-header">
+                    <h2>Global Settings</h2>
+                    <p>Manage system configuration, external widgets, and global brand identifiers.</p>
+                </div>
+
+                <div class="glass-card">
+                    <form class="admin-form" id="settings-form">
+                        
+                        <!-- 1. INTEGRATION SETTINGS -->
+                        <h4 style="margin: 0 0 1.5rem 0; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent); border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem;">
+                            1. INTEGRATIONS & WIDGETS
+                        </h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="setting-calendly-url">Calendly URL</label>
+                                <input type="text" id="setting-calendly-url" placeholder="e.g. https://calendly.com/strn-studio">
+                            </div>
+                            <div class="form-group">
+                                <label for="setting-webhook-url">Webhook Notification URL</label>
+                                <input type="text" id="setting-webhook-url" placeholder="e.g. https://hooks.slack.com/... or discord webhook">
+                            </div>
+                        </div>
+
+                        <!-- 2. IDENTITY SETTINGS -->
+                        <h4 style="margin: 2.5rem 0 1.5rem 0; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent); border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem;">
+                            2. IDENTITY METADATA (FOOTER & SOCIAL)
+                        </h4>
+                        <div class="form-row" style="grid-template-columns: 1fr 1fr 1fr;">
+                            <div class="form-group">
+                                <label for="setting-behance-url">Behance URL</label>
+                                <input type="text" id="setting-behance-url" placeholder="e.g. https://behance.net/strn-studio">
+                            </div>
+                            <div class="form-group">
+                                <label for="setting-linkedin-url">LinkedIn URL</label>
+                                <input type="text" id="setting-linkedin-url" placeholder="e.g. https://linkedin.com/company/strn-studio">
+                            </div>
+                            <div class="form-group">
+                                <label for="setting-contact-email">Corporate Email</label>
+                                <input type="email" id="setting-contact-email" placeholder="e.g. contact@strn-studio.com">
+                            </div>
+                        </div>
+
+                        <!-- 3. MAINTENANCE STATE -->
+                        <h4 style="margin: 2.5rem 0 1.5rem 0; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent); border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem;">
+                            3. SITE STATE OVERRIDE
+                        </h4>
+                        <div class="form-row" style="grid-template-columns: 1fr;">
+                            <div class="form-group" style="padding-top: 0.5rem;">
+                                <div style="display:flex; align-items:center; gap:0.75rem;">
+                                    <input type="checkbox" id="setting-maintenance-mode" style="width:18px; height:18px; accent-color:var(--color-accent); cursor:pointer;">
+                                    <label for="setting-maintenance-mode" style="margin:0; cursor:pointer; font-weight: 700;">System Maintenance Override</label>
+                                </div>
+                                <p style="margin: 0.5rem 0 0; font-size: 0.75rem; color: var(--color-text-muted); line-height: 1.5;">
+                                    If active, all public pages are redirected to a minimalist wait screen protecting the backend. Admin CPanel remains accessible.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- SUBMIT BUTTON -->
+                        <div style="margin-top: 2.5rem; display: flex; justify-content: flex-end;">
+                            <button type="submit" class="btn btn--primary" id="save-settings-btn" style="min-width: 200px;">
+                                [ SAVE CONFIGURATION ]
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>        </div>
     </main>
 
+    <!-- Leads Drawer Overlay -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+
+    <!-- Enlistment Applications Briefing Drawer -->
+    <div class="drawer" id="leads-drawer">
+        <div class="drawer__header">
+            <div>
+                <p style="font-size:0.65rem;font-weight:700;letter-spacing:0.15em;color:rgba(255,255,255,0.35);margin:0 0 0.2rem;">ENLISTMENT BRIEFING</p>
+                <h3 id="drawer-brand" style="margin:0;font-size:1.1rem;">—</h3>
+            </div>
+            <button class="drawer__close" id="drawer-close"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="drawer__content">
+            <!-- Identity -->
+            <div class="drawer-field">
+                <label>EMAIL</label>
+                <div class="val" id="drawer-email">—</div>
+            </div>
+            <div class="drawer-field">
+                <label>CORE DISCIPLINE</label>
+                <div class="val" id="drawer-discipline">—</div>
+            </div>
+            <div class="drawer-field">
+                <label>INVESTMENT RANGE</label>
+                <div class="val" id="drawer-budget">—</div>
+            </div>
+            <div class="drawer-field">
+                <label>SUBMITTED</label>
+                <div class="val" id="drawer-date">—</div>
+            </div>
+
+            <!-- Status Selector -->
+            <div class="drawer-field" style="margin-top:1.25rem;">
+                <label>APPLICATION STATUS</label>
+                <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.5rem;" id="drawer-status-btns">
+                    <button class="enlist-status-btn" data-status="PENDING_REVIEW">PENDING_REVIEW</button>
+                    <button class="enlist-status-btn" data-status="IN_CONVERSATION">IN_CONVERSATION</button>
+                    <button class="enlist-status-btn" data-status="ACCEPTED">ACCEPTED</button>
+                    <button class="enlist-status-btn" data-status="REJECTED">REJECTED</button>
+                </div>
+            </div>
+
+            <!-- Competitive Briefing -->
+            <div class="drawer-field" style="margin-top:1.5rem;">
+                <label>MARKET SCENARIO &amp; COMPETITIVE BRIEFING</label>
+                <div class="val val--scenario" id="drawer-scenario">—</div>
+            </div>
+        </div>
+        <div class="drawer__footer">
+            <a href="#" class="btn btn--primary btn--sm" id="drawer-reply-btn" style="flex:1;">Reply <i class="ph ph-paper-plane-tilt"></i></a>
+        </div>
+    </div>
+
+    <!-- Micro Delete Confirmation Modal -->
+    <div class="drawer-overlay" id="delete-confirm-overlay" style="z-index: 19999;"></div>
+    <div id="delete-confirm-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.15s ease-out; z-index: 20000;">
+        <div class="glass-card" style="width: 100%; max-width: 340px; padding: 2rem; text-align: center; border: 1px solid var(--color-border); border-radius: 8px; background: #060606; box-shadow: 0 10px 40px rgba(0,0,0,0.8);">
+            <i class="ph ph-warning" style="font-size: 2.5rem; color: #e53e3e; margin-bottom: 1rem; display: block;"></i>
+            <h4 style="font-family: var(--font-heading); font-size: 1.25rem; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #FFFFFF; text-transform: uppercase;">¿ELIMINAR SISTEMA DEL ARCHIVO?</h4>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">Esta acción eliminará permanentemente el caso de estudio de la base de datos de Supabase.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button class="btn btn--outline btn--sm" id="delete-cancel-btn">CANCELAR</button>
+                <button class="btn btn--primary btn--sm" id="delete-confirm-btn" style="background: #e53e3e; border-color: #e53e3e; color: white;">ELIMINAR</button>
+            </div>
+        </div>
+    </div>
+
     <script src="js/supabase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="js/admin.js"></script>
 </body>
 </html>

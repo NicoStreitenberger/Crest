@@ -17,6 +17,8 @@
     <meta property="og:description" content="Espacio de pensamiento crítico, análisis de mercado y la mística del diseño estratégico analizada desde la resiliencia." />
     <meta property="og:image"       content="https://creststudio.com/assets/og-cover.jpg" />
 
+    <!-- Preload fonts -->
+    <link rel="preload" as="font" href="/assets/fonts/crest-font.woff2" type="font/woff2" crossorigin>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +33,72 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/crest.css">
+    <style>
+        /* Focus Articles List Layout */
+        .articles-list {
+            display: flex;
+            flex-direction: column;
+            margin-top: 3rem;
+        }
+        
+        .articles-list:hover .articles-row {
+            opacity: 0.3;
+        }
+        
+        .articles-list .articles-row:hover {
+            opacity: 1;
+        }
+        
+        .articles-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--c-border);
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.4s ease, border-color 0.4s ease;
+        }
+        
+        .articles-row:hover {
+            border-color: var(--c-border-md);
+        }
+        
+        .articles-row__meta {
+            font-family: var(--font-primary);
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .articles-row__title {
+            font-family: var(--f-display);
+            font-weight: 800;
+            font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+            text-transform: uppercase;
+            line-height: 1;
+            color: #ffffff;
+            margin: 0;
+            transition: transform 0.4s ease;
+        }
+        
+        .articles-row:hover .articles-row__title {
+            transform: translateX(10px);
+        }
+
+        @media (max-width: 768px) {
+            .articles-row {
+                padding: 2rem 0;
+            }
+            .articles-row:hover .articles-row__title {
+                transform: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -42,7 +110,7 @@
                 <span class="logo__secondary">Studio</span>
             </a>
             <nav class="header__nav" aria-label="Navegación principal">
-                <ul class="nav__list" role="list">
+                <ul class="nav__list nav-links" role="list">
                     <li class="nav__item">
                         <a href="/structure.html" class="nav__link" id="nav-services">STRUCTURE</a>
                     </li>
@@ -53,7 +121,7 @@
                         <a href="/currents.html" class="nav__link nav__link--active" id="nav-about" style="color:var(--c-text); border-bottom:1px solid var(--c-text);">CURRENTS</a>
                     </li>
                 </ul>
-                <a href="/enlist.html" class="nav__cta" id="nav-contact">ENLIST</a>
+                <a href="/enlist.html" class="nav__cta btn-enlist" id="nav-contact">[ ENLIST ]</a>
             </nav>
             <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
                 <span></span>
@@ -81,27 +149,11 @@
                 <p class="hero__subtitle" style="margin: 0 auto; color: var(--c-muted);">Thoughts on high-performance design, brand architecture, and digital resilience.</p>
             </section>
 
-            <!-- Filters -->
-            <div class="container reveal">
-                <div class="portfolio-filters">
-                    <button class="filter-btn active">All Topics</button>
+            <!-- Focus Articles List -->
+            <section class="container reveal" style="padding-bottom: 8rem; max-width: 900px; margin: 0 auto;">
+                <div class="articles-list" id="articles-list">
+                    <!-- Dynamic articles injected here -->
                 </div>
-            </div>
-
-            <!-- Featured Post (dynamic) -->
-            <section class="container reveal">
-                <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
-                    <h2 class="t-display" style="font-size: 2rem;">LATEST INSIGHT</h2>
-                </div>
-                <div id="featured-post"></div>
-            </section>
-
-            <!-- Recent Posts Grid (dynamic) -->
-            <section class="container reveal" style="padding-bottom: 8rem;">
-                <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
-                    <h2 class="t-display" style="font-size: 2rem;">RECENT ARTICLES</h2>
-                </div>
-                <div class="recent-posts" id="recent-posts"></div>
             </section>
 
         </div>
@@ -111,8 +163,11 @@
             <div class="footer__top">
                 <div class="footer__col" id="footer-brand">
                     <div>
-                        <p class="footer__monogram">[ CRST ]</p>
+                        <p class="footer__monogram">[ CREST STUDIO ]</p>
                         <p class="footer__tagline">High-Performance Branding Studio</p>
+                    </div>
+                    <div class="footer__socials" aria-label="Redes sociales">
+                        <!-- Añade tus redes aquí -->
                     </div>
                 </div>
                 <div class="footer__col" id="footer-contact">
@@ -140,8 +195,8 @@
                     &copy; <span id="footer-year">2026</span> CREST Studio. All rights reserved.
                 </p>
                 <nav class="footer__links" aria-label="Legal">
-                    <a href="#" class="footer__link" id="footer-privacy">Privacy Policy</a>
-                    <a href="#" class="footer__link" id="footer-terms">Terms of Service</a>
+                    <a href="/privacy.html" class="footer__link" id="footer-privacy">Privacy Policy</a>
+                    <a href="/terms.html" class="footer__link" id="footer-terms">Terms of Service</a>
                 </nav>
             </div>
         </footer>

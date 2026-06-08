@@ -1,69 +1,74 @@
 /**
- * STRN Studio — blog.js
- * Full blog feed driven by Supabase (published posts).
+ * CREST Studio — currents.js
+ * Dynamic Focus Articles List driven by Supabase (articles table).
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
 
-    const featuredContainer = document.getElementById('featured-post');
-    const recentContainer   = document.getElementById('recent-posts');
+    const container = document.getElementById('articles-list');
 
     // Skeleton helper
-    if (featuredContainer) featuredContainer.innerHTML = '<div class="skeleton" style="width:100%;height:350px;border-radius:16px;"></div>';
-    if (recentContainer)   recentContainer.innerHTML   = '<div class="skeleton" style="width:100%;height:220px;border-radius:16px;"></div>'.repeat(4);
+    function showSkeletons(count = 4) {
+        if (!container) return;
+        container.innerHTML = '';
+        for (let i = 0; i < count; i++) {
+            const row = document.createElement('div');
+            row.style.cssText = 'display:flex; flex-direction:column; gap:0.5rem; padding:2.5rem 0; border-bottom:1px solid var(--c-border);';
+            row.innerHTML = `
+                <div class="skeleton" style="width:20%; height:1rem; border-radius:4px; margin-bottom:0.5rem;"></div>
+                <div class="skeleton" style="width:75%; height:3rem; border-radius:8px;"></div>
+            `;
+            container.appendChild(row);
+        }
+    }
 
-    const { data: posts, error } = await db
-        .from('blog_posts')
-        .select('id, title, slug, excerpt, featured_image, published_at')
-        .eq('status', 'published')
-        .order('published_at', { ascending: false });
+    if (container) showSkeletons();
 
-    if (error || !posts || posts.length === 0) {
-        if (featuredContainer) featuredContainer.innerHTML = '<p style="color:var(--color-text-muted);padding:3rem 0;">No articles published yet.</p>';
-        if (recentContainer)   recentContainer.innerHTML   = '';
+    // Guard: Supabase client must be available
+    if (typeof window.db === 'undefined') {
+        console.error('[CREST] Supabase database client not found.');
+        if (container) container.innerHTML = '<p style="color:var(--c-dim); padding:4rem 0; text-align:center;">Database client not configured.</p>';
         return;
     }
 
-    const [featured, ...rest] = posts;
+    // Fetch from articles table
+    const { data: articles, error } = await db
+        .from('articles')
+        .select('id, title, slug, read_time, published_date')
+        .order('created_at', { ascending: false });
 
-    // Featured post
-    if (featuredContainer) {
-        const imgSrc = featured.featured_image || 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=1200&q=80';
-        const date   = featured.published_at ? new Date(featured.published_at).toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
-        featuredContainer.innerHTML = `
-            <a href="/current/${featured.slug}" class="featured-post glass-card" style="padding:0;overflow:hidden;border-radius:24px;">
-                <div class="featured-post__image"><img src="${imgSrc}" alt="${featured.title}" loading="lazy"></div>
-                <div style="padding:3rem;">
-                    <div class="post-meta"><span><i class="ph ph-calendar-blank"></i> ${date}</span></div>
-                    <h2 class="featured-post__title">${featured.title}</h2>
-                    <p class="featured-post__excerpt">${featured.excerpt || ''}</p>
-                    <span class="btn btn--outline btn--sm">Read Article <i class="ph ph-arrow-right"></i></span>
-                </div>
-            </a>`;
+    if (container) container.innerHTML = '';
+
+    if (error || !articles || articles.length === 0) {
+        if (container) {
+            container.innerHTML = '<p style="color:var(--c-dim); padding:6rem 0; text-align:center;">No articles published yet.</p>';
+        }
+        return;
     }
 
-    // Recent posts
-    if (recentContainer) {
-        recentContainer.innerHTML = '';
-        rest.slice(0, 4).forEach(post => {
-            const imgSrc = post.featured_image || 'https://images.unsplash.com/photo-1542744094-3a31f272c490?w=800&q=80';
-            const date   = post.published_at ? new Date(post.published_at).toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
-            const el = document.createElement('a');
-            el.href = `/current/${post.slug}`;
-            el.className = 'post-card';
-            el.innerHTML = `
-                <div class="post-card__image"><img src="${imgSrc}" alt="${post.title}" loading="lazy"></div>
-                <div>
-                    <div class="post-meta" style="margin-bottom:0.5rem;"><span><i class="ph ph-calendar-blank"></i> ${date}</span></div>
-                    <h3>${post.title}</h3>
-                    <p>${post.excerpt || ''}</p>
-                </div>`;
-            recentContainer.appendChild(el);
-        });
-    }
+    articles.forEach(article => {
+        const formattedDate = article.published_date || 'MAY 2026';
+        const readingTime = article.read_time || '3 MIN READ';
 
+        const row = document.createElement('a');
+        row.href = `/current-post.html?slug=${article.slug}`;
+        row.className = 'articles-row';
+        row.innerHTML = `
+            <div class="articles-row__meta">
+                <span>${formattedDate.toUpperCase()}</span>
+                <span>—</span>
+                <span>${readingTime.toUpperCase()}</span>
+            </div>
+            <h2 class="articles-row__title">${article.title.toUpperCase()}</h2>
+        `;
+        
+        if (container) container.appendChild(row);
+    });
+
+    // Header interaction states & Reveal animation trigger
     const header = document.querySelector('.header');
     if (header) window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
+    
     const revObs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); }), { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 });

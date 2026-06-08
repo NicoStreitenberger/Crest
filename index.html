@@ -17,7 +17,9 @@
     <meta property="og:description" content="Estudio boutique de dirección de arte e ingeniería visual basado en España. Construimos infraestructuras de marca y plataformas digitales calculadas para domar el mercado." />
     <meta property="og:image"       content="https://creststudio.com/assets/og-cover.jpg" />
 
-    <!-- Preload fonts -->
+    <!-- Preload fonts & media -->
+    <link rel="preload" as="font" href="/assets/fonts/crest-font.woff2" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/video/crest-hero-bg.webm" as="video" type="video/webm" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -45,7 +47,7 @@
 
             <!-- Desktop navigation -->
             <nav class="header__nav" aria-label="Navegación principal">
-                <ul class="nav__list" role="list">
+                <ul class="nav__list nav-links" role="list">
                     <li class="nav__item">
                         <a href="/structure.html"  class="nav__link" id="nav-services">STRUCTURE</a>
                     </li>
@@ -56,7 +58,7 @@
                         <a href="/currents.html"     class="nav__link" id="nav-about">CURRENTS</a>
                     </li>
                 </ul>
-                <a href="/enlist.html" class="nav__cta" id="nav-contact">ENLIST</a>
+                <a href="/enlist.html" class="nav__cta btn-enlist" id="nav-contact">[ ENLIST ]</a>
             </nav>
 
             <!-- Mobile toggle -->
@@ -279,22 +281,19 @@
         <section class="about-strip" id="about" aria-labelledby="about-heading">
 
             <div class="about-strip__label">
-                <span class="t-label reveal">— About CRST</span>
+                <span class="t-label reveal">— CREST STUDIO</span>
             </div>
 
             <div class="about-strip__content">
                 <h2 class="t-display about-strip__headline reveal" id="about-heading">
-                    Disciplina.<br>Cálculo.<br>Rendimiento.
+                    Disciplina.<br>Cálculo.<br>Resiliencia.
                 </h2>
                 <p class="about-strip__text reveal reveal-delay-1">
-                    CREST Studio nació de la resiliencia de quienes entienden que el verdadero rendimiento
-                    no se improvisa. Somos un estudio boutique especializado en identidad visual estratégica
-                    para marcas que operan en entornos de alta competencia. Cada sistema que diseñamos está
-                    construido para escalar, resistir y destacar — independientemente del canal o soporte.
+                    CREST Studio nació de la experiencia de emigrar: de entender que el verdadero rendimiento se forja cuando te despojas de la zona de confort y te enfrentas a una corriente desconocida. No creemos en la suerte porque hemos tenido que calcular cada paso desde cero para sobrevivir, adaptarnos y domar nuevos entornos bajo presión. Somos un estudio boutique que traslada esa mentalidad implacable a la identidad visual de marcas que compiten al más alto nivel. Construimos sistemas visuales preparados para resistir, escalar y gobernar su propio territorio, sin importar el canal o el soporte.
                 </p>
-                <a href="#contact" class="hero__cta reveal reveal-delay-2" id="about-cta" aria-label="Hablar con el equipo">
-                    <span>Hablar con el equipo</span>
-                    <span class="hero__cta-arrow" aria-hidden="true">→</span>
+                <a href="/enlist.html" class="hero__cta reveal reveal-delay-2" id="about-cta" aria-label="Iniciar el briefing">
+                    <span>[ Iniciar el briefing</span>
+                    <span class="hero__cta-arrow" aria-hidden="true">→ ]</span>
                 </a>
             </div>
 
@@ -303,16 +302,16 @@
 
         <!-- ─── CONTACT CTA ──────────────────────── -->
         <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
-            <span class="t-label reveal">— Start a project</span>
+            <span class="t-label reveal">— ENLIST</span>
             <h2 class="t-display reveal reveal-delay-1" id="contact-heading">
-                ¿Listo para crecer?
+                ¿Listo para domar la corriente?
             </h2>
-            <a href="mailto:hello@creststudio.com"
+            <a href="/enlist.html"
                class="hero__cta reveal reveal-delay-2"
                id="contact-email-cta"
-               aria-label="Enviar email a CREST Studio">
-                <span>hello@creststudio.com</span>
-                <span class="hero__cta-arrow" aria-hidden="true">→</span>
+               aria-label="Enlistarse al estudio">
+                <span>[ Enlistarse al estudio</span>
+                <span class="hero__cta-arrow" aria-hidden="true">→ ]</span>
             </a>
         </section>
 
@@ -329,7 +328,7 @@
             <!-- Col 1: Monogram -->
             <div class="footer__col" id="footer-brand">
                 <div>
-                    <p class="footer__monogram">[ CRST ]</p>
+                    <p class="footer__monogram">[ CREST STUDIO ]</p>
                     <p class="footer__tagline">High-Performance Branding Studio</p>
                 </div>
                 <div class="footer__socials" aria-label="Redes sociales">
@@ -367,9 +366,9 @@
                 </div>
                 <nav aria-label="Footer navigation">
                     <ul style="display:flex; flex-direction:column; gap:0.5rem;" role="list">
-                        <li><a href="#services"  class="footer__link" id="footer-nav-services">Services</a></li>
-                        <li><a href="#portfolio" class="footer__link" id="footer-nav-portfolio">Portfolio</a></li>
-                        <li><a href="#about"     class="footer__link" id="footer-nav-about">About</a></li>
+                        <li><a href="/structure.html"  class="footer__link" id="footer-nav-services">Structure</a></li>
+                        <li><a href="/systems.html" class="footer__link" id="footer-nav-portfolio">Systems</a></li>
+                        <li><a href="/enlist.html"     class="footer__link" id="footer-nav-about">Crest Studio</a></li>
                     </ul>
                 </nav>
             </div>
@@ -379,11 +378,11 @@
         <!-- Footer bottom bar -->
         <div class="footer__bottom">
             <p class="footer__copy" id="footer-copy">
-                &copy; <span id="footer-year">2025</span> CREST Studio. All rights reserved.
+                &copy; <span id="footer-year">2026</span> CREST Studio. All rights reserved.
             </p>
             <nav class="footer__links" aria-label="Legal">
-                <a href="#" class="footer__link" id="footer-privacy">Privacy Policy</a>
-                <a href="#" class="footer__link" id="footer-terms">Terms of Service</a>
+                <a href="/privacy.html" class="footer__link" id="footer-privacy">Privacy Policy</a>
+                <a href="/terms.html" class="footer__link" id="footer-terms">Terms of Service</a>
             </nav>
         </div>
 
@@ -398,8 +397,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase.js"></script>
 
-    <!-- Main CREST JS -->
+    <!-- Main CREST JS & Telemetry -->
     <script src="js/crest.js"></script>
+    <script src="js/analytics.js"></script>
 
 </body>
 </html>

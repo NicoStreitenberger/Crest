@@ -17,6 +17,7 @@
     /* Typography */
     --f-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
     --f-body:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --font-primary: var(--f-body);
 
     /* Spacing scale */
     --sp-xs:  0.5rem;
@@ -150,8 +151,11 @@ button {
 .header__inner {
     display: flex;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: center;
     height: 72px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 4%;
 }
 
 /* Logo block */
@@ -159,9 +163,9 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 5%;
-    border-right: 1px solid var(--c-border);
-    min-width: 220px;
+    padding: 0;
+    border-right: none;
+    min-width: auto;
     gap: 2px;
 }
 
@@ -187,19 +191,19 @@ button {
 /* Navigation */
 .header__nav {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     margin-left: auto;
 }
 
 .nav__list {
     display: flex;
-    align-items: stretch;
+    align-items: center;
 }
 
 .nav__item {
     display: flex;
     align-items: center;
-    border-left: 1px solid var(--c-border);
+    border-left: none;
 }
 
 .nav__link {
@@ -230,7 +234,7 @@ button {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--c-text);
-    border-left: 1px solid var(--c-border);
+    border-left: none;
     background: var(--c-text);
     color: var(--c-bg);
     transition: background var(--t-fast), color var(--t-fast);
@@ -238,6 +242,43 @@ button {
 
 .nav__cta:hover {
     background: var(--c-muted);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-links .nav__item {
+    border-left: none;
+}
+
+.nav-links .nav__link {
+    padding: 0;
+}
+
+.btn-enlist {
+    padding: 0.8rem 2rem;
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-left: 1.5rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    border-left: none !important;
+    white-space: nowrap;
+}
+
+.btn-enlist:hover {
+    background-color: var(--c-muted);
+    color: #000000;
 }
 
 /* Mobile menu button */
@@ -327,11 +368,11 @@ button {
 
 .hero__cta-arrow {
     display: inline-block;
-    transition: transform var(--t-fast);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .hero__cta:hover .hero__cta-arrow {
-    transform: translateX(4px);
+    transform: translateX(6px);
 }
 
 /* Hero bottom strip */
@@ -541,8 +582,8 @@ button {
     height: 100%;
     object-fit: cover;
     filter: grayscale(100%);
-    transform: scale(1.02);
-    transition: filter var(--t-slow), transform var(--t-slow);
+    transform: scale(1.0);
+    transition: filter 0.8s ease-out, transform 0.8s ease-out;
 }
 
 /* Placeholder bg when no image */
@@ -559,20 +600,16 @@ button {
     font-family: var(--f-display);
     font-weight: 800;
     font-size: 6rem;
-    color: #1a1a1a;
+    color: #ffffff;
+    opacity: 0.05;
     letter-spacing: -0.04em;
     text-transform: uppercase;
     user-select: none;
-    transition: color var(--t-slow);
 }
 
 .project-item:hover .project-item__img {
     filter: grayscale(0%);
-    transform: scale(1.06);
-}
-
-.project-item:hover .project-item__placeholder {
-    color: #2a2a2a;
+    transform: scale(1.04);
 }
 
 .project-item__overlay {
@@ -596,19 +633,13 @@ button {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: var(--sp-md);
-    border-top: 1px solid var(--c-border);
-    background: var(--c-bg);
+    top: auto;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
     z-index: 3;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    transition: background var(--t-fast);
-}
-
-.project-item:hover .project-item__info {
-    background: rgba(0,0,0,0.92);
-    border-color: var(--c-border-md);
+    align-items: flex-end;
 }
 
 .project-item__client {
@@ -620,11 +651,11 @@ button {
 }
 
 .project-item__category {
-    font-size: 0.65rem;
-    font-weight: 300;
-    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--c-dim);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    font-family: var(--font-primary);
+    color: var(--c-muted);
 }
 
 /* --- 9. ABOUT STRIP ------------------------------------------ */
@@ -692,7 +723,6 @@ button {
     letter-spacing: 0.5em;
     color: var(--c-text);
 }
-
 .footer__tagline {
     font-size: 0.65rem;
     font-weight: 300;
@@ -700,6 +730,29 @@ button {
     text-transform: uppercase;
     color: var(--c-dim);
     margin-top: var(--sp-sm);
+}
+
+.footer__socials {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 1.5rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.footer__social-link {
+    color: var(--c-dim);
+    transition: color var(--t-fast);
+}
+
+.footer__social-link:hover {
+    color: var(--c-text);
+}
+
+.social-separator {
+    color: var(--c-border-md);
 }
 
 .footer__location {
@@ -743,12 +796,27 @@ button {
     background: #22c55e;
     margin-right: 6px;
     vertical-align: middle;
-    animation: pulse-dot 2s ease-in-out infinite;
+    position: relative;
 }
 
-@keyframes pulse-dot {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.4; }
+.footer__perf-dot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulse-ping 2.5s infinite ease-in-out;
+    pointer-events: none;
+    transform-origin: center;
+}
+
+@keyframes pulse-ping {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.4); opacity: 0; }
+    100% { transform: scale(0.95); opacity: 0; }
 }
 
 .footer__bottom {
@@ -782,6 +850,16 @@ button {
 }
 
 .footer__link:hover {
+    color: var(--c-text);
+}
+
+.footer__links .footer__link {
+    opacity: 0.6;
+    transition: opacity var(--t-fast), color var(--t-fast);
+}
+
+.footer__links .footer__link:hover {
+    opacity: 1;
     color: var(--c-text);
 }
 
@@ -978,4 +1056,37 @@ button {
         gap: var(--sp-sm);
         align-items: flex-start;
     }
+}
+
+/* ============================================================
+   GLOBAL ANALOG NOISE OVERLAY
+   ============================================================ */
+.noise-overlay {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.012; /* Strictly between 1% and 1.5% */
+    z-index: 9999;
+    pointer-events: none;
+    will-change: transform;
+    animation: noise-jitter 0.15s infinite steps(4);
+}
+
+@keyframes noise-jitter {
+    0% { transform: translate3d(0, 0, 0); }
+    10% { transform: translate3d(-1%, -1%, 0); }
+    20% { transform: translate3d(-2%, 1%, 0); }
+    30% { transform: translate3d(1%, -2%, 0); }
+    40% { transform: translate3d(-1%, 2%, 0); }
+    50% { transform: translate3d(-2%, -1%, 0); }
+    60% { transform: translate3d(2%, 1%, 0); }
+    70% { transform: translate3d(1%, -1%, 0); }
+    80% { transform: translate3d(-1%, 2%, 0); }
+    90% { transform: translate3d(1%, -2%, 0); }
+    100% { transform: translate3d(0, 0, 0); }
 }

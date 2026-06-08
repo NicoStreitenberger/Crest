@@ -1,44 +1,59 @@
 /**
- * STRN Studio — portfolio.js
- * Full mosaic portfolio page with Supabase + category filtering + skeleton loading.
+ * CREST Studio — systems.js
+ * Dynamic typographic portfolio list with Supabase + hover preview tracking.
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
+    const container = document.getElementById('full-portfolio');
+    const filterRow = document.querySelector('.portfolio-filters');
+    const preview = document.getElementById('hover-preview');
+    let allCategories = [];
 
-    const container  = document.getElementById('full-portfolio');
-    const filterRow  = document.querySelector('.portfolio-filters');
-    let   allCategories = [];
+    // Check if Supabase client (db) is available
+    if (typeof window.db === 'undefined') {
+        console.error('[CREST] Supabase database client not found.');
+        return;
+    }
 
     // ---- Skeletons ----
-    function showSkeletons(count = 8) {
+    function showSkeletons(count = 5) {
+        if (!container) return;
         container.innerHTML = '';
         for (let i = 0; i < count; i++) {
-            const sk = document.createElement('div');
-            sk.className = 'skeleton-card';
-            sk.style.cssText = 'position:relative;';
-            // Mosaic sizing
-            if (i % 6 === 0) { sk.style.gridColumn = 'span 2'; sk.style.gridRow = 'span 2'; }
-            else if (i % 6 === 3) { sk.style.gridColumn = 'span 2'; }
-            sk.innerHTML = '<div class="skeleton" style="width:100%;height:100%;border-radius:0;"></div>';
-            container.appendChild(sk);
+            const row = document.createElement('div');
+            row.className = 'systems-row-skeleton';
+            row.style.cssText = 'display:flex; justify-content:space-between; align-items:center; padding:2.5rem 0; border-bottom:1px solid var(--c-border);';
+            row.innerHTML = `
+                <div class="skeleton" style="width: 45%; height: 3.5rem; border-radius: 4px;"></div>
+                <div class="skeleton" style="width: 15%; height: 1.2rem; border-radius: 4px;"></div>
+            `;
+            container.appendChild(row);
         }
     }
 
     // ---- Load categories and build filters ----
     async function loadCategories() {
-        const { data } = await db.from('categories').select('id, name, slug');
-        if (data) allCategories = data;
+        // Under the official unified schema, categories are static closed nomenclatures
+        allCategories = [
+            { id: 'VISUAL INFRASTRUCTURE', name: 'VISUAL INFRASTRUCTURE' },
+            { id: 'DIGITAL SYSTEMS', name: 'DIGITAL SYSTEMS' },
+            { id: 'TANGIBLE MATTER', name: 'TANGIBLE MATTER' },
+            { id: 'CREATIVE DIRECTION', name: 'CREATIVE DIRECTION' },
+            { id: 'SPECIAL OPERATIONS', name: 'SPECIAL OPERATIONS' }
+        ];
     }
 
     function buildFilters() {
         if (!filterRow || allCategories.length === 0) return;
+        
+        // Remove existing dynamic filter buttons if any
         filterRow.querySelectorAll('.filter-btn[data-cat-id]').forEach(b => b.remove());
 
         allCategories.forEach(cat => {
             const btn = document.createElement('button');
             btn.className = 'filter-btn';
             btn.setAttribute('data-cat-id', cat.id);
-            btn.textContent = cat.name;
+            btn.textContent = cat.name.toUpperCase();
             filterRow.appendChild(btn);
         });
 
@@ -51,49 +66,92 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    function optimizeStorageUrl(url) {
+        if (!url) return '';
+        if (url.includes('vojwdyubksoozhyvnbfu.supabase.co/storage/v1/object/public/')) {
+            return url.replace('/storage/v1/object/public/', '/storage/v1/render/image/public/') + '?format=webp&quality=80';
+        }
+        return url;
+    }
+
     // ---- Render projects ----
     async function renderProjects(categoryId = null) {
+        if (!container) return;
         showSkeletons();
 
-        let query = db
-            .from('projects')
-            .select('id, title, slug, main_image, category_id')
-            .order('created_at', { ascending: false });
+        try {
+            let query = db
+                .from('projects')
+                .select('id, slug, client_name, main_image, category, is_featured')
+                .order('is_featured', { ascending: false })
+                .order('created_at',  { ascending: false });
 
-        if (categoryId) query = query.eq('category_id', categoryId);
+            if (categoryId) {
+                query = query.eq('category', categoryId);
+            }
 
-        const { data: projects, error } = await query;
-        container.innerHTML = '';
+            const { data: projects, error } = await query;
+            container.innerHTML = '';
 
-        if (error || !projects || projects.length === 0) {
-            container.innerHTML = `<p style="color:var(--color-text-muted);text-align:center;padding:6rem;grid-column:1/-1;">No projects found.</p>`;
-            return;
+            if (error || !projects || projects.length === 0) {
+                container.innerHTML = `<p style="color:var(--c-dim);text-align:center;padding:6rem;grid-column:1/-1;">No projects found.</p>`;
+                return;
+            }
+
+            projects.forEach((project) => {
+                const client = project.client_name || 'UNTITLED';
+                const categoryName = project.category || '';
+                const imgSrc = optimizeStorageUrl(project.main_image || '');
+
+                const row = document.createElement('a');
+                row.href = `/system-post.html?slug=${project.slug}`;
+                row.className = 'systems-row';
+                row.setAttribute('data-img', imgSrc);
+                
+                row.innerHTML = `
+                    <h2 class="systems-row__client">${client}</h2>
+                    <span class="systems-row__category">${categoryName}</span>
+                `;
+                
+                container.appendChild(row);
+            });
+        } catch (err) {
+            console.error('Error rendering projects:', err);
+            container.innerHTML = `<p style="color:var(--c-dim);text-align:center;padding:6rem;">Error loading portfolio archive.</p>`;
         }
+    }
 
-        projects.forEach((project, index) => {
-            const cat    = allCategories.find(c => c.id === project.category_id);
-            const imgSrc = project.main_image || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80';
+    // ---- Mouse Interaction (Hover Preview) ----
+    function initHoverPreview() {
+        if (!preview || !container) return;
 
-            // Mosaic pattern
-            let colSpan = 'span 1', rowSpan = 'span 1';
-            if (index % 6 === 0) { colSpan = 'span 2'; rowSpan = 'span 2'; }
-            else if (index % 6 === 3) { colSpan = 'span 2'; }
+        // Mousemove listener to update preview position
+        window.addEventListener('mousemove', (e) => {
+            preview.style.transform = `translate3d(${e.clientX + 20}px, ${e.clientY + 20}px, 0)`;
+        });
 
-            const card = document.createElement('div');
-            card.className = 'project-card';
-            card.style.cssText = `position:relative;grid-column:${colSpan};grid-row:${rowSpan};border:none;border-radius:0;`;
-            card.innerHTML = `
-                <div class="project-card__image" style="border-radius:0;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;">
-                    <img src="${imgSrc}" alt="${project.title}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
-                    <div class="project-card__overlay">
-                        <a href="/system/${project.slug}" class="view-project">View Case <i class="ph ph-arrow-up-right"></i></a>
-                    </div>
-                </div>
-                <div class="project-card__info" style="position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);border-radius:0;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;">
-                    <h3 style="margin:0;font-size:1.5rem;color:white;">${project.title}</h3>
-                    <span style="color:var(--color-accent);font-weight:600;font-size:0.875rem;">${cat ? cat.name : ''}</span>
-                </div>`;
-            container.appendChild(card);
+        // Mouseover/mouseout delegation on container
+        container.addEventListener('mouseover', (e) => {
+            const row = e.target.closest('.systems-row');
+            if (!row) return;
+
+            const imgSrc = row.getAttribute('data-img');
+            if (imgSrc) {
+                preview.style.backgroundImage = `url('${imgSrc}')`;
+                preview.classList.add('active');
+            } else {
+                preview.classList.remove('active');
+            }
+        });
+
+        container.addEventListener('mouseout', (e) => {
+            const row = e.target.closest('.systems-row');
+            if (!row) return;
+
+            const related = e.relatedTarget ? e.relatedTarget.closest('.systems-row') : null;
+            if (related !== row) {
+                preview.classList.remove('active');
+            }
         });
     }
 
@@ -101,14 +159,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadCategories();
     buildFilters();
     await renderProjects();
-
-    // ---- Cursor & reveal (shared) ----
-    const revealObs = new IntersectionObserver(
-        entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); }),
-        { threshold: 0.1 }
-    );
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-    const header = document.querySelector('.header');
-    if (header) window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
+    initHoverPreview();
 });

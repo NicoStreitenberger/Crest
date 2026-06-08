@@ -3,21 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- SEO -->
     <title>Enlist — Apply for Studio Intervention</title>
     <meta name="description" content="Formulario técnico de reclutamiento y briefing para marcas de alta competencia." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://creststudio.com/enlist.html" />
 
-    <!-- Open Graph -->
-    <meta property="og:type"        content="website" />
-    <meta property="og:url"         content="https://creststudio.com/enlist.html" />
-    <meta property="og:title"       content="Enlist — Apply for Studio Intervention" />
-    <meta property="og:description" content="Formulario técnico de reclutamiento y briefing para marcas de alta competencia." />
-    <meta property="og:image"       content="https://creststudio.com/assets/og-cover.jpg" />
-
     <!-- Preload fonts -->
+    <link rel="preload" as="font" href="/assets/fonts/crest-font.woff2" type="font/woff2" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -32,72 +24,230 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◼</text></svg>" />
 
     <style>
-        .enlist-form {
+        body {
+            background-color: #000000;
+            overflow-x: hidden;
+        }
+
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            min-height: 100vh;
+            background: #000000;
+        }
+
+        /* Left Column: Sticky brand block */
+        .split-left {
+            position: sticky;
+            top: 0;
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
-            max-width: 600px;
-            margin: var(--sp-md) auto var(--sp-lg) auto;
-            background: rgba(10, 10, 10, 0.5);
-            padding: var(--sp-md);
-            border: 1px solid var(--c-border);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
+            justify-content: center;
+            padding: 4rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            background: #000000;
+            z-index: 5;
+        }
+
+        .split-left__tag {
+            font-family: var(--f-body);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--c-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .split-left__title {
+            font-family: var(--f-display);
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-bottom: 2rem;
+        }
+
+        .split-left__desc {
+            font-family: var(--f-body);
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 45ch;
+        }
+
+        /* Right Column: Interactive free-scroll form */
+        .split-right {
+            padding: 10rem 4rem 6rem 4rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .briefing-form {
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+            max-width: 650px;
+            width: 100%;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
         .form-group label {
             font-family: var(--f-body);
-            font-size: 0.875rem;
-            color: var(--c-muted);
-            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            color: var(--c-dim);
+            letter-spacing: 0.15em;
             text-transform: uppercase;
+            font-weight: 500;
         }
 
-        .form-group input, 
-        .form-group select, 
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select,
         .form-group textarea {
-            background: #000;
-            border: 1px solid var(--c-border-md);
-            color: #fff;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            padding: 1rem 0;
+            width: 100%;
+            color: #ffffff;
+            border-radius: 0;
+            font-family: var(--f-body);
+            font-size: 1.1rem;
+            font-weight: 300;
+            outline: none;
+            transition: border-color 0.4s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #ffffff;
+        }
+
+        /* Custom Dropdown Styling */
+        .form-group select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0 center;
+            background-size: 14px;
+            padding-right: 24px;
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: var(--f-body);
             padding: 1rem;
-            border-radius: 6px;
+        }
+
+        /* Custom Radio Budget Layout */
+        .budget-options {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .budget-option {
+            cursor: pointer;
             font-family: var(--f-body);
             font-size: 1rem;
-            transition: border-color var(--t-fast);
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.3);
+            transition: color var(--t-fast);
+            user-select: none;
         }
 
-        .form-group input:focus, 
-        .form-group select:focus, 
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #fff;
+        .budget-option:hover {
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        .form-actions button {
-            background: #fff;
-            color: #000;
+        .budget-option input:checked + span {
+            color: #ffffff;
             font-weight: 600;
-            font-size: 1rem;
-            padding: 1.25rem 2rem;
-            border-radius: 6px;
-            text-transform: uppercase;
-            width: 100%;
-            transition: background var(--t-fast), color var(--t-fast);
         }
 
-        .form-actions button:hover {
-            background: var(--c-dim);
-            color: #000;
+        /* Submit Button */
+        .briefing-submit-btn {
+            align-self: flex-start;
+            margin-top: 1.5rem;
+            background: #ffffff;
+            color: #000000;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            padding: 1.25rem 2.5rem;
+            text-transform: uppercase;
+            transition: background var(--t-fast), color var(--t-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .briefing-submit-btn:hover {
+            background: var(--c-muted);
+            color: #000000;
+        }
+
+        /* Success Toast Floating minimal */
+        .success-toast {
+            position: fixed;
+            bottom: 2.5rem;
+            right: 2.5rem;
+            background: #ffffff;
+            color: #000000;
+            padding: 1.25rem 2.5rem;
+            font-family: var(--f-body);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            z-index: 9999;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 0;
+        }
+
+        .success-toast.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .split-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .split-left {
+                position: relative;
+                height: auto;
+                padding: 8rem 2rem 4rem 2rem;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .split-right {
+                padding: 4rem 2rem 6rem 2rem;
+            }
         }
     </style>
 </head>
-
 <body>
 
     <!-- HEADER -->
@@ -108,7 +258,7 @@
                 <span class="logo__secondary">Studio</span>
             </a>
             <nav class="header__nav" aria-label="Navegación principal">
-                <ul class="nav__list" role="list">
+                <ul class="nav__list nav-links" role="list">
                     <li class="nav__item">
                         <a href="/structure.html" class="nav__link" id="nav-services">STRUCTURE</a>
                     </li>
@@ -119,7 +269,7 @@
                         <a href="/currents.html" class="nav__link" id="nav-about">CURRENTS</a>
                     </li>
                 </ul>
-                <a href="/enlist.html" class="nav__cta nav__cta--active" id="nav-contact" style="background:#fff; color:#000;">ENLIST</a>
+                <a href="/enlist.html" class="nav__cta nav__cta--active btn-enlist" id="nav-contact">[ ENLIST ]</a>
             </nav>
             <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
                 <span></span>
@@ -138,165 +288,196 @@
     </nav>
 
     <!-- MAIN CONTENT -->
-    <main id="main-content" style="padding-top: 72px;">
+    <main id="main-content">
+        <div class="split-layout">
+            
+            <!-- Columna Izquierda: Bloque fijo -->
+            <section class="split-left">
+                <span class="split-left__tag">— Application Form</span>
+                <h1 class="split-left__title">Enlistarse<br>al estudio.</h1>
+                <p class="split-left__desc">
+                    No decoramos superficies ni aceptamos proyectos por azar. Operamos bajo dinámicas de alta competencia, cálculo estratégico y disciplina implacable. Si crees que tu marca está preparada para someterse a una reestructuración visual profunda y resistir cualquier corriente del mercado, rellena el briefing técnico. Evaluaremos tu caso con ojo de ingeniería visual.
+                </p>
+            </section>
 
-        <!-- HERO -->
-        <section class="hero" style="min-height: 40vh; display: flex; align-items: center; justify-content: center; padding: var(--sp-lg) 0;">
-            <div class="hero__main">
-                <h1 class="t-display hero__title reveal" id="hero-title" style="margin-bottom: var(--sp-md);">
-                    <em>Apply for</em>
-                    <em>Studio</em>
-                    <em>Intervention.</em>
-                </h1>
-                <div class="hero__manifesto reveal reveal-delay-1">
-                    <p>
-                        Completa el formulario de briefing técnico para iniciar el diagnóstico de tu proyecto. Evaluamos solicitudes según la complejidad y el alineamiento estratégico.
+            <!-- Columna Derecha: Formulario libre scroll -->
+            <section class="split-right">
+                <form class="briefing-form" id="enlist-briefing-form">
+                    
+                    <!-- 01 -->
+                    <div class="form-group">
+                        <label for="brand-name">01. ¿Cuál es el nombre de tu marca o proyecto?</label>
+                        <input type="text" id="brand-name" placeholder="Escribe aquí el nombre..." required />
+                    </div>
+
+                    <!-- 02 -->
+                    <div class="form-group">
+                        <label for="contact-email">02. Tu correo electrónico de contacto</label>
+                        <input type="email" id="contact-email" placeholder="nombre@tuempresa.com" required />
+                    </div>
+
+                    <!-- 03 -->
+                    <div class="form-group">
+                        <label for="intervention-flow">03. ¿En qué flujo o capacidad necesitas nuestra intervención?</label>
+                        <select id="intervention-flow" required>
+                            <option value="">Selecciona una disciplina...</option>
+                            <option value="VISUAL INFRASTRUCTURE">VISUAL INFRASTRUCTURE (Identidad y marcas)</option>
+                            <option value="DIGITAL SYSTEMS">DIGITAL SYSTEMS (Software, web e ingeniería)</option>
+                            <option value="TANGIBLE MATTER">TANGIBLE MATTER (Packaging premium y piezas físicas)</option>
+                            <option value="CREATIVE DIRECTION">CREATIVE DIRECTION (Dirección de arte y campañas)</option>
+                            <option value="SPECIAL OPERATIONS">SPECIAL OPERATIONS (Consultoría, auditoría y workshops)</option>
+                        </select>
+                    </div>
+
+                    <!-- 04 -->
+                    <div class="form-group">
+                        <label for="scenario-desc">04. Describe el escenario actual, el mercado y tus competidores</label>
+                        <textarea id="scenario-desc" rows="5" placeholder="Cuéntanos sobre el estado de tu negocio y el objetivo..." required></textarea>
+                    </div>
+
+                    <!-- 05 -->
+                    <div class="form-group">
+                        <label>05. Presupuesto estimado de inversión</label>
+                        <div class="budget-options">
+                            <label class="budget-option">
+                                <input type="radio" name="project-budget" value="5K - 10K" required style="display:none;" />
+                                <span>[ 5K - 10K ]</span>
+                            </label>
+                            <label class="budget-option">
+                                <input type="radio" name="project-budget" value="10K - 25K" style="display:none;" />
+                                <span>[ 10K - 25K ]</span>
+                            </label>
+                            <label class="budget-option">
+                                <input type="radio" name="project-budget" value="+25K" style="display:none;" />
+                                <span>[ +25K ]</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Action -->
+                    <div class="form-actions" style="margin-top: 1rem;">
+                        <button type="submit" class="briefing-submit-btn" id="submit-briefing-btn">
+                            Enviar Briefing <span class="hero__cta-arrow">→</span>
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Small bottom info to complete the visual balance of the right scroll area -->
+                <footer style="margin-top: 6rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem; display:flex; justify-content:space-between; align-items:center;">
+                    <p style="font-size:0.65rem; color:var(--c-dim); text-transform:uppercase; letter-spacing:0.15em;">
+                        &copy; 2026 CREST Studio.
                     </p>
-                </div>
-            </div>
-        </section>
+                    <nav class="footer__links" aria-label="Legal" style="display:flex; gap:1.5rem;">
+                        <a href="/privacy.html" class="footer__link" style="font-size:0.65rem; opacity:0.6; text-transform:uppercase; letter-spacing:0.15em; color:var(--c-dim);">Privacy Policy</a>
+                        <a href="/terms.html" class="footer__link" style="font-size:0.65rem; opacity:0.6; text-transform:uppercase; letter-spacing:0.15em; color:var(--c-dim);">Terms of Service</a>
+                    </nav>
+                </footer>
+            </section>
 
-        <!-- FORM SECTION -->
-        <section class="container reveal">
-            <form class="enlist-form" id="enlist-brief-form">
-                <div class="form-group">
-                    <label for="brand-name">Nombre de la Marca / Empresa</label>
-                    <input type="text" id="brand-name" placeholder="e.g. Acme Corp" required />
-                </div>
-
-                <div class="form-group">
-                    <label for="contact-name">Persona de Contacto</label>
-                    <input type="text" id="contact-name" placeholder="e.g. Nicolas Streitenberger" required />
-                </div>
-
-                <div class="form-group">
-                    <label for="contact-email">Email Corporativo</label>
-                    <input type="email" id="contact-email" placeholder="e.g. nico@yourbrand.com" required />
-                </div>
-
-                <div class="form-group">
-                    <label for="project-type">Tipo de Proyecto</label>
-                    <select id="project-type" required>
-                        <option value="">Selecciona una opción...</option>
-                        <option value="Branding">Strategic Branding</option>
-                        <option value="Web Design">Digital & Web Design</option>
-                        <option value="Physical Branding">Physical Branding</option>
-                        <option value="Full Intervention">Full Intervention (Branding + Web)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="project-budget">Presupuesto Estimado</label>
-                    <select id="project-budget" required>
-                        <option value="">Selecciona un rango...</option>
-                        <option value="< 5k">&lt; €5.000</option>
-                        <option value="5k - 15k">€5.000 – €15.000</option>
-                        <option value="15k - 30k">€15.000 – €30.000</option>
-                        <option value="30k+">€30.000+</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="project-message">Briefing del Proyecto / Mensaje</label>
-                    <textarea id="project-message" rows="6" placeholder="Describe los objetivos y requisitos clave del proyecto..." required></textarea>
-                </div>
-
-                <div class="form-actions">
-                    <button type="submit" id="submit-brief-btn">Enviar Briefing <i class="ph ph-arrow-right"></i></button>
-                </div>
-            </form>
-        </section>
-
+        </div>
     </main>
-
-    <!-- FOOTER -->
-    <footer class="footer" id="footer" role="contentinfo">
-        <div class="footer__top">
-            <div class="footer__col" id="footer-brand">
-                <div>
-                    <p class="footer__monogram">[ CRST ]</p>
-                    <p class="footer__tagline">High-Performance Branding Studio</p>
-                </div>
-            </div>
-            <div class="footer__col" id="footer-contact">
-                <div>
-                    <p class="t-label" style="margin-bottom:1rem;">Contacto</p>
-                    <p class="footer__location">
-                        Based in Málaga, Spain<br>EST. 2023
-                    </p>
-                </div>
-                <a href="mailto:hello@creststudio.com" class="footer__email" id="footer-email">
-                    hello@creststudio.com
-                </a>
-            </div>
-            <div class="footer__col" id="footer-tech">
-                <div>
-                    <p class="t-label" style="margin-bottom:1rem;">System Status</p>
-                    <p class="footer__perf">
-                        <span class="footer__perf-dot" aria-hidden="true"></span>All systems operational
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="footer__bottom">
-            <p class="footer__copy" id="footer-copy">
-                &copy; <span id="footer-year">2026</span> CREST Studio. All rights reserved.
-            </p>
-            <nav class="footer__links" aria-label="Legal">
-                <a href="#" class="footer__link" id="footer-privacy">Privacy Policy</a>
-                <a href="#" class="footer__link" id="footer-terms">Terms of Service</a>
-            </nav>
-        </div>
-    </footer>
 
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase.js"></script>
     <script src="js/crest.js"></script>
+    <script src="js/analytics.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('enlist-brief-form');
+            const form = document.getElementById('enlist-briefing-form');
             if (form) {
                 form.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    const btn = document.getElementById('submit-brief-btn');
+                    const btn = document.getElementById('submit-briefing-btn');
                     const origText = btn.innerHTML;
 
                     btn.disabled = true;
-                    btn.innerHTML = '<i class="ph ph-spinner" style="animation:spin 1s linear infinite"></i> Enviando...';
+                    btn.innerHTML = 'Enviando... <i class="ph ph-spinner" style="animation:spin 1s linear infinite; display:inline-block; vertical-align:middle;"></i>';
 
                     const brandName = document.getElementById('brand-name').value.trim();
-                    const contactName = document.getElementById('contact-name').value.trim();
                     const email = document.getElementById('contact-email').value.trim();
-                    const projectType = document.getElementById('project-type').value;
-                    const budget = document.getElementById('project-budget').value;
-                    const brief = document.getElementById('project-message').value.trim();
-
-                    // Format message body for admin view
-                    const messageBody = `EMPRESA: ${brandName}\nTIPO DE PROYECTO: ${projectType}\nPRESUPUESTO: ${budget}\nBRIEFING:\n${brief}`;
+                    const interventionFlow = document.getElementById('intervention-flow').value;
+                    const scenarioDesc = document.getElementById('scenario-desc').value.trim();
+                    const budgetRadio = form.querySelector('input[name="project-budget"]:checked');
+                    const budget = budgetRadio ? budgetRadio.value : '';
 
                     if (typeof window.db === 'undefined') {
-                        btn.innerHTML = '⚠ Error: Database client missing';
+                        btn.innerHTML = 'Error: DB client missing';
                         btn.style.background = '#e53e3e';
                         setTimeout(() => { btn.innerHTML = origText; btn.style.background = ''; btn.disabled = false; }, 3000);
                         return;
                     }
 
-                    const { error } = await window.db.from('leads').insert([{ 
-                        name: contactName, 
-                        email: email, 
-                        message: messageBody 
-                    }]);
+                    try {
+                        const { error } = await window.db.from('enlist_applications').insert([{ 
+                            brand_name: brandName, 
+                            contact_email: email, 
+                            intervention_flow: interventionFlow,
+                            scenario_desc: scenarioDesc,
+                            estimated_budget: budget
+                        }]);
 
-                    if (error) {
-                        btn.innerHTML = '⚠ Error: ' + error.message;
+                        if (error) {
+                            btn.innerHTML = 'Error: ' + error.message;
+                            btn.style.background = '#e53e3e';
+                            setTimeout(() => { btn.innerHTML = origText; btn.style.background = ''; btn.disabled = false; }, 3000);
+                        } else {
+                            // Send webhook notification if configured
+                            try {
+                                const { data: settings } = await window.db
+                                    .from('system_settings')
+                                    .select('webhook_url')
+                                    .eq('id', '00000000-0000-0000-0000-000000000000')
+                                    .single();
+
+                                if (settings && settings.webhook_url) {
+                                    await fetch(settings.webhook_url, {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({
+                                            text: `⚡ **NEW ENLISTMENT APPLICATION** ⚡\n\n**Brand Name:** ${brandName}\n**Contact Email:** ${email}\n**Intervention Flow:** ${interventionFlow}\n**Scenario:** ${scenarioDesc}\n**Estimated Budget:** ${budget}`
+                                        })
+                                    });
+                                }
+                            } catch (webhookErr) {
+                                console.warn('[Webhook] Failed to send notification:', webhookErr);
+                            }
+
+                            // Track Conversion event
+                            if (typeof window.crestAnalytics !== 'undefined') {
+                                window.crestAnalytics.markSubmitted();
+                                window.crestAnalytics.logEvent('Enlist_Form_Success');
+                            }
+
+                            // Reset button
+                            btn.innerHTML = 'Enviado ✓';
+                            btn.style.background = '#28a745';
+                            btn.style.color = '#ffffff';
+                            form.reset();
+
+                            // Spawn custom success toast
+                            const toast = document.createElement('div');
+                            toast.className = 'success-toast';
+                            toast.textContent = 'BRIEFING RECIBIDO. EVALUANDO CORRIENTES.';
+                            document.body.appendChild(toast);
+                            
+                            setTimeout(() => {
+                                toast.classList.add('visible');
+                            }, 100);
+
+                            setTimeout(() => {
+                                toast.classList.remove('visible');
+                                setTimeout(() => toast.remove(), 500);
+                            }, 5000);
+
+                            setTimeout(() => { btn.innerHTML = origText; btn.style.background = ''; btn.style.color = ''; btn.disabled = false; }, 4000);
+                        }
+                    } catch (netErr) {
+                        console.error('Network submission failure:', netErr);
+                        btn.innerHTML = 'CONEXIÓN FALLIDA. REINTENTAR.';
                         btn.style.background = '#e53e3e';
-                        setTimeout(() => { btn.innerHTML = origText; btn.style.background = ''; btn.disabled = false; }, 3000);
-                    } else {
-                        btn.innerHTML = '✓ Briefing Recibido <i class="ph ph-check-circle"></i>';
-                        btn.style.background = '#28a745';
-                        form.reset();
                         setTimeout(() => { btn.innerHTML = origText; btn.style.background = ''; btn.disabled = false; }, 4000);
                     }
                 });
@@ -304,5 +485,12 @@
         });
     </script>
 
+    <!-- Custom loader animation for spinner -->
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </body>
 </html>
