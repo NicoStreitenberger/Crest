@@ -1115,3 +1115,83 @@ button {
     90% { transform: translate3d(1%, -2%, 0); }
     100% { transform: translate3d(0, 0, 0); }
 }
+
+/* ============================================================
+   MÓDULO 38: UNIFICATION OVERRIDES (Navbar, Accents, and Cursor)
+   ============================================================ */
+
+/* 1. Header Padding Reset */
+.header,
+.header.scrolled {
+    padding: 0 !important;
+}
+
+/* 2. Custom Cursor Removal & Standard Cursor Restoration */
+body, html {
+    cursor: default !important;
+}
+
+a, 
+button, 
+select, 
+input[type="submit"], 
+input[type="button"], 
+[role="button"], 
+.mobile-menu-btn, 
+.filter-btn,
+.systems-row,
+.project-card,
+.service-card__link {
+    cursor: pointer !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+input[type="url"],
+input[type="password"],
+input[type="number"],
+textarea {
+    cursor: text !important;
+}
+
+.cursor, 
+.cursor-follower {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+/* 3. Monochrome Accents Override */
+:root {
+    --color-accent: #FFFFFF !important;
+    --color-accent-hover: #E5E5E5 !important;
+}
+
+/* Filter Button Active State */
+.filter-btn.active {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    border-color: #FFFFFF !important;
+}
+
+/* Button primary hover shadow */
+.btn--primary:hover {
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Red Background & Border Gradients Override */
+.blog-cta {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.audit__wrapper {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.hero__bg-element {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%) !important;
+}
+
