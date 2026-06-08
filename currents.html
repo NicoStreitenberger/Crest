@@ -161,6 +161,7 @@
         <!-- FOOTER -->
         <footer class="footer" id="footer" role="contentinfo">
             <div class="footer__top">
+                <!-- Col 1: Monogram -->
                 <div class="footer__col" id="footer-brand">
                     <div>
                         <p class="footer__monogram">[ CREST STUDIO ]</p>
@@ -170,26 +171,46 @@
                         <!-- Añade tus redes aquí -->
                     </div>
                 </div>
+
+                <!-- Col 2: Location & Contact -->
                 <div class="footer__col" id="footer-contact">
                     <div>
                         <p class="t-label" style="margin-bottom:1rem;">Contacto</p>
                         <p class="footer__location">
-                            Based in Málaga, Spain<br>EST. 2023
+                            Based in Málaga, Spain<br>
+                            EST. 2023
                         </p>
                     </div>
                     <a href="mailto:hello@creststudio.com" class="footer__email" id="footer-email">
                         hello@creststudio.com
                     </a>
                 </div>
+
+                <!-- Col 3: Technical -->
                 <div class="footer__col" id="footer-tech">
                     <div>
                         <p class="t-label" style="margin-bottom:1rem;">System Status</p>
                         <p class="footer__perf">
                             <span class="footer__perf-dot" aria-hidden="true"></span>All systems operational
                         </p>
+                        <p class="footer__perf" style="margin-top:0.5rem;">
+                            Performance score — 98/100
+                        </p>
+                        <p class="footer__perf" style="margin-top:0.5rem;" id="footer-build-time">
+                            Build — <span id="build-date">2025</span>
+                        </p>
                     </div>
+                    <nav aria-label="Footer navigation">
+                        <ul style="display:flex; flex-direction:column; gap:0.5rem;" role="list">
+                            <li><a href="/structure.html"  class="footer__link" id="footer-nav-services">Structure</a></li>
+                            <li><a href="/systems.html" class="footer__link" id="footer-nav-portfolio">Systems</a></li>
+                            <li><a href="/enlist.html"     class="footer__link" id="footer-nav-about">Crest Studio</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
+
+            <!-- Footer bottom bar -->
             <div class="footer__bottom">
                 <p class="footer__copy" id="footer-copy">
                     &copy; <span id="footer-year">2026</span> CREST Studio. All rights reserved.
