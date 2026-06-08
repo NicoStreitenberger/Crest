@@ -258,7 +258,8 @@ button {
     padding: 0;
 }
 
-.btn-enlist {
+.btn-enlist,
+.btn-enlist:visited {
     padding: 0.8rem 2rem;
     font-family: var(--font-primary);
     font-size: 0.85rem;
@@ -270,15 +271,16 @@ button {
     align-items: center;
     justify-content: center;
     background: #ffffff;
-    color: #000000;
+    color: #000000 !important;
     border: none;
     border-left: none !important;
     white-space: nowrap;
 }
 
-.btn-enlist:hover {
+.btn-enlist:hover,
+.btn-enlist:hover:visited {
     background-color: var(--c-muted);
-    color: #000000;
+    color: #000000 !important;
 }
 
 /* Mobile menu button */
