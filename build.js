@@ -31,21 +31,12 @@ function minifyCSS(css) {
         .trim();
 }
 
-// Simple minifier for JS (removes block comments, inline comments, extra spaces)
+// Simple minifier for JS (removes block comments, inline comments, extra spaces safely)
 function minifyJS(js) {
     return js
         .replace(/\/\*[\s\S]*?\*\//g, '') // Remove block comments
-        .replace(/\/\/.*/g, '') // Remove inline comments
-        .replace(/\s+/g, ' ') // Collapse multiple spaces
-        .replace(/ ?= ?/g, '=')
-        .replace(/ ?\+ ?/g, '+')
-        .replace(/ ?\- ?/g, '-')
-        .replace(/ ?\{ ?/g, '{')
-        .replace(/ ?\} ?/g, '}')
-        .replace(/ ?\( ?/g, '(')
-        .replace(/ ?\) ?/g, ')')
-        .replace(/ ?; ?/g, ';')
-        .replace(/ ?, ?/g, ',')
+        .replace(/(^|\s|;|\}|\))\/\/.*$/gm, '$1') // Remove inline comments safely (preserves URLs)
+        .replace(/[ \t]+/g, ' ') // Collapse multiple spaces and tabs (preserves newlines to avoid ASI errors)
         .trim();
 }
 
