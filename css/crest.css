@@ -206,7 +206,8 @@ button {
     border-left: none;
 }
 
-.nav__link {
+.nav__link,
+.nav__link:visited {
     display: flex;
     align-items: center;
     padding: 0 1.75rem;
@@ -214,14 +215,26 @@ button {
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--c-dim);
+    color: var(--c-dim) !important;
     transition: color var(--t-fast);
     height: 100%;
     white-space: nowrap;
+    border-bottom: 1px solid transparent !important;
 }
 
-.nav__link:hover {
-    color: var(--c-text);
+.nav__link::after {
+    display: none !important; /* Disable red underline from style.css */
+}
+
+.nav__link:hover,
+.nav__link:hover:visited {
+    color: var(--c-text) !important;
+}
+
+.nav__link--active,
+.nav__link--active:visited {
+    color: var(--c-text) !important;
+    border-bottom: 1px solid var(--c-text) !important;
 }
 
 /* CTA nav button */
@@ -255,7 +268,7 @@ button {
 }
 
 .nav-links .nav__link {
-    padding: 0;
+    padding: 0 !important;
 }
 
 .btn-enlist,
